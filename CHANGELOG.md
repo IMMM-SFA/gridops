@@ -25,7 +25,8 @@ published as v0.1.0. Code written against v0.1.0 needs to be updated.
 - Test suite covering configuration, solvers, utilities and a western
   interconnection integration run.
 - GitHub Actions workflow that tests, builds and publishes the package to
-  PyPI as `gridops` on every push to `main`.
+  PyPI as `gridops` on every push to `main`, then creates a tagged GitHub
+  release with notes taken from this changelog.
 - This changelog.
 
 ### Changed
