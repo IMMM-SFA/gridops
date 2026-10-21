@@ -51,12 +51,11 @@ test = [
   "pytest-cov>=2.12.1",
 ]
 docs = [
-  "build>=0.5.1",
-  "nbsphinx>=0.8.6",
-  "setuptools>=57.0.0",
-  "sphinx>=4.0.2",
-  "sphinx-panels>=0.6.0",
-  "sphinx-rtd-theme>=0.5.2",
+  "sphinx>=7.3",
+  "pydata-sphinx-theme>=0.16",
+  "sphinx-design>=0.6",
+  "sphinx-copybutton>=0.5.2",
+  "myst-nb>=1.1",
 ]
 deploy = [
   "twine>=3.4.1",

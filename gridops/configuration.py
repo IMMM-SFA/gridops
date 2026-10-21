@@ -64,15 +64,23 @@ class Config:
 
     Output files
     ------------
-    vlt_angle_file:    Parquet - hourly nodal voltage angles.
-    mwh_file:          Parquet - hourly generator dispatch (MWh per unit); also includes
-                       must-run nuclear output per bus (Type "Nuclear").
-    slack_file:        Parquet - hourly unserved demand per node.
-    flow_file:         Parquet - hourly transmission line flows per line.
-    duals_file:        Parquet - hourly nodal locational marginal prices (LMPs).
-    storage_soc_file:  Parquet - hourly storage state-of-charge per storage-unit.
-    storage_discharge_file: Parquet - hourly storage discharge per storage-unit.
-    storage_charge_file:    Parquet - hourly storage charge per storage-unit.
+    vlt_angle_file:
+        Parquet - hourly nodal voltage angles.
+    mwh_file:
+        Parquet - hourly generator dispatch (MWh per unit); also includes
+        must-run nuclear output per bus (Type "Nuclear").
+    slack_file:
+        Parquet - hourly unserved demand per node.
+    flow_file:
+        Parquet - hourly transmission line flows per line.
+    duals_file:
+        Parquet - hourly nodal locational marginal prices (LMPs).
+    storage_soc_file:
+        Parquet - hourly storage state-of-charge per storage-unit.
+    storage_discharge_file:
+        Parquet - hourly storage discharge per storage-unit.
+    storage_charge_file:
+        Parquet - hourly storage charge per storage-unit.
 
     Other settings
     --------------

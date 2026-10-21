@@ -71,6 +71,9 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs/build/
+docs/source/notebooks/
+docs/jupyter_execute/
 
 # PyBuilder
 .pybuilder/
