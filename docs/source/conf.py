@@ -119,5 +119,7 @@ html_context = {
 }
 
 html_sidebars = {
-    "index": [],
+    # "*" matches only top-level pages; those without child pages need no section navigation.
+    "*": [],
+    "tutorials": ["sidebar-nav-bs"],
 }
