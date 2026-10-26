@@ -20,7 +20,7 @@ rolling-horizon simulation, including restarts and solver settings.
 
       Layout, units and consistency rules for each input file.
 
-   .. grid-item-card:: Outputs
+   .. grid-item-card:: Output data
       :link: outputs
       :link-type: doc
 

@@ -137,7 +137,7 @@ Solvers
    .. tab-item:: Gurobi
 
       Gurobi is a commercial solver and needs a
-      `valid license <https://www.gurobi.com/academia/academic-program-and-licenses/>`_
+      `valid license <https://www.gurobi.com/academics>`_
       (free academic licenses are available). Install the Python bindings with:
 
       .. code-block:: bash
@@ -180,6 +180,6 @@ hydro). The inputs cover 48 hours, so the example can run for up to two days.
 Next steps
 ----------
 
-* Run the example in the :doc:`quickstart`.
+* Run the example in the :doc:`Quickstart <notebooks/quickstarter>`.
 * Read the :doc:`user_guide/index` to prepare your own inputs.
 * Browse the :doc:`api`.

@@ -102,7 +102,7 @@ html_theme_options = {
     ],
     "use_edit_page_button": True,
     "navbar_align": "left",
-    "header_links_before_dropdown": 5,
+    "header_links_before_dropdown": 6,
     "show_toc_level": 2,
     "navigation_with_keys": False,
     "secondary_sidebar_items": ["page-toc", "edit-this-page"],
@@ -121,5 +121,5 @@ html_context = {
 html_sidebars = {
     # "*" matches only top-level pages; those without child pages need no section navigation.
     "*": [],
-    "tutorials": ["sidebar-nav-bs"],
+    "notebooks/*": [],
 }

@@ -49,11 +49,12 @@ and ``0`` elsewhere. The row index defines the set of lines.
      - Line name (index; must match ``line_to_bus_file``).
    * - ``reactance``
      - p.u. (100 MVA base)
-     - Series reactance :math:`X_l`.
+     - Series reactance. Together with the voltage angles at the two ends of the
+       line, it determines how much power flows on the line.
    * - ``limit``
      - MW
-     - Thermal limit :math:`\overline{F}_l`. Flows are bounded to
-       :math:`[-\overline{F}_l, \overline{F}_l]`.
+     - Thermal limit. The flow on the line can't exceed this value in either
+       direction.
 
 ``nodal_load_file``
 ~~~~~~~~~~~~~~~~~~~
@@ -90,16 +91,16 @@ are not listed here; they enter through ``must_run_file``.
        the column read from the matching time-series file.
    * - ``maxcap``
      - MW
-     - Maximum capacity :math:`\overline{P}_g`.
+     - Maximum capacity.
    * - ``mincap``
      - MW
      - Minimum stable output (reserved for unit commitment).
    * - ``heat_rate``
      - MMBtu/MWh
-     - Heat rate :math:`HR_g` (thermal units).
+     - Heat rate: fuel burned per MWh generated (thermal units).
    * - ``var_om``
      - $/MWh
-     - Variable O&M cost :math:`VOM_g`.
+     - Variable operation and maintenance (O&M) cost.
    * - ``no_load``
      - $/h
      - No-load cost (reserved for unit commitment).
@@ -108,7 +109,8 @@ are not listed here; they enter through ``must_run_file``.
      - Start-up cost (reserved for unit commitment).
    * - ``ramp``
      - MW/h
-     - Ramp rate :math:`R_g` (thermal units).
+     - Ramp rate: the largest change in output from one hour to the next (thermal
+       units).
    * - ``minup``
      - h
      - Minimum up time (reserved for unit commitment).
@@ -162,8 +164,8 @@ power balance. It must agree with the ``node`` column of
 
 Daily fuel price in $/MMBtu. Rows are days and **columns are thermal generator
 names**. Every Coal, Oil, Gas, Biomass and Geothermal unit must have a column, or a
-``ValueError`` is raised. The marginal cost of a thermal unit is
-:math:`HR_g \cdot FP_{g} + VOM_g`.
+``ValueError`` is raised. The marginal cost of a thermal unit is its heat rate
+multiplied by its fuel price, plus its variable O&M cost.
 
 ``must_run_file``
 ~~~~~~~~~~~~~~~~~
@@ -176,9 +178,9 @@ units need a column. This capacity is fixed, minus any nuclear forced-outage los
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Thermal fleet listing with columns ``Name``, ``Bus``, ``Fuel``, ``Max_Cap``,
-``Min_Cap`` and ``Heat_Rate``. Only rows with ``Fuel == "NUC (Nuclear)"`` are used,
-to count the number of nuclear units :math:`N^{nuc}` that share the nuclear
-forced-outage losses.
+``Min_Cap`` and ``Heat_Rate``. Only rows with ``Fuel == "NUC (Nuclear)"`` are used.
+They give the number of nuclear units, which is needed to share the nuclear
+forced-outage losses among the units.
 
 Hydropower
 ----------
@@ -195,14 +197,14 @@ the column of its ``node``.
      - Description
    * - ``daily_hydro_maximum_file``
      - MW
-     - Maximum hourly output for that day, :math:`\overline{H}_{g}`.
+     - Maximum hourly output for that day.
    * - ``daily_hydro_minimum_file``
      - MW
-     - Minimum hourly output for that day, :math:`\underline{H}_{g}`.
+     - Minimum hourly output for that day.
    * - ``daily_hydro_total_file``
      - MWh
      - Energy budget for that day. For horizons longer than 24 hours, the budgets of
-       all ``horizon_hours // 24`` days are summed into :math:`E^{H}_{g}`.
+       all ``horizon_hours // 24`` days are added up to give the horizon's budget.
 
 Variable renewables
 -------------------
@@ -236,26 +238,28 @@ Storage
      - Bus where the unit is located.
    * - ``charge_rate``
      - MW
-     - Maximum charging power :math:`\overline{C}_s`.
+     - Maximum charging power.
    * - ``discharge_rate``
      - MW
-     - Maximum discharging power :math:`\overline{D}_s`.
+     - Maximum discharging power.
    * - ``duration``
      - h
      - Energy-to-power ratio (informational).
    * - ``max_SoC``
      - MWh
-     - Maximum state of charge :math:`\overline{SoC}_s`.
+     - Maximum state of charge.
    * - ``min_SoC``
      - MWh
-     - Minimum state of charge :math:`\underline{SoC}_s`. This is also the initial
-       state of charge of a fresh run.
+     - Minimum state of charge. This is also the initial state of charge of a fresh
+       run.
    * - ``charge_eff``
      - fraction
-     - Charging efficiency :math:`\eta^{c}_s`.
+     - Charging efficiency: the share of the power drawn from the grid that is
+       stored.
    * - ``discharge_eff``
      - fraction
-     - Discharging efficiency :math:`\eta^{d}_s`.
+     - Discharging efficiency: the share of the stored energy taken out that
+       reaches the grid.
 
 ``bus_to_storage_matrix_file``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -298,8 +302,8 @@ Hourly capacity lost to forced outages, in MW. The first column must be ``Time``
 is split equally among its generators and subtracted from their maximum capacity.
 
 If the system has nuclear units, a ``Nuclear_ovr_1000`` column is also required. Its
-value is divided by :math:`N^{nuc}` and subtracted from the must-run capacity of
-every bus. Additional columns are ignored.
+value is divided by the number of nuclear units and subtracted from the must-run
+capacity of every bus. Additional columns are ignored.
 
 .. code-block:: text
 

@@ -50,17 +50,17 @@ gridops was created to:
       install the package and a solver.
 
    .. grid-item-card:: :fas:`play` Quickstart
-      :link: quickstart
+      :link: notebooks/quickstarter
       :link-type: doc
 
-      Run the bundled two-day Western Interconnection example, read the Parquet outputs,
-      and plug in your own data.
+      Run the bundled two-day Western Interconnection example notebook, then plot
+      hourly LMPs, unserved energy and the generation mix.
 
    .. grid-item-card:: :fas:`book` User guide
       :link: user_guide/index
       :link-type: doc
 
-      Configuration file reference, input data requirements, outputs, the full
+      Configuration file reference, input data requirements, output data, the full
       mathematical formulation, rolling-horizon simulation, restarts and solvers.
 
    .. grid-item-card:: :fas:`code` API reference
@@ -105,19 +105,18 @@ renewable availability, forced-outage capacity losses and storage dynamics. See
    :caption: User documentation
 
    getting_started
-   quickstart
+   Quickstart <notebooks/quickstarter>
    user_guide/index
-   tutorials
    api
+   contributing
+   how_to_cite
 
 .. toctree::
    :hidden:
    :caption: Project
 
-   contributing
    release_notes
    publications
-   how_to_cite
    authors
    license
    acknowledgement

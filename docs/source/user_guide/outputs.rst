@@ -1,5 +1,5 @@
-Outputs
-=======
+Output data
+===========
 
 When all horizons have been solved, gridops writes eight Parquet files to the paths
 in the configuration file and a JSON audit file to the restart directory. Every
@@ -57,8 +57,8 @@ Parquet files
 Because each horizon is one hour per time step, MW and MWh are numerically equal for
 the hourly dispatch values.
 
-Working with the outputs
-------------------------
+Working with the output data
+----------------------------
 
 .. code-block:: python
 

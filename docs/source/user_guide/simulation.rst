@@ -9,15 +9,13 @@ Rolling horizon
 ---------------
 
 The simulation length ``n_days`` is split into consecutive, non-overlapping horizons
-of ``horizon_hours`` hours (default 24):
+of ``horizon_hours`` hours (default 24). The number of horizons is the total number
+of simulated hours (``24 * n_days``) divided by ``horizon_hours``, rounded down.
 
-.. math::
-
-   N_{horizons} = \left\lfloor \frac{24 \cdot \text{n_days}}{\text{horizon_hours}} \right\rfloor
-
-Horizon :math:`k` (0-based) covers absolute hours :math:`kH + 1` to :math:`(k+1)H`.
-Every hour of every horizon is kept in the outputs. If ``24 * n_days`` is not a
-multiple of ``horizon_hours``, the leftover hours at the end are not simulated.
+The first horizon covers hours 1 to ``horizon_hours``, the second horizon covers the
+next ``horizon_hours`` hours, and so on. Every hour of every horizon is kept in the
+output data. If ``24 * n_days`` is not a multiple of ``horizon_hours``, the leftover
+hours at the end are not simulated.
 
 The Pyomo model is built **once**. Before each solve, gridops updates the model's
 mutable parameters in place:
@@ -27,9 +25,9 @@ mutable parameters in place:
    :widths: 35 65
 
    * - Data
-     - Value used for horizon :math:`k`
+     - Value used for each horizon
    * - Demand, solar, wind, offshore wind
-     - The :math:`H` hourly rows of the horizon.
+     - The hourly rows that fall within the horizon.
    * - Fuel prices, hydro min/max
      - The row for the day that contains the horizon's first hour.
    * - Hydro energy budget
@@ -42,10 +40,11 @@ State carry-over
 
 At the end of each horizon:
 
-* the output of every thermal unit in the last hour becomes :math:`p^{0}_g` for the
-  next horizon's ramp constraints (clipped at zero), and
-* the state of charge of every storage unit in the last hour becomes
-  :math:`SoC^{0}_s` (clipped to :math:`[\underline{SoC}_s, \overline{SoC}_s]`).
+* the output of every thermal unit in the last hour becomes the starting point for
+  the next horizon's ramp limits (negative values are set to zero), and
+* the state of charge of every storage unit in the last hour becomes the starting
+  state of charge of the next horizon (kept within the unit's minimum and maximum
+  state of charge).
 
 A fresh run starts with all thermal output at zero, storage at its minimum state of
 charge, and the hour-1 ramp constraints switched off in the first horizon.

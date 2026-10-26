@@ -1,5 +1,5 @@
-How to cite gridops
-===================
+How to cite
+===========
 
 If you use gridops in an academic context, please cite the following article:
 

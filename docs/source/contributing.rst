@@ -1,5 +1,5 @@
-Contributing to gridops
-=======================
+Contributing
+============
 
 You're welcome to contribute, whether you've found a typo in the documentation,
 found a bug, or want to add functionality that makes gridops more useful.
@@ -81,7 +81,94 @@ Contribution workflow
 Coding conventions
 ------------------
 
+Please follow the conventions already used in the gridops code base so that new code
+reads like the existing code.
+
+Python style
+~~~~~~~~~~~~
+
+* gridops supports Python 3.10 to 3.14. Don't use language features that are newer
+  than Python 3.10.
+* Start every module with ``from __future__ import annotations`` and add type hints
+  to every function signature (for example ``Dict[str, Any]``, ``Optional[int]``,
+  ``Union[str, None]``).
+* Use ``snake_case`` for functions and variables, ``PascalCase`` for classes and
+  ``UPPER_CASE`` for module-level constants. Put a one-line comment above each
+  constant that states what it means and its unit, for example
+  ``# Penalty for unserved energy/load shedding ($/MWh).``
+* Prefix private helpers with an underscore (``_update_horizon_params``). The
+  ``configuration`` and ``utilities`` modules are re-exported with
+  ``from .module import *`` in ``gridops/__init__.py``, so any name without a leading
+  underscore becomes part of the public ``gridops`` namespace.
+* Group related code under section separator comments: a short title between two
+  ``# -----`` lines, as in ``gridops/utilities.py``.
+* Open text files with an explicit ``encoding="utf-8"``.
+* State physical units in names, comments and docstrings (MW, MWh, $/MWh,
+  $/MMBtu, p.u.).
+
+Docstrings
+~~~~~~~~~~
+
 * Public functions and classes have NumPy-style docstrings with ``Parameters``,
-  ``Returns`` and ``Raises`` sections.
-* New behavior comes with a unit test in ``tests/``.
-* Add an entry to ``CHANGELOG.md`` under the next release.
+  ``Returns`` and ``Raises`` sections. They are rendered in the :doc:`api` by Sphinx
+  ``autodoc`` and ``napoleon``.
+* Refer to other objects with Sphinx roles, for example
+  ``:func:`~gridops.utilities.write_restart_file```.
+* If you add a public function or class, add it to ``docs/source/api.rst``.
+
+Logging and errors
+~~~~~~~~~~~~~~~~~~
+
+* Don't use ``print``. Get a logger with ``logging.getLogger(__name__)`` so that
+  messages go through the package-level ``gridops`` logger configured in
+  ``gridops/__init__.py``. Keep log messages short and consistent with the existing
+  ones.
+* Raise specific exceptions with a clear message, for example ``ValueError`` for
+  invalid input data and ``NotImplementedError`` for regions or problem types that
+  are not available yet.
+
+Optimization models
+~~~~~~~~~~~~~~~~~~~
+
+* Build the Pyomo model **once**. Store time-varying data in mutable parameters
+  (``mutable=True``) and update them in place between horizons instead of
+  rebuilding the model.
+* Write each constraint and objective rule as a module-level function named
+  ``_<name>_rule`` with a docstring that describes the equation.
+* Use ``pyo.quicksum`` and the precomputed sparse lookups (``_lines_at_bus``,
+  ``_gens_at_bus``, ...) instead of looping over full incidence matrices.
+* Keep penalty and cost constants at the top of the module and document any change
+  to them, or to the equations, in :doc:`user_guide/formulation`.
+
+Tests
+~~~~~
+
+* New behavior comes with a test in ``tests/test_<module>.py``. Tests are
+  ``unittest.TestCase`` classes run with ``pytest``. Give every test method a
+  one-line docstring that states what it checks.
+* Write temporary files to a ``tempfile.mkdtemp()`` directory and remove it in
+  ``tearDown``.
+* Tests must not need a commercial solver license or network access. Use HiGHS for
+  tests that solve a model.
+
+Documentation
+~~~~~~~~~~~~~
+
+* The documentation build treats warnings as errors (``sphinx-build -W``), so check
+  that it builds cleanly before opening a pull request.
+* Notebooks in ``notebooks/`` are copied into the documentation and rendered from
+  their **stored outputs**; they are not executed during the build. If you change a
+  notebook, run it from top to bottom and save it with its outputs.
+
+Versioning and changelog
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+* gridops follows `semantic versioning <https://semver.org/>`_. The version number
+  is set in two places that must match: ``version`` in ``pyproject.toml`` and
+  ``__version__`` in ``gridops/__init__.py``.
+* Add an entry to ``CHANGELOG.md`` under the next release, using the
+  `Keep a Changelog <https://keepachangelog.com/en/1.1.0/>`_ headings (``Added``,
+  ``Changed``, ``Removed``, ...).
+* Every push to ``main`` runs the publishing workflow. When the version number has
+  changed, the package is published to PyPI and a GitHub release is created with the
+  notes from ``CHANGELOG.md``.
