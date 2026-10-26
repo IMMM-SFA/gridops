@@ -51,6 +51,7 @@ test = [
   "pytest-cov>=2.12.1",
 ]
 docs = [
+  "build>=0.5.1",
   "sphinx>=7.3",
   "pydata-sphinx-theme>=0.16",
   "sphinx-design>=0.6",
