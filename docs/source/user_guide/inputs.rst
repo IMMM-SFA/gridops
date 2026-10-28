@@ -276,7 +276,7 @@ power balance. Otherwise, ``0`` is written. It must agree with the ``s_node`` co
 ``storage_params_file``.
 
 Generator outages
---------------
+-----------------
 
 ``generator_outage_file``
 ~~~~~~~~~~~~~~~~~~~~~~~~~
