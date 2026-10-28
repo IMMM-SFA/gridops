@@ -83,7 +83,7 @@ Model constants
      - Penalty on unserved energy.
    * - ``gridops.west.linear.RENEWABLE_GEN_COST``
      - 0.01 $/MWh
-     - Tie-breaking cost on hydro, wind, solar and offshore-wind dispatch.
+     - Tie-breaking cost on hydro, solar, onshore wind, and offshore wind dispatch.
    * - ``gridops.west.linear.DUMMY_FLOW_PENALTY``
      - 0.01 $/MWh
      - Penalty on the absolute value of line flows.

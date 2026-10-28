@@ -3,13 +3,13 @@
 [![PyPI](https://img.shields.io/pypi/v/gridops.svg)](https://pypi.org/project/gridops/)
 [![tests](https://github.com/IMMM-SFA/gridops/actions/workflows/tests.yml/badge.svg)](https://github.com/IMMM-SFA/gridops/actions/workflows/tests.yml)
 
-`gridops` is an open-source and customizable grid operations model for three major U.S. interconnections (Western, Eastern, ERCOT). Production cost modeling in `gridops` utilizes linear DC Optimal Power Flow (DC-OPF) approximation to optimize hourly unit commitment (UC) and economic dispatch (ED) processes over a user-configurable rolling horizon.
+`gridops` is an open-source and customizable grid operations model for three major U.S. interconnections (Western, Eastern, and ERCOT). Production cost modeling in `gridops` utilizes linear DC Optimal Power Flow (DC-OPF) approximation to optimize hourly unit commitment (UC) and economic dispatch (ED) processes over a user-configurable rolling horizon.
 
 ## Purpose
 
 `gridops` was created to:
-  - Address weather and water dynamics and associated vulnerabilities in U.S. bulk power systems,
-  - Link with a wide range of hydrometeorological datasets and energy system/machine learning models to explore future uncertainty in grid operations,
+  - Address weather and water dynamics and associated vulnerabilities in U.S. bulk power systems.
+  - Link with a wide range of hydrometeorological datasets and energy system/machine learning models to explore future uncertainty in grid operations.
   - Analyze current and future grid stress and reliability trends under a wide range of weather conditions, generation mixes, and demand growth scenarios.
   - Create simple and user-tailored representations of the U.S. interconnections to find a balance between model accuracy and run time to answer research questions of interest.
 
@@ -60,7 +60,7 @@ restart_file_directory: Restart/
 
 | Solver | Interface | Notes |
 |--------|-----------|-------|
-| HiGHS  | `appsi_highs`  | Open-source; install separately with `pip install highspy` |
+| HiGHS  | `appsi_highs` | Open-source; installs automatically through the ``highspy`` dependency |
 | Gurobi | `appsi_gurobi` or `gurobi` | Commercial; requires a valid Gurobi license |
 
 Users can pass any desired solver parameters via the `solver_params`:
@@ -83,6 +83,6 @@ See [DISCLAIMER](DISCLAIMER).
 
 ## Reference
 
-If you use gridops in an academic context, please cite the following article.
+If you use gridops, please cite the following article:
 
-Akdemir, K. Z., Oikonomou, K., Kern, J. D., Voisin, N., Ssembatya, H., & Qian, J. (2024). An open-source framework for balancing computational speed and fidelity in production cost models. Environmental Research: Energy, 1(1), 015003. https://doi.org/10.1088/2753-3751/ad1751
+Akdemir, K. Z., Oikonomou, K., Kern, J. D., Voisin, N., Ssembatya, H., & Qian, J. (2024). An open-source framework for balancing computational speed and fidelity in production cost models. *Environmental Research: Energy*, 1(1), 015003. https://doi.org/10.1088/2753-3751/ad1751

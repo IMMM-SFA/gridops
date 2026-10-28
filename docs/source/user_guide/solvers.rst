@@ -11,7 +11,7 @@ Supported solvers
    :header-rows: 1
    :widths: 22 18 60
 
-   * - ``solver_name``
+   * - Solver name (``solver_name=``)
      - License
      - Notes
    * - ``"appsi_highs"`` (default)
@@ -32,9 +32,9 @@ Solver options
 --------------
 
 ``solver_params`` is a dictionary of options passed to the solver unchanged. gridops
-doesn't add defaults of its own, apart from the warm-start policy below. Option names
+doesn't add defaults of its own, apart from the warm start policy below. Option names
 are solver-specific: see the
-`HiGHS options <https://ergo-code.github.io/HiGHS/dev/options/definitions/>`_ and the
+`HiGHS options <https://ergo-code.github.io/HiGHS/stable/options/definitions/>`_ and the
 `Gurobi parameters <https://docs.gurobi.com/projects/optimizer/en/current/reference/parameters.html>`_.
 
 .. code-block:: python
@@ -54,15 +54,6 @@ are solver-specific: see the
        },
    )
 
-You can also create and use a configured solver on its own:
-
-.. code-block:: python
-
-   from gridops import GoSolver
-
-   opt = GoSolver("appsi_highs", {"time_limit": 600}).go_solver
-   result = opt.solve(pyomo_model)
-
 Warm starts
 -----------
 
@@ -77,7 +68,7 @@ adjusts ``solver_params`` as follows:
    :widths: 18 14 68
 
    * - Solver
-     - ``warmstart``
+     - Warm start setting (``warmstart=``)
      - Effective settings
    * - ``appsi_highs``
      - ``False`` (default)
@@ -85,14 +76,14 @@ adjusts ``solver_params`` as follows:
        state is cleared before every horizon after the first.
    * - ``appsi_highs``
      - ``True``
-     - ``solver="simplex"`` and ``run_crossover="off"`` (forced), so the persistent
+     - ``solver="simplex"`` and ``run_crossover="off"``, so the persistent
        interface reuses the previous basis.
    * - ``appsi_gurobi``
      - ``False``
      - ``LPWarmStart=0``. ``PreDual=1`` unless you set it.
    * - ``appsi_gurobi``
      - ``True``
-     - ``LPWarmStart=1``, or keeps ``LPWarmStart=2`` (warm start with presolve) if
+     - ``LPWarmStart=1``, or keeps ``LPWarmStart=2`` if
        you set it. A user value of ``0`` is overridden with a warning.
    * - ``gurobi``
      - ``False``
@@ -103,33 +94,3 @@ adjusts ``solver_params`` as follows:
        warning.
 
 With HiGHS, choosing ``solver="simplex"`` always turns crossover off.
-
-Retry search grid
------------------
-
-When a horizon fails (see :doc:`simulation`), the HiGHS retry trials are generated
-from the following defaults. Any key can be overridden with
-``Model.run(retry_options={...})``:
-
-.. code-block:: python
-
-   HIGHS_RETRY_DEFAULTS = {
-       "solver_list": ["simplex", "ipm"],
-       "dual_feasibility_tolerance": [1e-7, 1e-6],
-       "primal_feasibility_tolerance": [1e-7, 1e-6],
-       "ipm_optimality_tolerance": [1e-8, 1e-7, 1e-6],
-       "simplex_strategy": [0],
-       "simplex_scale_strategy": [1],
-       "simplex_dual_edge_weight_strategy": [-1],
-       "simplex_primal_edge_weight_strategy": [-1],
-   }
-
-For each algorithm in ``solver_list``, gridops builds the Cartesian product of the
-settings that apply to it, plus ``retry_n_seeds`` random seeds:
-
-* **simplex**: seeds × simplex strategies × scale strategies × dual and primal edge
-  weight strategies × dual and primal feasibility tolerances.
-* **ipm**: seeds × dual and primal feasibility tolerances × IPM optimality tolerances.
-
-With the defaults this gives 4 simplex trials and 12 IPM trials. The combined list is
-truncated to ``max_retries``. For Gurobi, only the ``Seed`` parameter is varied.

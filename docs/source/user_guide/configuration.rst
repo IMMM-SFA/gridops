@@ -2,10 +2,10 @@ Configuration file
 ==================
 
 A gridops run reads a YAML file that maps each input file to its path, each output
-Parquet file to its destination, and gives the directory used for restart files. The
+file to its destination, and gives the directory used for restart files. The
 YAML keys correspond one-to-one with the fields of
 :class:`~gridops.configuration.Config`. Every key is required, and unknown keys raise
-a ``TypeError``.
+an error.
 
 Template
 --------
@@ -24,7 +24,7 @@ file. Use absolute paths, or ``os.chdir`` to the folder the relative paths start
 from.
 
 gridops creates the restart directory if it doesn't exist. The **parent directories
-of the output files must already exist.**
+of the input and output files must already exist.**
 
 Keys
 ----
@@ -41,13 +41,13 @@ Input files
      - Contents (see :doc:`inputs` for full details)
    * - ``generator_parameters_file``
      - CSV
-     - Generator parameters: name, type, bus, capacity, heat rate, costs, ramp rate.
+     - Generator parameters.
    * - ``generator_matrix_file``
      - CSV
      - Generator-to-bus incidence matrix (0/1).
    * - ``line_to_bus_file``
      - CSV
-     - Line-to-bus DC-OPF incidence matrix (-1/0/1).
+     - Line-to-bus incidence matrix (-1/0/1).
    * - ``line_parameters_file``
      - CSV
      - Line reactance (p.u.) and thermal limit (MW).
@@ -59,7 +59,7 @@ Input files
      - Daily minimum hourly hydro output per bus (MW).
    * - ``daily_hydro_total_file``
      - CSV
-     - Daily hydro energy budget per bus (MWh).
+     - Daily total hydro energy budget per bus (MWh).
    * - ``nodal_solar_file``
      - CSV
      - Hourly available solar generation per bus (MW).
@@ -71,16 +71,16 @@ Input files
      - Hourly available offshore wind generation per bus (MW).
    * - ``nodal_load_file``
      - CSV
-     - Hourly demand per bus (MW). Its columns define the set of buses.
+     - Hourly demand per bus (MW).
    * - ``must_run_file``
      - CSV
-     - Must-run (nuclear) capacity per bus (MW), one row.
+     - Must-run (e.g., nuclear) capacity per bus (MW).
    * - ``fuel_prices_file``
      - CSV
-     - Daily fuel price per thermal generator ($/MMBtu).
+     - Daily fuel price for thermal generators ($/MMBtu).
    * - ``storage_params_file``
      - CSV
-     - Storage parameters: rates, state-of-charge limits, efficiencies.
+     - Storage parameters.
    * - ``bus_to_storage_matrix_file``
      - CSV
      - Storage-to-bus incidence matrix (0/1).
@@ -89,10 +89,10 @@ Input files
      - Pickled ``dict`` mapping outage-group names to generator names.
    * - ``thermal_generators_file``
      - CSV
-     - Thermal fleet list. Used to count nuclear units.
+     - Thermal generator list.
    * - ``lost_capacity_file``
      - CSV
-     - Hourly capacity lost to forced outages per outage group (MW).
+     - Hourly capacity lost to generator outages per outage group (MW).
 
 Output files
 ~~~~~~~~~~~~
@@ -103,31 +103,31 @@ Output files
 
    * - Key
      - Format
-     - Contents (see :doc:`outputs` for columns and units)
-   * - ``vlt_angle_file``
-     - Parquet
-     - Hourly bus voltage angles.
+     - Contents (see :doc:`outputs` for full details)
    * - ``mwh_file``
      - Parquet
-     - Hourly generator dispatch, including must-run nuclear output.
+     - Hourly generator dispatch.
    * - ``slack_file``
      - Parquet
      - Hourly unserved energy per bus.
    * - ``flow_file``
      - Parquet
-     - Hourly line flows.
+     - Hourly transmission line flows.
    * - ``duals_file``
      - Parquet
-     - Hourly locational marginal prices (LMPs).
+     - Hourly locational marginal prices (LMPs) per bus.
    * - ``storage_soc_file``
      - Parquet
-     - Hourly storage state of charge.
+     - Hourly storage state of charge per storage unit.
    * - ``storage_discharge_file``
      - Parquet
-     - Hourly storage discharge.
+     - Hourly storage discharge per storage unit.
    * - ``storage_charge_file``
      - Parquet
-     - Hourly storage charge.
+     - Hourly storage charge per storage unit.
+   * - ``vlt_angle_file``
+     - Parquet
+     - Hourly voltage angles per bus.
 
 Other settings
 ~~~~~~~~~~~~~~
@@ -153,11 +153,9 @@ arguments when no file is given, and returns a validated
 
 .. code-block:: python
 
-   from gridops import generate_config, read_config_file
+   from gridops import generate_config
 
    config = generate_config("my_config.yml")
    print(config.nodal_load_file)
-
-   raw = read_config_file("my_config.yml")   # plain dict, no validation
 
 When ``config_file`` is given, any keyword arguments are ignored.

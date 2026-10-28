@@ -1,23 +1,21 @@
 Running simulations
 ===================
 
-This page explains what happens when you call :meth:`gridops.model.Model.run`: how
-the simulation period is split into horizons, how state carries from one horizon to
-the next, how restart files work, and what happens when a horizon fails to solve.
+This page explains how the simulation period is split into horizons, how state is carried from 
+one horizon to the next, how restart files work, and what happens when a horizon fails to solve.
 
 Rolling horizon
 ---------------
 
 The simulation length ``n_days`` is split into consecutive, non-overlapping horizons
-of ``horizon_hours`` hours (default 24). The number of horizons is the total number
-of simulated hours (``24 * n_days``) divided by ``horizon_hours``, rounded down.
+of ``horizon_hours`` (default 24). The number of horizons is the total number
+of simulation hours (``24 * n_days``) divided by ``horizon_hours``, rounded down.
 
-The first horizon covers hours 1 to ``horizon_hours``, the second horizon covers the
-next ``horizon_hours`` hours, and so on. Every hour of every horizon is kept in the
+The first horizon covers hours 1 to ``horizon_hours``. Every hour of every horizon is kept in the
 output data. If ``24 * n_days`` is not a multiple of ``horizon_hours``, the leftover
 hours at the end are not simulated.
 
-The Pyomo model is built **once**. Before each solve, gridops updates the model's
+The Pyomo model is built once. Before each solve, gridops updates the model's
 mutable parameters in place:
 
 .. list-table::
@@ -31,29 +29,28 @@ mutable parameters in place:
    * - Fuel prices, hydro min/max
      - The row for the day that contains the horizon's first hour.
    * - Hydro energy budget
-     - Sum of ``max(1, horizon_hours // 24)`` daily rows, starting at that day.
+     - Sum of horizon's daily rows.
    * - Coal/Gas capacity, must-run capacity
-     - Base capacity minus the hourly losses in ``lost_capacity_file``.
+     - Base capacity minus the hourly lost capacity rows that fall within the horizon.
 
 State carry-over
 ~~~~~~~~~~~~~~~~
 
 At the end of each horizon:
 
-* the output of every thermal unit in the last hour becomes the starting point for
-  the next horizon's ramp limits (negative values are set to zero), and
-* the state of charge of every storage unit in the last hour becomes the starting
-  state of charge of the next horizon (kept within the unit's minimum and maximum
-  state of charge).
+* The output of every thermal unit in the last hour becomes the starting point for
+  the next horizon's ramp limits, and
+* The state of charge of every storage unit in the last hour becomes the starting
+  state of charge of the next horizon.
 
-A fresh run starts with all thermal output at zero, storage at its minimum state of
-charge, and the hour-1 ramp constraints switched off in the first horizon.
+A fresh run starts with storage units at their minimum state of
+charge, and the hour 1 ramp constraints switched off in the first horizon.
 
 Sanity checks
 ~~~~~~~~~~~~~
 
 A horizon is treated as failed if the solver does not return an *optimal* termination
-condition with an *ok* status, or if any generator output is below ``-1e-3`` MW.
+condition with an *ok* status.
 
 Restart files
 -------------
@@ -75,7 +72,7 @@ data and the solver settings used for each horizon.
        none. An integer resumes from the newest file for that day and raises an
        error if no such file exists.
    * - ``fresh_start`` (default ``False``)
-     - Delete all restart files before starting.
+     - Delete all restart files and starts a fresh run.
    * - ``clear_restart`` (default ``True``)
      - Delete all restart files after every day has been solved. Files are kept if
        the run fails.
@@ -89,15 +86,8 @@ before the failure.
 The restart helpers are also available directly. See
 :func:`~gridops.utilities.get_restart_file`,
 :func:`~gridops.utilities.get_prior_restart_file_day`,
-:func:`~gridops.utilities.write_restart_file` and
+:func:`~gridops.utilities.write_restart_file`, and
 :func:`~gridops.utilities.clear_restart_files`.
-
-.. code-block:: python
-
-   from gridops import clear_restart_files, get_restart_file
-
-   print(get_restart_file("example_restart_files"))           # newest file or None
-   n_deleted = clear_restart_files("example_restart_files")
 
 .. warning::
 
@@ -113,26 +103,26 @@ calls :meth:`~gridops.model.Model.retry`. This method tries a series of alternat
 solver configurations, each starting from the latest restart file and solving a
 single horizon:
 
-* **HiGHS**: a Cartesian product of algorithms, tolerances, simplex strategies and
-  ``retry_n_seeds`` random seeds. The search grid comes from
+* **HiGHS**: A Cartesian product of algorithms, tolerances, simplex strategies, and
+  random seeds. The search grid comes from
   :data:`~gridops.model.HIGHS_RETRY_DEFAULTS` and can be overridden with
   ``retry_options``.
-* **Gurobi**: ``max_retries`` random values of the ``Seed`` parameter.
+* **Gurobi**: Tries different random seeds.
 
 At most ``max_retries`` trials (default 30) are attempted. Once a trial succeeds,
 gridops goes back to the original solver settings and continues the run.
 
 If every trial fails and ``retry_backoff=True`` (the default), gridops rewinds to the
-**previous** restart day, sets a new random seed and tries again from there. If no
+previous restart day, sets a new random seed and tries again from there. If no
 earlier restart file exists, or back-off is disabled, the last error is raised.
 
 .. code-block:: python
-
+  
+   # Change the retry options and maximum retries
    model.run(
        config_file="my_config.yml",
        n_days=365,
        max_retries=10,
-       retry_n_seeds=2,
        retry_options={"solver_list": ["ipm"], "ipm_optimality_tolerance": [1e-7, 1e-6]},
    )
 

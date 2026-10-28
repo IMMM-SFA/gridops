@@ -2,7 +2,7 @@ Contributing
 ============
 
 You're welcome to contribute, whether you've found a typo in the documentation,
-found a bug, or want to add functionality that makes gridops more useful.
+found a bug, or want to add functionality that makes gridops more useful. Thank you for your valuable contributions!
 
 Opening issues
 --------------
@@ -67,10 +67,10 @@ Contribution workflow
 
 6. Open a pull request that describes:
 
-   * **Purpose**: why you're making the change, in short.
-   * **Summary**: your environment (OS, Python version, solver), the logic, any
+   * **Purpose**: Why you're making the change.
+   * **Summary**: Your environment (OS, Python version, solver), the logic, any
      caveats, and what changed.
-   * **Validation**: how you tested the change.
+   * **Validation**: How you tested the change.
 
    Continuous integration runs the test suite on every supported Python version.
 
@@ -87,8 +87,7 @@ reads like the existing code.
 Python style
 ~~~~~~~~~~~~
 
-* gridops supports Python 3.10 to 3.14. Don't use language features that are newer
-  than Python 3.10.
+* gridops supports Python 3.10 to 3.14. Use Python language features accordingly.
 * Start every module with ``from __future__ import annotations`` and add type hints
   to every function signature (for example ``Dict[str, Any]``, ``Optional[int]``,
   ``Union[str, None]``).
@@ -96,22 +95,21 @@ Python style
   ``UPPER_CASE`` for module-level constants. Put a one-line comment above each
   constant that states what it means and its unit, for example
   ``# Penalty for unserved energy/load shedding ($/MWh).``
-* Prefix private helpers with an underscore (``_update_horizon_params``). The
+* Prefix private helpers with an underscore (such as ``_update_horizon_params``). The
   ``configuration`` and ``utilities`` modules are re-exported with
   ``from .module import *`` in ``gridops/__init__.py``, so any name without a leading
   underscore becomes part of the public ``gridops`` namespace.
 * Group related code under section separator comments: a short title between two
   ``# -----`` lines, as in ``gridops/utilities.py``.
 * Open text files with an explicit ``encoding="utf-8"``.
-* State physical units in names, comments and docstrings (MW, MWh, $/MWh,
+* State physical units in comments and docstrings (MW, MWh, $/MWh,
   $/MMBtu, p.u.).
 
 Docstrings
 ~~~~~~~~~~
 
-* Public functions and classes have NumPy-style docstrings with ``Parameters``,
-  ``Returns`` and ``Raises`` sections. They are rendered in the :doc:`api` by Sphinx
-  ``autodoc`` and ``napoleon``.
+* Functions and classes have NumPy-style docstrings with ``Parameters``,
+  ``Returns`` and ``Raises`` sections. They are rendered in the :doc:`api`.
 * Refer to other objects with Sphinx roles, for example
   ``:func:`~gridops.utilities.write_restart_file```.
 * If you add a public function or class, add it to ``docs/source/api.rst``.
@@ -130,7 +128,7 @@ Logging and errors
 Optimization models
 ~~~~~~~~~~~~~~~~~~~
 
-* Build the Pyomo model **once**. Store time-varying data in mutable parameters
+* Build the Pyomo model once. Store time-varying data in mutable parameters
   (``mutable=True``) and update them in place between horizons instead of
   rebuilding the model.
 * Write each constraint and objective rule as a module-level function named
@@ -157,7 +155,7 @@ Documentation
 * The documentation build treats warnings as errors (``sphinx-build -W``), so check
   that it builds cleanly before opening a pull request.
 * Notebooks in ``notebooks/`` are copied into the documentation and rendered from
-  their **stored outputs**; they are not executed during the build. If you change a
+  their stored outputs; they are not executed during the build. If you change a
   notebook, run it from top to bottom and save it with its outputs.
 
 Versioning and changelog

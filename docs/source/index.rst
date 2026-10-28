@@ -15,11 +15,11 @@ Version |release| · `Source <https://github.com/IMMM-SFA/gridops>`_ · `Issues 
 
    pip install gridops
 
-**gridops** is a grid operations model for the three major U.S. interconnections
-(Western, Eastern and ERCOT). It uses a linear DC Optimal Power Flow (DC-OPF)
+**gridops** is a nodal grid operations model for three major U.S. interconnections
+(Western, Eastern, and ERCOT). It uses a linear DC Optimal Power Flow (DC-OPF)
 approximation to optimize hourly unit commitment and economic dispatch over a
 rolling horizon that you configure. Pyomo builds the model, which can be solved
-with the open-source HiGHS solver or with Gurobi.
+with the open-source (e.g., HiGHS) or commercial (e.g., Gurobi) solvers.
 
 gridops was created to:
 
@@ -28,16 +28,16 @@ gridops was created to:
 2. Link with a wide range of hydrometeorological datasets and energy system/machine
    learning models to explore future uncertainty in grid operations.
 3. Analyze current and future grid stress and reliability trends under a wide range of
-   weather conditions, generation mixes and demand growth scenarios.
+   weather conditions, generation mixes, and demand growth scenarios.
 4. Create simple and user-tailored representations of the U.S. interconnections that
    balance model accuracy and run time for the research question at hand.
 
 .. figure:: _static/gridops_network_map.png
-   :alt: Reduced transmission network topology used by gridops
+   :alt: Reduced network topology used by gridops
    :width: 100%
    :class: go-figure
 
-   Reduced transmission network topology represented in gridops.
+   Reduced network topology represented in gridops. Three interconnections run separately.
 
 .. grid:: 1 1 2 2
    :gutter: 3
@@ -54,21 +54,21 @@ gridops was created to:
       :link-type: doc
 
       Run the bundled two-day Western Interconnection example notebook, then plot
-      hourly LMPs, unserved energy and the generation mix.
+      hourly locational marginal prices, unserved energy, and the generation mix.
 
    .. grid-item-card:: :fas:`book` User guide
       :link: user_guide/index
       :link-type: doc
 
       Configuration file reference, input data requirements, output data, the full
-      mathematical formulation, rolling-horizon simulation, restarts and solvers.
+      mathematical formulation, rolling-horizon simulation, restarts, and solvers.
 
    .. grid-item-card:: :fas:`code` API reference
       :link: api
       :link-type: doc
 
-      Every public class and function: ``Model``, ``GoSolver``, ``Config``, the restart
-      utilities and the Western Interconnection model builder.
+      Detailed descriptions of every public class and function, the restart utilities, 
+      and the grid operations model builder.
 
 How it works
 ------------
@@ -78,9 +78,9 @@ How it works
 
    .. grid-item-card:: 1. Configure
 
-      Point a YAML configuration file at the network, generator, storage, load,
-      renewable, hydro, fuel price and outage inputs, and at the output
-      destinations.
+      Point a YAML configuration file at the network, generator parameters, storage, 
+      load, solar, wind, hydro, fuel price and generator outage inputs, and at the 
+      model output destinations.
 
    .. grid-item-card:: 2. Optimize
 
@@ -90,15 +90,13 @@ How it works
 
    .. grid-item-card:: 3. Analyze
 
-      Hourly generator dispatch, line flows, voltage angles, unserved energy,
+      Hourly generator dispatch, transmission line flows, voltage angles, unserved energy,
       locational marginal prices and storage operations are written to Parquet files.
 
-The objective minimizes total system operating cost: fuel and variable O&M costs
-for thermal units, plus a large penalty on unserved energy and small tie-breaking
-costs on renewables, storage cycling and absolute line flows. The model enforces
-nodal power balance, DC power flow, line limits, ramp rates, hydro energy budgets,
-renewable availability, forced-outage capacity losses and storage dynamics. See
-:doc:`user_guide/formulation` for the equations.
+The objective minimizes total system operating cost. The model enforces
+nodal power balance, DC power flow, transmission line limits, generator ramp rates, 
+hydro energy budgets, renewable availability, generator capacity losses, and storage dynamics. 
+See :doc:`user_guide/formulation` for more detailed description and the full set of equations.
 
 .. toctree::
    :hidden:

@@ -18,55 +18,32 @@ rolling-horizon simulation, including restarts and solver settings.
       :link: inputs
       :link-type: doc
 
-      Layout, units and consistency rules for each input file.
+      Layout, units, and consistency rules for each input file.
 
    .. grid-item-card:: Output data
       :link: outputs
       :link-type: doc
 
-      Columns and units of the Parquet outputs and the solver audit file.
+      Layout and units of the Parquet outputs and the solver audit file.
 
    .. grid-item-card:: Mathematical formulation
       :link: formulation
       :link-type: doc
 
-      Sets, parameters, variables, objective and constraints of the Western
-      Interconnection linear DC-OPF.
+      Sets, parameters, variables, objective function, and constraints of the gridops.
 
    .. grid-item-card:: Running simulations
       :link: simulation
       :link-type: doc
 
-      Rolling horizons, state carry-over, outage adjustments, restart files and the
+      Rolling horizons, state carry-over, restart files, and the
       retry/back-off logic.
 
    .. grid-item-card:: Solvers
       :link: solvers
       :link-type: doc
 
-      Supported solvers, passing options, warm starts and the retry search grid.
-
-Workflow at a glance
---------------------
-
-.. code-block:: text
-
-   example_config_file.yml ──► generate_config() ──► Config
-                                                       │
-   input CSV / NPY files ──► load_simulation_data() ◄──┘
-                                   │
-                                   ▼
-                         build_west_linear()  (Pyomo ConcreteModel, built once)
-                                   │
-              ┌────────────────────┴─────────────────────┐
-              │  for each horizon:                       │
-              │    update time-varying parameters        │
-              │    solve (HiGHS / Gurobi)                │
-              │    collect results, carry state forward  │
-              │    write restart file every N horizons   │
-              └────────────────────┬─────────────────────┘
-                                   ▼
-                   Parquet outputs + solver_parameters.json
+      Supported solvers, passing options, and warm starts.
 
 .. toctree::
    :maxdepth: 2

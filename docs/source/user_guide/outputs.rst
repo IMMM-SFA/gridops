@@ -1,7 +1,7 @@
 Output data
 ===========
 
-When all horizons have been solved, gridops writes eight Parquet files to the paths
+When all horizons have been solved, gridops writes output Parquet files to the paths
 in the configuration file and a JSON audit file to the restart directory. Every
 Parquet file is a long-format table. ``Time`` is the **1-based absolute hour** of the
 simulation, so hour 25 is the first hour of day 2.
@@ -22,66 +22,38 @@ Parquet files
      - MWh
      - Hourly dispatch of each generator. ``Type`` is the model set (``Coal``,
        ``Oil``, ``Gas``, ``Hydro``, ``Solar``, ``Wind``, ``OffshoreWind``,
-       ``Biomass``, ``Geothermal``). Must-run output appears with
-       ``Type == "Nuclear"`` and ``Generator == "<bus>_NUCLEAR"``.
+       ``Biomass``, ``Geothermal``). Must-run output appears as ``Nuclear``.
    * - ``duals_file``
      - ``Node``, ``Time``, ``Value``
      - $/MWh
-     - Locational marginal price: the dual of the bus power-balance constraint.
+     - Hourly locational marginal price (LMP) at each bus; the dual of the bus power balance constraint.
    * - ``slack_file``
      - ``Node``, ``Time``, ``Value``
      - MWh
-     - Unserved energy (load shedding) at each bus.
+     - Hourly unserved energy (load shedding) at each bus.
    * - ``flow_file``
      - ``Line``, ``Time``, ``Value``
      - MW
-     - DC line flow. Positive values flow from the line's ``+1`` bus to its ``-1``
-       bus.
+     - Hourly power flow at each transmission line.
    * - ``vlt_angle_file``
      - ``Node``, ``Time``, ``Value``
-     - rad
-     - Bus voltage angle relative to the reference bus.
+     - radian
+     - Hourly voltage angle at each bus.
    * - ``storage_soc_file``
      - ``Storage``, ``Time``, ``Value``
      - MWh
-     - State of charge at the end of the hour.
+     - Hourly state of charge at each storage unit.
    * - ``storage_charge_file``
      - ``Storage``, ``Time``, ``Value``
      - MW
-     - Charging power drawn from the bus.
+     - Hourly power charged at each storage unit.
    * - ``storage_discharge_file``
      - ``Storage``, ``Time``, ``Value``
      - MW
-     - Discharging power delivered to the bus.
+     - Hourly power discharged at each storage unit.
 
-Because each horizon is one hour per time step, MW and MWh are numerically equal for
+Because temporal resolution of gridops is hourly, MW and MWh are numerically equal for
 the hourly dispatch values.
-
-Working with the output data
-----------------------------
-
-.. code-block:: python
-
-   import pandas as pd
-
-   gen = pd.read_parquet("example_outputs/mwh.parquet")
-
-   # Wide table: one column per generator type, one row per hour
-   by_type = gen.pivot_table(index="Time", columns="Type", values="Value", aggfunc="sum")
-
-   # Daily average LMP at every bus
-   lmp = pd.read_parquet("example_outputs/duals.parquet")
-   lmp["Day"] = (lmp["Time"] - 1) // 24 + 1
-   daily_lmp = lmp.pivot_table(index="Day", columns="Node", values="Value", aggfunc="mean")
-
-   # Hours with any unserved energy
-   slack = pd.read_parquet("example_outputs/slack.parquet")
-   stressed_hours = slack.loc[slack["Value"] > 0, "Time"].unique()
-
-   # Line loading as a fraction of the thermal limit
-   flow = pd.read_parquet("example_outputs/flow.parquet")
-   limits = pd.read_csv("example_inputs/line_param.csv", index_col="line")["limit"]
-   flow["Loading"] = flow["Value"].abs() / flow["Line"].map(limits)
 
 Solver audit file
 -----------------

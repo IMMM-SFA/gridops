@@ -1,7 +1,7 @@
 How to cite
 ===========
 
-If you use gridops in an academic context, please cite the following article:
+If you use gridops, please cite the following article:
 
    Akdemir, K. Z., Oikonomou, K., Kern, J. D., Voisin, N., Ssembatya, H., & Qian, J.
    (2024). An open-source framework for balancing computational speed and fidelity in
@@ -22,6 +22,3 @@ BibTeX:
      year    = {2024},
      doi     = {10.1088/2753-3751/ad1751}
    }
-
-Please also state which version of gridops you used (``gridops.__version__``) so that
-others can reproduce your results.

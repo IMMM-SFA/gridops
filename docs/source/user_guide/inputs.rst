@@ -1,9 +1,9 @@
 Input data
 ==========
 
-This page describes every input file read by the Western Interconnection linear model.
-In the descriptions below, *bus* means a network node: a column name such as
-``bus_100011`` that must be spelled the same way in every file.
+This page describes every input file needed by the model. In the descriptions below, 
+*bus* means a network node: a column name such as ``bus_100011`` that must be spelled 
+the same way in every file.
 
 .. note::
 
@@ -19,13 +19,13 @@ Hourly files must have at least ``n_days * 24`` rows. Daily files must have at l
 row ``d`` (0-based) of a daily file is day ``d + 1``. The exception is
 ``lost_capacity_file``, which is indexed by its explicit 1-based ``Time`` column.
 
-Network
--------
+Network and load
+----------------
 
 ``line_to_bus_file``
 ~~~~~~~~~~~~~~~~~~~~
 
-DC-OPF incidence matrix. The first column holds the line names, and each remaining
+Line-to-bus incidence matrix. The first column holds the line names, and each remaining
 column is a bus. Each row has ``+1`` at the line's *from* bus, ``-1`` at its *to* bus
 and ``0`` elsewhere. The row index defines the set of lines.
 
@@ -46,22 +46,21 @@ and ``0`` elsewhere. The row index defines the set of lines.
      - Description
    * - ``line``
      - –
-     - Line name (index; must match ``line_to_bus_file``).
+     - Line name (index; must match line names in ``line_to_bus_file``).
    * - ``reactance``
      - p.u. (100 MVA base)
-     - Series reactance. Together with the voltage angles at the two ends of the
-       line, it determines how much power flows on the line.
+     - Line reactance. Together with the voltage angles at the two ends of a
+       line, it determines how much power flows on a line.
    * - ``limit``
      - MW
-     - Thermal limit. The flow on the line can't exceed this value in either
+     - Thermal line limit. The flow on the line can't exceed this value in either
        direction.
 
 ``nodal_load_file``
 ~~~~~~~~~~~~~~~~~~~
 
-Hourly demand in MW. Rows are hours and **columns are buses**. The column names of
-this file define the model's set of buses, so every bus in the system must appear
-here, even if its demand is zero.
+Hourly demand in MW. Rows are hours and columns are buses. **Every bus in the system must appear
+here, even if its demand is zero** because the column names of this file define the model's set of buses.
 
 Generators
 ----------
@@ -69,8 +68,8 @@ Generators
 ``generator_parameters_file``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-One row per generator (thermal, hydro, wind, solar and offshore wind). Nuclear units
-are not listed here; they enter through ``must_run_file``.
+One row per generator (e.g., thermal, hydro, solar, onshore wind, and offshore wind). Nuclear units
+are not listed here, they enter through ``must_run_file``.
 
 .. list-table::
    :header-rows: 1
@@ -87,7 +86,7 @@ are not listed here; they enter through ``must_run_file``.
      - Generator type (see the accepted values below).
    * - ``node``
      - –
-     - Bus where the unit is located. For hydro, wind, solar and offshore wind, this is
+     - Bus where the unit is located. For hydro, solar, onshore wind, and offshore wind, this is
        the column read from the matching time-series file.
    * - ``maxcap``
      - MW
@@ -97,7 +96,7 @@ are not listed here; they enter through ``must_run_file``.
      - Minimum stable output (reserved for unit commitment).
    * - ``heat_rate``
      - MMBtu/MWh
-     - Heat rate: fuel burned per MWh generated (thermal units).
+     - Heat rate; fuel burned per MWh generated (thermal units).
    * - ``var_om``
      - $/MWh
      - Variable operation and maintenance (O&M) cost.
@@ -109,7 +108,7 @@ are not listed here; they enter through ``must_run_file``.
      - Start-up cost (reserved for unit commitment).
    * - ``ramp``
      - MW/h
-     - Ramp rate: the largest change in output from one hour to the next (thermal
+     - Ramp rate; the largest change in output from one hour to the next (thermal
        units).
    * - ``minup``
      - h
@@ -118,7 +117,7 @@ are not listed here; they enter through ``must_run_file``.
      - h
      - Minimum down time (reserved for unit commitment).
 
-Accepted ``typ`` values (case variants shown are all recognized):
+Accepted ``typ`` values:
 
 .. list-table::
    :header-rows: 1
@@ -131,10 +130,14 @@ Accepted ``typ`` values (case variants shown are all recognized):
    * - Oil
      - ``Oil``, ``oil``, ``Petroleum``, ``petroleum``
    * - Gas
-     - ``Gas``, ``NatGas``, ``Nat_Gas``, ``NaturalGas``, ``Natural_Gas``, ``NG``,
-       ``NGCC``, ``NGCT``, ``NGST``, ``NGGT``, ``GT`` (and their lower/mixed-case forms)
+     - ``NatGas``, ``Nat_Gas``, ``Natgas``, ``Nat_gas``, ``natgas``, ``nat_gas``,
+       ``NaturalGas``, ``Natural_Gas``, ``Naturalgas``, ``Natural_gas``, ``naturalgas``,
+       ``natural_gas``, ``Gas``, ``gas``, ``NGCC``, ``ngcc``,
+       ``NGCT``, ``ngct``, ``NGST``, ``ngst``, ``NGGT``,
+       ``nggt``, ``NG``, ``ng``, ``GT``, ``gt``
    * - Hydro
-     - ``Hydro``, ``Hydropower``, ``Hydro_power`` (and lower-case forms)
+     - ``Hydro``, ``hydro``, ``Hydropower``,
+       ``hydropower``, ``Hydro_power``, ``hydro_power``
    * - Solar
      - ``Solar``, ``solar``
    * - Wind
@@ -143,12 +146,12 @@ Accepted ``typ`` values (case variants shown are all recognized):
      - ``OffshoreWind``, ``Offshorewind``, ``Offshore_Wind``, ``Offshore_wind``,
        ``offshorewind``, ``offshore_wind``
    * - Biomass
-     - ``Biomass``, ``Bio`` (and lower-case forms)
+     - ``Bio``, ``bio``, ``Biomass``, ``biomass``
    * - Geothermal
-     - ``Geothermal``, ``Geo`` (and lower-case forms)
+     - ``Geo``, ``geo``, ``Geothermal``, ``geothermal``
 
-An unrecognized ``typ`` raises a ``ValueError``. Coal, Oil, Gas, Biomass and Geothermal
-make up the **thermal** set. Coal and Gas units are also subject to forced-outage
+An unrecognized ``typ`` raises an error. Coal, Oil, Gas, Biomass and Geothermal
+make up the **thermal** set. Coal and Gas units are also subject to generator outage
 capacity losses.
 
 ``generator_matrix_file``
@@ -156,23 +159,27 @@ capacity losses.
 
 Generator-to-bus incidence matrix. The first column holds the generator names, and
 each remaining column is a bus. A ``1`` places the generator's output in that bus's
-power balance. It must agree with the ``node`` column of
+power balance. Otherwise, ``0`` is written. It must agree with the ``node`` column of
 ``generator_parameters_file``.
+
+.. code-block:: text
+
+   name,bus_100011,bus_100221,...
+   generator_x,0,1,...
 
 ``fuel_prices_file``
 ~~~~~~~~~~~~~~~~~~~~
 
-Daily fuel price in $/MMBtu. Rows are days and **columns are thermal generator
-names**. Every Coal, Oil, Gas, Biomass and Geothermal unit must have a column, or a
-``ValueError`` is raised. The marginal cost of a thermal unit is its heat rate
-multiplied by its fuel price, plus its variable O&M cost.
+Daily fuel price in $/MMBtu. Rows are days and columns are thermal generator
+names. Every Coal, Oil, Gas, Biomass and Geothermal unit must have a column, or an
+error is raised.
 
 ``must_run_file``
 ~~~~~~~~~~~~~~~~~
 
-A single row of must-run (nuclear) capacity in MW. Only buses that have must-run
-units need a column. This capacity is fixed, minus any nuclear forced-outage losses
-(see ``lost_capacity_file``), and is injected directly into the bus balance.
+A single row of must-run (e.g., nuclear) capacity in MW. Only buses that have must-run
+units need a column. This capacity is fixed, minus any nuclear generator outage losses
+(see ``lost_capacity_file``), and is injected directly into the bus power balance.
 
 ``thermal_generators_file``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -180,12 +187,12 @@ units need a column. This capacity is fixed, minus any nuclear forced-outage los
 Thermal fleet listing with columns ``Name``, ``Bus``, ``Fuel``, ``Max_Cap``,
 ``Min_Cap`` and ``Heat_Rate``. Only rows with ``Fuel == "NUC (Nuclear)"`` are used.
 They give the number of nuclear units, which is needed to share the nuclear
-forced-outage losses among the units.
+generator outage losses among the units.
 
 Hydropower
 ----------
 
-The three hydro files have daily rows and **bus columns**. Each hydro generator reads
+The three hydro files have daily rows and bus columns. Each hydro generator reads
 the column of its ``node``.
 
 .. list-table::
@@ -211,8 +218,7 @@ Variable renewables
 
 ``nodal_solar_file``, ``nodal_wind_file`` and ``nodal_offshore_wind_file`` give hourly
 available generation in MW. Rows are hours and columns are buses. Each solar, wind
-or offshore-wind generator is capped by the value in the column of its ``node``.
-Missing columns are treated as zero.
+or offshore-wind generator reads the column of its ``node``. Missing columns are treated as zero.
 
 Storage
 -------
@@ -229,10 +235,10 @@ Storage
      - Description
    * - ``name``
      - –
-     - Unique storage unit name (defines the storage set).
+     - Unique storage unit name.
    * - ``s_typ``
      - –
-     - Storage technology label (for example ``battery`` or ``pumped_storage_hydro``).
+     - Storage technology label (e.g., ``battery`` or ``pumped_storage_hydro``).
    * - ``s_node``
      - –
      - Bus where the unit is located.
@@ -244,7 +250,7 @@ Storage
      - Maximum discharging power.
    * - ``duration``
      - h
-     - Energy-to-power ratio (informational).
+     - Energy-to-power ratio.
    * - ``max_SoC``
      - MWh
      - Maximum state of charge.
@@ -253,21 +259,23 @@ Storage
      - Minimum state of charge. This is also the initial state of charge of a fresh
        run.
    * - ``charge_eff``
-     - fraction
-     - Charging efficiency: the share of the power drawn from the grid that is
+     - fraction (between 0 and 1)
+     - Charging efficiency; the share of the power drawn from the grid that is
        stored.
    * - ``discharge_eff``
-     - fraction
-     - Discharging efficiency: the share of the stored energy taken out that
+     - fraction (between 0 and 1)
+     - Discharging efficiency; the share of the stored energy taken out that
        reaches the grid.
 
 ``bus_to_storage_matrix_file``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Storage-to-bus incidence matrix. The first column holds the storage names, and each
-remaining column is a bus (0/1).
+remaining column is a bus. A ``1`` places the storage unit's charge/discharge in that bus's
+power balance. Otherwise, ``0`` is written. It must agree with the ``s_node`` column of
+``storage_params_file``.
 
-Forced outages
+Generator outages
 --------------
 
 ``generator_outage_file``
@@ -281,8 +289,8 @@ to a list of generator names, for example:
    import numpy as np
 
    groups = {
-       "Gas_below_50": ["ID_c_20110386", ...],
-       "Coal_200_300": [...],
+       "Gas_below_50": ["generator_x", ...],
+       "Coal_200_300": ["generator_y", ...],
    }
    np.save("gen_outage_cat.npy", groups)
 
@@ -290,20 +298,17 @@ Requirements:
 
 * Group names become Pyomo set names on the model, so they must be valid Python
   identifiers and must not clash with existing model component names.
-* Groups may only contain **Coal** and **Gas** generators. These are the generators
+* Groups may only contain **Coal**, **Gas**, and **Nuclear** generators. These are the generators
   that carry an hourly capacity limit.
-* Each group name must also be a column of ``lost_capacity_file``.
+* Each group name must also be a column of ``lost_capacity_file``. See ``gridops/data/example_inputs`` for an example ``generator_outage_file``.
 
 ``lost_capacity_file``
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Hourly capacity lost to forced outages, in MW. The first column must be ``Time``
+Hourly capacity lost to generator outages, in MW. The first column must be ``Time``
 (1-based absolute hour), followed by one column per outage group. Each group's loss
-is split equally among its generators and subtracted from their maximum capacity.
-
-If the system has nuclear units, a ``Nuclear_ovr_1000`` column is also required. Its
-value is divided by the number of nuclear units and subtracted from the must-run
-capacity of every bus. Additional columns are ignored.
+is split equally among its generators and subtracted from their maximum capacity. 
+See ``gridops/data/example_inputs`` for an example ``lost_capacity_file``.
 
 .. code-block:: text
 
@@ -314,37 +319,6 @@ Example dataset
 ---------------
 
 The example inputs in ``gridops/data/example_inputs`` describe a 125-bus,
-786-line reduction of the Western Interconnection for 48 hours:
-
-.. list-table::
-   :header-rows: 1
-   :widths: 35 65
-
-   * - File
-     - Shape (rows × columns)
-   * - ``data_genparams.csv``
-     - 1,696 generators × 12
-   * - ``gen_mat.csv``
-     - 1,696 × (name + 125 buses)
-   * - ``line_to_bus.csv``
-     - 786 × (line + 125 buses)
-   * - ``line_param.csv``
-     - 786 × 3
-   * - ``nodal_load.csv``, ``nodal_solar.csv``, ``nodal_wind.csv``, ``nodal_offshore_wind.csv``
-     - 48 hours × 125 buses
-   * - ``hydro_max.csv``, ``hydro_min.csv``, ``hydro_total.csv``
-     - 2 days × 125 buses
-   * - ``fuel_prices.csv``
-     - 2 days × 1,508 thermal generators
-   * - ``must_run.csv``
-     - 1 × 3 buses
-   * - ``storage_params.csv``
-     - 64 units × 10
-   * - ``storage_mat.csv``
-     - 64 × (name + 125 buses)
-   * - ``thermal_gens.csv``
-     - 1,514 units × 6 (including 6 nuclear units)
-   * - ``lost_capacity.csv``
-     - 48 hours × (Time + 36 groups)
-   * - ``gen_outage_cat.npy``
-     - 24 outage groups
+786-line reduced topology of the Western Interconnection covering 48 hours. 
+Please refer to ``gridops/data/example_inputs`` for guidance on the required 
+file structures.
