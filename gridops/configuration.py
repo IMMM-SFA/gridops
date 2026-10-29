@@ -47,11 +47,6 @@ class Config:
         (single row showing the capacities, columns = only nodes with must-run generators).
     fuel_prices_file:
         CSV of daily fuel prices per thermal generator (rows = days, columns = thermal generators).
-    ba_to_ba_hurdle_scaled_file:
-        CSV mapping each BA-to-BA exchange to its hurdle rate ($/MWh).
-    ba_to_ba_transmission_matrix_file:
-        CSV mapping each BA-to-BA exchange to the lines it covers
-        (rows = exchanges, columns = lines).
     storage_params_file:
         CSV with storage-unit parameters (name, charge_rate, etc.).
     bus_to_storage_matrix_file:
@@ -69,14 +64,23 @@ class Config:
 
     Output files
     ------------
-    vlt_angle_file:    Parquet - hourly nodal voltage angles.
-    mwh_file:          Parquet - hourly generator dispatch (MWh per unit).
-    slack_file:        Parquet - hourly unserved demand per node.
-    flow_file:         Parquet - hourly transmission line flows per line.
-    duals_file:        Parquet - hourly nodal locational marginal prices (LMPs).
-    storage_soc_file:  Parquet - hourly storage state-of-charge per storage-unit.
-    storage_discharge_file: Parquet - hourly storage discharge per storage-unit.
-    storage_charge_file:    Parquet - hourly storage charge per storage-unit.
+    vlt_angle_file:
+        Parquet - hourly nodal voltage angles.
+    mwh_file:
+        Parquet - hourly generator dispatch (MWh per unit); also includes
+        must-run nuclear output per bus (Type "Nuclear").
+    slack_file:
+        Parquet - hourly unserved demand per node.
+    flow_file:
+        Parquet - hourly transmission line flows per line.
+    duals_file:
+        Parquet - hourly nodal locational marginal prices (LMPs).
+    storage_soc_file:
+        Parquet - hourly storage state-of-charge per storage-unit.
+    storage_discharge_file:
+        Parquet - hourly storage discharge per storage-unit.
+    storage_charge_file:
+        Parquet - hourly storage charge per storage-unit.
 
     Other settings
     --------------
@@ -100,8 +104,6 @@ class Config:
     nodal_load_file: str
     must_run_file: str
     fuel_prices_file: str
-    ba_to_ba_hurdle_scaled_file: str
-    ba_to_ba_transmission_matrix_file: str
     storage_params_file: str
     bus_to_storage_matrix_file: str
     generator_outage_file: str

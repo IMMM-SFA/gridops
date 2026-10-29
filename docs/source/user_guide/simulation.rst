@@ -1,0 +1,146 @@
+Running simulations
+===================
+
+This page explains how the simulation period is split into horizons, how state is carried from 
+one horizon to the next, how restart files work, and what happens when a horizon fails to solve.
+
+Rolling horizon
+---------------
+
+The simulation length ``n_days`` is split into consecutive, non-overlapping horizons
+of ``horizon_hours`` (default 24). The number of horizons is the total number
+of simulation hours (``24 * n_days``) divided by ``horizon_hours``, rounded down.
+
+The first horizon covers hours 1 to ``horizon_hours``. Every hour of every horizon is kept in the
+output data. If ``24 * n_days`` is not a multiple of ``horizon_hours``, the leftover
+hours at the end are not simulated.
+
+The Pyomo model is built once. Before each solve, gridops updates the model's
+mutable parameters in place:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 35 65
+
+   * - Data
+     - Value used for each horizon
+   * - Demand, solar, wind, offshore wind
+     - The hourly rows that fall within the horizon.
+   * - Fuel prices, hydro min/max
+     - The row for the day that contains the horizon's first hour.
+   * - Hydro energy budget
+     - Sum of horizon's daily rows.
+   * - Coal/Gas capacity, must-run capacity
+     - Base capacity minus the hourly lost capacity rows that fall within the horizon.
+
+State carry-over
+~~~~~~~~~~~~~~~~
+
+At the end of each horizon:
+
+* The output of every thermal unit in the last hour becomes the starting point for
+  the next horizon's ramp limits, and
+* The state of charge of every storage unit in the last hour becomes the starting
+  state of charge of the next horizon.
+
+A fresh run starts with storage units at their minimum state of
+charge, and the hour 1 ramp constraints switched off in the first horizon.
+
+Sanity checks
+~~~~~~~~~~~~~
+
+A horizon is treated as failed if the solver does not return an *optimal* termination
+condition with an *ok* status.
+
+Restart files
+-------------
+
+Long simulations save their progress in restart files. These are cloudpickle files
+in ``restart_file_directory`` that hold the Pyomo model, the results so far, the input
+data and the solver settings used for each horizon.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - ``Model.run`` argument
+     - Effect
+   * - ``restart_write_frequency`` (default 30)
+     - Write a restart file after every *N* solved horizons.
+   * - ``restart_day`` (default ``None``)
+     - ``None`` resumes from the newest restart file, or starts fresh if there is
+       none. An integer resumes from the newest file for that day and raises an
+       error if no such file exists.
+   * - ``fresh_start`` (default ``False``)
+     - Delete all restart files and starts a fresh run.
+   * - ``clear_restart`` (default ``True``)
+     - Delete all restart files after every day has been solved. Files are kept if
+       the run fails.
+
+Restart files are named ``model_restart_file_day{DDD}_v{VVV}.pkl``. ``DDD`` is the day
+of the last completed horizon, and ``VVV`` is a version number that increases if a
+file for the same day already exists. When a horizon fails, gridops first writes a
+restart file for the last successful horizon, so a later run can resume right
+before the failure.
+
+The restart helpers are also available directly. See
+:func:`~gridops.utilities.get_restart_file`,
+:func:`~gridops.utilities.get_prior_restart_file_day`,
+:func:`~gridops.utilities.write_restart_file`, and
+:func:`~gridops.utilities.clear_restart_files`.
+
+.. warning::
+
+   Restart files are Python pickles. Only load restart files that you created
+   yourself or that come from a trusted source.
+
+Automatic retry
+---------------
+
+Large LPs can occasionally fail to solve because of numerical difficulties. If a
+horizon fails and ``allow_retry=True`` (the default), :meth:`~gridops.model.Model.run`
+calls :meth:`~gridops.model.Model.retry`. This method tries a series of alternative
+solver configurations, each starting from the latest restart file and solving a
+single horizon:
+
+* **HiGHS**: A Cartesian product of algorithms, tolerances, simplex strategies, and
+  random seeds. The search grid comes from
+  :data:`~gridops.model.HIGHS_RETRY_DEFAULTS` and can be overridden with
+  ``retry_options``.
+* **Gurobi**: Tries different random seeds.
+
+At most ``max_retries`` trials (default 30) are attempted. Once a trial succeeds,
+gridops goes back to the original solver settings and continues the run.
+
+If every trial fails and ``retry_backoff=True`` (the default), gridops rewinds to the
+previous restart day, sets a new random seed and tries again from there. If no
+earlier restart file exists, or back-off is disabled, the last error is raised.
+
+.. code-block:: python
+  
+   # Change the retry options and maximum retries
+   model.run(
+       config_file="my_config.yml",
+       n_days=365,
+       max_retries=10,
+       retry_options={"solver_list": ["ipm"], "ipm_optimality_tolerance": [1e-7, 1e-6]},
+   )
+
+   # Fail immediately instead of retrying
+   model.run(config_file="my_config.yml", n_days=365, allow_retry=False)
+
+Logging
+-------
+
+gridops logs to the ``gridops`` logger at the ``INFO`` level, with a stream handler
+attached when the package is imported. Use the standard :mod:`logging` module to
+change the verbosity or send the logs to a file:
+
+.. code-block:: python
+
+   import logging
+
+   logging.getLogger("gridops").setLevel(logging.WARNING)
+
+   handler = logging.FileHandler("gridops_run.log")
+   logging.getLogger("gridops").addHandler(handler)

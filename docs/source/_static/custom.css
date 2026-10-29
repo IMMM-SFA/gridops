@@ -1,0 +1,27 @@
+/* Landing page */
+.go-tagline {
+  font-size: 1.25rem;
+  color: var(--pst-color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.go-meta {
+  font-size: 0.95rem;
+  color: var(--pst-color-text-muted);
+}
+
+.go-figure img {
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.12);
+}
+
+/* Equation blocks on the formulation page */
+div.math {
+  overflow-x: auto;
+}
+
+/* Keep wide reference tables readable */
+table.docutils td,
+table.docutils th {
+  vertical-align: top;
+}

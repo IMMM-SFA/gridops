@@ -25,6 +25,17 @@ from gridops.west.linear import build_west_linear
 SNAP_TOL: float = 1e-6
 
 # ---------------------------------------------------------------------------
+# Must-run (nuclear) output labeling
+# ---------------------------------------------------------------------------
+
+# Suffix appended to a bus name to label aggregated must-run output
+# in the results (e.g. ``bus_106001`` -> ``bus_106001_NUCLEAR``).
+MUST_RUN_NAME_SUFFIX: str = "_NUCLEAR"
+
+# Value written to the ``Type`` column of the results for must-run rows.
+MUST_RUN_TYPE: str = "Nuclear"
+
+# ---------------------------------------------------------------------------
 # Fuel-type → Pyomo set name mapping
 # ---------------------------------------------------------------------------
 
@@ -150,9 +161,8 @@ def _build_gen_sets(df_gen: pd.DataFrame) -> Dict[str, List[str]]:
 def _build_sparse_maps(
     df_gen_matrix: pd.DataFrame,
     df_line_to_bus: pd.DataFrame,
-    df_ba_matrix: pd.DataFrame,
     df_storage_matrix: pd.DataFrame,
-) -> Tuple[dict, dict, dict, dict]:
+) -> Tuple[dict, dict, dict]:
     """Convert incidence-matrix DataFrames to sparse dicts for Pyomo Params.
 
     Parameters
@@ -163,17 +173,14 @@ def _build_sparse_maps(
     df_line_to_bus:
         Line-to-bus incidence matrix (rows = line names, cols = bus names,
         values = -1 / 0 / 1).
-    df_ba_matrix:
-        Exchange-to-line mapping matrix (rows = exchange names, cols = line names,
-        values = -1 / 0 / 1).
     df_storage_matrix:
         Storage-to-bus mapping matrix (rows = storage unit names, cols = bus names,
         values = 0 / 1).
 
     Returns
     -------
-    Tuple of four sparse dicts:
-        (bus_to_unit_map, line_to_bus_map, exchange_map, bus_to_storage_map)
+    Tuple of three sparse dicts:
+        (bus_to_unit_map, line_to_bus_map, bus_to_storage_map)
     """
     def _to_sparse(df: pd.DataFrame) -> dict:
         """Return {(row_idx, col_name): value} for all non-zero entries."""
@@ -183,10 +190,9 @@ def _build_sparse_maps(
 
     bus_to_unit_map = _to_sparse(df_gen_matrix)       # (gen, bus) → 1
     line_to_bus_map = _to_sparse(df_line_to_bus)      # (line, bus) → ±1
-    exchange_map = _to_sparse(df_ba_matrix)        # (exchange, line) → ±1
     bus_to_storage_map = _to_sparse(df_storage_matrix)  # (storage, bus) → 1
 
-    return bus_to_unit_map, line_to_bus_map, exchange_map, bus_to_storage_map
+    return bus_to_unit_map, line_to_bus_map, bus_to_storage_map
 
 
 # ===========================================================================
@@ -229,12 +235,6 @@ def load_simulation_data(config: configuration.Config) -> Dict[str, Any]:
 
     # Transmission line parameters
     df_line_params = pd.read_csv(config.line_parameters_file, index_col=0)
-
-    # BA-to-BA exchange–line mapping
-    df_ba_matrix = pd.read_csv(config.ba_to_ba_transmission_matrix_file, index_col=0)
-
-    # BA-to-BA hurdle rates
-    df_ba_hurdle = pd.read_csv(config.ba_to_ba_hurdle_scaled_file, header=0)
 
     # Hydropower daily limits and totals
     df_hydro_max = pd.read_csv(config.daily_hydro_maximum_file, header=0)
@@ -290,20 +290,16 @@ def load_simulation_data(config: configuration.Config) -> Dict[str, Any]:
     # Lines: row index from the line-to-bus incidence file
     lines: List[str] = list(df_line_to_bus.index)
 
-    # Exchanges: row index from the BA-to-BA mapping file
-    exchanges: List[str] = list(df_ba_matrix.index)
-
     # Storage units: 'name' column of storage-params file
     storage_units: List[str] = list(df_storage_params["name"])
 
     # -------------------------------------------------------------------
     # Build sparse mapping dicts
     # -------------------------------------------------------------------
-    bus_to_unit_map, line_to_bus_map, exchange_map, bus_to_storage_map = (
+    bus_to_unit_map, line_to_bus_map, bus_to_storage_map = (
         _build_sparse_maps(
             df_gen_matrix,
             df_line_to_bus,
-            df_ba_matrix,
             df_storage_matrix,
         )
     )
@@ -336,13 +332,6 @@ def load_simulation_data(config: configuration.Config) -> Dict[str, Any]:
             "reactance": _snap(float(row["reactance"])),
             "flow_lim":  _snap(float(row["limit"])),
         }
-
-    # -------------------------------------------------------------------
-    # Exchange hurdle dict
-    # -------------------------------------------------------------------
-    exchange_hurdle: Dict[str, float] = {}
-    for _, row in df_ba_hurdle.iterrows():
-        exchange_hurdle[row["BA_to_BA"]] = _snap(float(row["Hurdle_$/MWh"]))
 
     # -------------------------------------------------------------------
     # Storage parameter dict
@@ -399,17 +388,14 @@ def load_simulation_data(config: configuration.Config) -> Dict[str, Any]:
         "outage_group_sets":    loss_dict, # {group: [gen_names]} 
         "buses":                buses,
         "lines":                lines,
-        "exchanges":            exchanges,
         "storage_units":        storage_units,
         # Static params
         "gen_params":           gen_params,
         "line_params":          line_params,
-        "exchange_hurdle":      exchange_hurdle,
         "storage_params":       storage_params,
         # Sparse mapping dicts
         "bus_to_unit_map":      bus_to_unit_map,
         "line_to_bus_map":      line_to_bus_map,
-        "exchange_map":         exchange_map,
         "bus_to_storage_map":   bus_to_storage_map,
         # Time-series DataFrames (0-indexed rows)
         "df_demand":            df_load,
@@ -808,6 +794,11 @@ def west_linear(
         for g in gen_list:
             gen_type_lookup[g] = fuel_type
 
+    # Buses with must-run (nuclear) capacity.
+    must_run_buses: List[str] = [
+        b for b, cap in sim_data["sim_must_run"].items() if cap > 0.0
+    ]
+
     # -------------------------------------------------------------------
     # Horizon loop
     # -------------------------------------------------------------------
@@ -923,6 +914,23 @@ def west_linear(
         # Extract results (with integrated negative-generation check)
         # ---------------------------------------------------------------
         abs_hour_offset = horizon_idx * horizon_hours
+
+        # Must-run (nuclear) output: not a decision variable, so record the
+        # outage-adjusted HorizonMustrunLimit that enters the bus balance.
+        # Only buses with positive base must-run capacity are reported.
+        for b in must_run_buses:
+            if b not in instance.buses:
+                continue
+            for t in instance.time_periods:
+                abs_h = abs_hour_offset + t
+                mwh.append(
+                    (
+                        f"{b}{MUST_RUN_NAME_SUFFIX}",
+                        MUST_RUN_TYPE,
+                        abs_h,
+                        pyo.value(instance.HorizonMustrunLimit[b, t]),
+                    )
+                )
 
         # Generator dispatch (mwh) — includes negative-generation sanity check
         has_negative_gen = False
