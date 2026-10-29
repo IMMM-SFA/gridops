@@ -45,6 +45,16 @@ class Model:
     solver_params:
         Optional dict of solver option name → value pairs.  No defaults are
         imposed by gridops; pass every required option explicitly.
+    warmstart:
+        If ``True``, start each horizon from the previous horizon's basis.
+        With ``"appsi_highs"`` this forces ``solver="simplex"`` and
+        ``run_crossover="off"``; with ``"appsi_gurobi"`` it sets
+        ``LPWarmStart=1`` (or keeps a user-supplied ``2``); ``"gurobi"`` is
+        switched to ``"appsi_gurobi"``. If ``False``, HiGHS defaults to
+        ``solver="ipm"`` with ``run_crossover="on"`` and its state is cleared
+        between horizons, while Gurobi uses ``LPWarmStart=0`` (APPSI only)
+        and ``PreDual=1`` unless set. Can be overridden per run in
+        :meth:`run`. Default ``False``.
     """
 
     #: Maximum random seed value accepted by HiGHS.
@@ -131,6 +141,10 @@ class Model:
             Total number of days to simulate. Default 365.
         horizon_hours:
             Hours for optimization horizon. Default 24.
+        warmstart:
+            Overrides the instance-level *warmstart* setting for this run.
+            ``None`` = use the value given to :class:`Model`. See the class
+            docstring for how each solver's options are adjusted.
         allow_retry:
             If ``True`` and a horizon fails, automatically attempt the retry
             logic before raising an error. Default ``True``.
