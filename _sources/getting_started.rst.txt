@@ -1,76 +1,139 @@
 Getting started
 ===============
 
-About
------
+About gridops
+-------------
 
-The Capacity Expansion Regional Feasibility model (**go**) helps us evaluate the feasibility and structure of future electricity capacity expansion plans by siting power plants in areas that have been deemed the least cost option. We can use **go** to gain an understanding of topics such as: 1) whether or not future projected electricity expansion plans from models such as GCAM are possible to achieve, 2) where and which on-the-ground barriers to siting (e.g., protected areas, cooling water availability) may influence our ability to achieve certain expansions, and 3) how power plant infrastructure build outs and value may evolve into the future when considering locational marginal pricing (LMP) based on the supply and demand of electricity from a grid operations model.
+**gridops** is an open-source production cost model (PCM) for three major U.S. interconnections 
+(Western, Eastern, and ERCOT). It represents a reduced version of each interconnection's 
+network as nodes connected by transmission lines. It then uses a linear DC Optimal Power Flow 
+(DC-OPF) approximation to optimize hourly unit commitment and economic dispatch over a rolling horizon. 
+Each horizon dispatches generators and storage units to minimize the operating cost. The solve respects 
+transmission limits, generator ramp rates, hydro energy budgets among many other constraints.
 
-Each grid cell in **go** is given an initial value of suitable (0) or unsuitable (1) based on a collection of suitability criteria gleaned from the literature. **go**'s default suitability layers include both those that are common to all thermal technologies as well as technology-specific suitability criteria. Common suitability layers represent categories such as protected lands, critical habitat areas, and much more. Technology-specific suitability layers are those that satisfy requirements that may not be applicable to all technologies. An example would be minimum mean annual flow requirements for cooling water availability for individual thermal technologies.
+gridops is written in Python and builds its optimization models with
+`Pyomo <https://www.pyomo.org/>`_. Models can be solved with the open-source
+`HiGHS <https://highs.dev/>`_ solver (installed with gridops) or with the commercial
+`Gurobi <https://www.gurobi.com/>`_ solver.
 
-Though **go** provides sample data to run the conterminous United States (CONUS), it could be extended to function for any country or set of regions that had the following prerequisite data sources:  a spatial representation of substations or electricity transmission infrastructure, a spatial representation of gas pipeline infrastructure if applicable, any regionally applicable spatial data to construct suitability rasters from, access to hourly zonal LMP, and access to technology-specific information and each technologies accompanying electricity capacity expansion plan per region.  The Global Change Analysis Model (`GCAM <https://github.com/JGCRI/gcam-core>`_) is used to build our expansion plans and establish our technology-specific requirements through the end of the century. We derive our LMP from a grid operations model that also is harmonized with GCAM to provide consistent projections of energy system evolution.  See more about how to generalize **go** for your research `here <user_guide.rst#generalization>`_.
+Model availability
+------------------
 
-We introduce a metric named Net Locational Cost (NLC) that is used compete power plant technologies for each grid cell based on the least cost option to site. NLC is calculated by subtracting the Net Operating Value (NOV) of a proposed power plant from the cost of its interconnection to the grid to represent the potential deployment value. Both the NOV parameter which incorporates many technology-specific values such as variable operations and maintenance costs, carbon price, heat rate, etc. and the interconnection cost parameter used for both electricity transmission and gas pipelines are configurable per time step.  All equations used in **go** are described in detail in the `documentation <user_guide.rst#fundamental-equations-and-concepts>`_.
+The table below shows which region and problem combinations ``gridops.Model`` accepts
+in the current release.
 
+.. list-table::
+   :header-rows: 1
+   :widths: 25 25 20 30
 
-Python version support
-----------------------
-
-Officially Python 3.6-9
-
+   * - Region (``region=``)
+     - Problem (``problem=``)
+     - Status
+     - Notes
+   * - ``"west"``
+     - ``"linear"``
+     - Available
+     - U.S. Western Interconnection economic dispatch (LP).
+   * - ``"west"``
+     - ``"mixed_integer"``
+     - Planned
+     - Unit commitment (MILP); raises ``NotImplementedError``.
+   * - ``"east"``
+     - any
+     - Planned
+     - U.S. Eastern Interconnection; raises ``NotImplementedError``.
+   * - ``"ercot"``
+     - any
+     - Planned
+     - ERCOT (Texas) Interconnection; raises ``NotImplementedError``.
 
 Installation
 ------------
 
-.. note::
+Install the latest release from PyPI:
 
-  **go** requires the use of a solver as accessed by ``pyomo``.  Find information about supported solvers here:  `pyomo solvers <https://pyomo.readthedocs.io/en/stable/solving_pyomo_models.html#supported-solvers>`_`
+.. code-block:: bash
 
-**go** can be installed via pip by running the following from a terminal window::
+   pip install gridops
 
-    pip install go
+To install the development version from GitHub instead:
 
-It may be favorable to the user to create a virtual environment for the **go** package to minimize package version conflicts.  See `creating virtual environments <https://docs.python.org/3/library/venv.html>`_ to learn how these function and can be setup.
+.. code-block:: bash
 
-Installing package data
------------------------
+   git clone https://github.com/IMMM-SFA/gridops.git
+   cd gridops
+   pip install -e .
 
-**go** requires package data to be installed from Zenodo to keep the package lightweight.  After **go** has been installed, run the following from a Python prompt:
+Optional extras are available for development:
+
+.. code-block:: bash
+
+   pip install "gridops[test]"
+   pip install "gridops[docs]"
+
+Check the installation:
 
 .. code-block:: python
 
-    import go
+   import gridops as go
 
-    go.install_package_data()
+   print(go.__version__)
 
-This will automatically download and install the package data necessary to run the examples in accordance with the version of **go** you are running.
+Solvers
+~~~~~~~
 
+.. tab-set::
 
-Dependencies
+   .. tab-item:: HiGHS (default)
+
+      HiGHS is open source and is installed automatically through the ``highspy``
+      dependency. Select it with ``solver_name="appsi_highs"``. No license is
+      required.
+
+   .. tab-item:: Gurobi
+
+      Gurobi is a commercial solver and needs a
+      `valid license <https://www.gurobi.com/academics>`_
+      (free academic licenses are available). Install the Python bindings with:
+
+      .. code-block:: bash
+
+         pip install gurobipy
+
+      Select ``solver_name="appsi_gurobi"`` (persistent APPSI interface, which
+      supports warm starts) or ``solver_name="gurobi"``.
+
+See :doc:`user_guide/solvers` for solver options, warm starts and the automatic retry
+logic.
+
+Example data
 ------------
 
-=============   ================
-Dependency      Minimum Version
-=============   ================
-PyYAML          5.4.1
-requests        2.25.1
-pyomo           6.0.1
-=============   ================
+gridops ships with a small example dataset for the U.S. Western Interconnection,
+installed with the package under ``gridops/data``:
 
+.. code-block:: text
 
-Optional dependencies
----------------------
+   gridops/data/
+   ├── example_config_file.yml      # configuration template pointing at the files below
+   ├── example_inputs/              # 2 days of inputs on a 125-node, 786-line network
+   ├── example_outputs/             # destination for the Parquet outputs
+   └── example_restart_files/       # destination for restart files and solver settings
 
-==================    ================
-Dependency            Minimum Version
-==================    ================
-build                 0.5.1
-nbsphinx              0.8.6
-setuptools            57.0.0
-sphinx                4.0.2
-sphinx-panels         0.6.0
-sphinx-rtd-theme      0.5.2
-twine                 3.4.1
-pytest                6.2.4
-pytest-cov            2.12.1
-==================    ================
+You can find the folder on your machine with:
+
+.. code-block:: python
+
+   from importlib.resources import files
+
+   print(files("gridops").joinpath("data"))
+
+The example network represents a 125-node, 786-line network. 
+The inputs cover 48 hours, so the example can be run for up to two days.
+
+Next steps
+----------
+
+* Run the example in the :doc:`Quickstart <notebooks/quickstarter>`.
+* Read the :doc:`user_guide/index` to get familiar with the gridops and prepare your own inputs.
+* Browse the :doc:`api`.

@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Welcome to the gridops quickstarter! &#8212; gridops 1.1.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=765459b2" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/quickstarter';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="User guide" href="../user_guide/index.html" />
+    <link rel="prev" title="Getting started" href="../getting_started.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="2026-10-29"/>
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">gridops 1.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#" aria-current="page">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributing.html">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../how_to_cite.html">
+    How to cite
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../release_notes.html">
+    Release notes
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../publications.html">
+    Publications
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../authors.html">
+    Authors
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../license.html">
+    License
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../acknowledgement.html">
+    Acknowledgement
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/IMMM-SFA/gridops" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/gridops/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#" aria-current="page">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributing.html">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../how_to_cite.html">
+    How to cite
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../release_notes.html">
+    Release notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../publications.html">
+    Publications
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../authors.html">
+    Authors
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../license.html">
+    License
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../acknowledgement.html">
+    Acknowledgement
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/IMMM-SFA/gridops" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/gridops/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Welcome to the <code class="docutils literal notranslate"><span class="pre">gridops</span></code> quickstarter!</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-the-gridops-quickstarter">
+<h1>Welcome to the <code class="docutils literal notranslate"><span class="pre">gridops</span></code> quickstarter!<a class="headerlink" href="#welcome-to-the-gridops-quickstarter" title="Link to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">gridops</span></code> is an open-source and customizable grid operations model for three major U.S. interconnections (Western, Eastern, and ERCOT). Production cost modeling in <code class="docutils literal notranslate"><span class="pre">gridops</span></code> utilizes linear DC Optimal Power Flow (DC-OPF) approximation to optimize hourly unit commitment (UC) and economic dispatch (ED) processes over a user-configurable rolling horizon.</p>
+<p><code class="docutils literal notranslate"><span class="pre">gridops</span></code> was created to:</p>
+<ul class="simple">
+<li><p>Address weather and water dynamics and associated vulnerabilities in U.S. bulk power systems.</p></li>
+<li><p>Link with a wide range of hydrometeorological datasets and energy system/machine learning models to explore future uncertainty in grid operations.</p></li>
+<li><p>Analyze current and future grid stress and reliability trends under a wide range of weather conditions, generation mixes, and demand growth scenarios.</p></li>
+<li><p>Create simple and user-tailored representations of the U.S. interconnections to find a balance between model accuracy and run time to answer research questions of interest.</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="an-example-simulation">
+<h1>An example simulation!<a class="headerlink" href="#an-example-simulation" title="Link to this heading">#</a></h1>
+<p>Let’s start using <code class="docutils literal notranslate"><span class="pre">gridops</span></code> by initilizing a simulation! First, we load the package.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the package and check the package version</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gridops</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">importlib.metadata</span><span class="w"> </span><span class="kn">import</span> <span class="n">version</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Package version: </span><span class="si">{</span><span class="n">version</span><span class="p">(</span><span class="s1">'gridops'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Package version: 1.1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we initialize our <code class="docutils literal notranslate"><span class="pre">Model</span></code> object where we can specify the interconnection we’d like to simulate, mathematical formulation we’d like to use, and solver we’ll utilize.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate the model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span>
+    <span class="n">region</span><span class="o">=</span><span class="s2">"west"</span><span class="p">,</span>                           <span class="c1"># U.S. Western Interconnection</span>
+    <span class="n">problem</span><span class="o">=</span><span class="s2">"linear"</span><span class="p">,</span>                        <span class="c1"># Linear programming (economic dispatch only)</span>
+    <span class="n">solver_name</span><span class="o">=</span><span class="s2">"appsi_highs"</span><span class="p">,</span>               <span class="c1"># Using open-source HiGHS solver</span>
+    <span class="n">solver_params</span><span class="o">=</span><span class="p">{</span><span class="s2">"log_to_console"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> 
+                   <span class="s2">"output_flag"</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>    <span class="c1"># Optional – preventing HiGHS from printing to console</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-10-29 13:06:49,805 - INFO - gridops.model - Configuration: U.S. Western Interconnection - Economic Dispatch
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we point out our example configuration file (see <code class="docutils literal notranslate"><span class="pre">gridops/data/example_config_file.yml</span></code> for a full template) and number of days we’d like to simulate to start the simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access the example configuration file</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">importlib.resources</span><span class="w"> </span><span class="kn">import</span> <span class="n">files</span>
+<span class="n">config_file_path</span> <span class="o">=</span> <span class="n">files</span><span class="p">(</span><span class="s2">"gridops"</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">"data/example_config_file.yml"</span><span class="p">)</span>
+
+<span class="c1"># Changing the directory to the location of the configuration file (only needed if the paths in the config file are relative </span>
+<span class="c1"># to the config file's location, otherwise (i.e., absolute paths in the config file), this step would not be necessary)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">files</span><span class="p">(</span><span class="s2">"gridops"</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">"data"</span><span class="p">))</span>
+
+<span class="c1"># Run for 2 days with a 24-hour rolling horizon</span>
+<span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">config_file</span><span class="o">=</span><span class="n">config_file_path</span><span class="p">,</span>  <span class="c1"># Path to the model configuration file</span>
+    <span class="n">n_days</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                      <span class="c1"># Running for 2 days</span>
+    <span class="n">horizon_hours</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>              <span class="c1"># Optional – using default 24-hour horizon</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-10-29 13:06:49,823 - INFO - gridops.west.launch - Preparing the U.S. Western Interconnection economic dispatch simulation.
+2026-10-29 13:06:49,824 - INFO - gridops.configuration - Loading configuration file.
+2026-10-29 13:06:49,828 - INFO - gridops.configuration - generator_parameters_file = example_inputs/data_genparams.csv
+2026-10-29 13:06:49,830 - INFO - gridops.configuration - generator_matrix_file = example_inputs/gen_mat.csv
+2026-10-29 13:06:49,831 - INFO - gridops.configuration - line_to_bus_file = example_inputs/line_to_bus.csv
+2026-10-29 13:06:49,831 - INFO - gridops.configuration - line_parameters_file = example_inputs/line_param.csv
+2026-10-29 13:06:49,832 - INFO - gridops.configuration - daily_hydro_maximum_file = example_inputs/hydro_max.csv
+2026-10-29 13:06:49,833 - INFO - gridops.configuration - daily_hydro_minimum_file = example_inputs/hydro_min.csv
+2026-10-29 13:06:49,833 - INFO - gridops.configuration - daily_hydro_total_file = example_inputs/hydro_total.csv
+2026-10-29 13:06:49,834 - INFO - gridops.configuration - nodal_solar_file = example_inputs/nodal_solar.csv
+2026-10-29 13:06:49,834 - INFO - gridops.configuration - nodal_wind_file = example_inputs/nodal_wind.csv
+2026-10-29 13:06:49,835 - INFO - gridops.configuration - nodal_offshore_wind_file = example_inputs/nodal_offshore_wind.csv
+2026-10-29 13:06:49,836 - INFO - gridops.configuration - nodal_load_file = example_inputs/nodal_load.csv
+2026-10-29 13:06:49,836 - INFO - gridops.configuration - must_run_file = example_inputs/must_run.csv
+2026-10-29 13:06:49,837 - INFO - gridops.configuration - fuel_prices_file = example_inputs/fuel_prices.csv
+2026-10-29 13:06:49,838 - INFO - gridops.configuration - storage_params_file = example_inputs/storage_params.csv
+2026-10-29 13:06:49,839 - INFO - gridops.configuration - bus_to_storage_matrix_file = example_inputs/storage_mat.csv
+2026-10-29 13:06:49,839 - INFO - gridops.configuration - generator_outage_file = example_inputs/gen_outage_cat.npy
+2026-10-29 13:06:49,840 - INFO - gridops.configuration - thermal_generators_file = example_inputs/thermal_gens.csv
+2026-10-29 13:06:49,841 - INFO - gridops.configuration - lost_capacity_file = example_inputs/lost_capacity.csv
+2026-10-29 13:06:49,841 - INFO - gridops.configuration - vlt_angle_file = example_outputs/vlt_angle.parquet
+2026-10-29 13:06:49,842 - INFO - gridops.configuration - mwh_file = example_outputs/mwh.parquet
+2026-10-29 13:06:49,843 - INFO - gridops.configuration - slack_file = example_outputs/slack.parquet
+2026-10-29 13:06:49,843 - INFO - gridops.configuration - flow_file = example_outputs/flow.parquet
+2026-10-29 13:06:49,843 - INFO - gridops.configuration - duals_file = example_outputs/duals.parquet
+2026-10-29 13:06:49,843 - INFO - gridops.configuration - storage_soc_file = example_outputs/storage_soc.parquet
+2026-10-29 13:06:49,845 - INFO - gridops.configuration - storage_discharge_file = example_outputs/storage_discharge.parquet
+2026-10-29 13:06:49,845 - INFO - gridops.configuration - storage_charge_file = example_outputs/storage_charge.parquet
+2026-10-29 13:06:49,847 - INFO - gridops.configuration - restart_file_directory = example_restart_files
+2026-10-29 13:06:49,849 - INFO - gridops.solvers - Solver: appsi_highs
+2026-10-29 13:06:49,850 - INFO - gridops.solvers -  Solver option: log_to_console = False
+2026-10-29 13:06:49,851 - INFO - gridops.solvers -  Solver option: output_flag = False
+2026-10-29 13:06:49,851 - INFO - gridops.solvers -  Solver option: solver = ipm
+2026-10-29 13:06:49,851 - INFO - gridops.solvers -  Solver option: run_crossover = on
+2026-10-29 13:06:49,853 - INFO - gridops.west.launch - No restart file found - Starting from the first horizon.
+2026-10-29 13:06:49,853 - INFO - gridops.west.launch - Loading simulation data from input files.
+2026-10-29 13:06:50,322 - INFO - gridops.west.launch - All input files loaded.
+2026-10-29 13:06:52,247 - INFO - gridops.west.launch - Horizon 1 / 2  (day 1, hours 1-24)
+2026-10-29 13:06:52,247 - INFO - gridops.west.launch - Horizon 0: Updating parameters.
+2026-10-29 13:06:52,870 - INFO - gridops.west.launch - Horizon 0: Starting optimization.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-10-29 13:08:22,489 - INFO - gridops.west.launch - Horizon 0: Optimization complete.
+2026-10-29 13:08:22,561 - INFO - gridops.west.launch - Horizon 0 (day 1) completed.
+2026-10-29 13:08:22,562 - INFO - gridops.west.launch - Horizon 2 / 2  (day 2, hours 25-48)
+2026-10-29 13:08:22,563 - INFO - gridops.west.launch - Horizon 1: Cleared HiGHS solver state (warmstart=False).
+2026-10-29 13:08:22,564 - INFO - gridops.west.launch - Horizon 1: Updating parameters.
+2026-10-29 13:08:23,230 - INFO - gridops.west.launch - Horizon 1: Starting optimization.
+2026-10-29 13:09:37,510 - INFO - gridops.west.launch - Horizon 1: Optimization complete.
+2026-10-29 13:09:37,874 - INFO - gridops.west.launch - Horizon 1 (day 2) completed.
+2026-10-29 13:09:37,874 - INFO - gridops.west.launch - Writing output files.
+2026-10-29 13:09:38,514 - INFO - gridops.west.launch - All outputs written.
+2026-10-29 13:09:38,514 - INFO - gridops.model - All horizons completed successfully.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, we analyze the results and create figures with the simulation outputs. First, let’s look at the locational marginal price (LMP) and loss of load results. In this example, we use <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> packages to analyze/visualize the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages for post-processing and visualization</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Define the number of days and hours simulated</span>
+<span class="n">total_days</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">total_hours</span> <span class="o">=</span> <span class="n">total_days</span><span class="o">*</span><span class="mi">24</span>
+
+<span class="c1"># Read the LMP and loss of load outputs</span>
+<span class="n">LMPs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"example_outputs/duals.parquet"</span><span class="p">)</span>
+<span class="n">Loss_of_load</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"example_outputs/slack.parquet"</span><span class="p">)</span>
+
+<span class="c1"># Look at the first few rows of the LMPs</span>
+<span class="n">LMPs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Node</th>
+      <th>Time</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>bus_100011</td>
+      <td>1</td>
+      <td>47.434764</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bus_100011</td>
+      <td>2</td>
+      <td>46.566050</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>bus_100011</td>
+      <td>3</td>
+      <td>46.711186</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bus_100011</td>
+      <td>4</td>
+      <td>45.626340</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>bus_100011</td>
+      <td>5</td>
+      <td>47.444308</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group model outputs to find hourly average LMP and hourly total loss of load</span>
+<span class="n">grouped_prices</span> <span class="o">=</span> <span class="n">LMPs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">grouped_outages</span> <span class="o">=</span> <span class="n">Loss_of_load</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Plot hourly average LMPs and hourly total loss of load for the duration of our simulation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'font.size'</span><span class="p">:</span> <span class="mi">8</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'font.sans-serif'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Arial"</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">total_hours</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">grouped_prices</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'#56B4E9'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'LMP'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">total_hours</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">grouped_outages</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'#D55E00'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Loss of Load'</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Average LMP ($/MWh)'</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="n">total_hours</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">48</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Hours'</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Total Loss of Load (MWh)'</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.001</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3ed76c9c392a6538ad51152963b9f9bb91d9820b1881482b937ba6baf5903d01.png" src="../_images/3ed76c9c392a6538ad51152963b9f9bb91d9820b1881482b937ba6baf5903d01.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, let’s look at the generation mix results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the generation output</span>
+<span class="n">Generation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">"example_outputs/mwh.parquet"</span><span class="p">)</span>
+
+<span class="c1"># Group generation by type and time to have hourly total generation by each type</span>
+<span class="n">grouped_generation</span> <span class="o">=</span> <span class="n">Generation</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Type'</span><span class="p">,</span><span class="s1">'Time'</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Create a list of unique generator types</span>
+<span class="n">generation_types</span> <span class="o">=</span> <span class="n">Generation</span><span class="p">[</span><span class="s1">'Type'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+<span class="c1"># Create an empty dictionary to store organized generation results</span>
+<span class="n">generation_timeseries</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Save hourly total generation by each type in a dictionary for easier plotting</span>
+<span class="k">for</span> <span class="n">gen_type</span> <span class="ow">in</span> <span class="n">generation_types</span><span class="p">:</span>
+    <span class="n">generation_timeseries</span><span class="p">[</span><span class="n">gen_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped_generation</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">gen_type</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot total generation by type for the duration of our simulation</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">stackplot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">total_hours</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">generation_timeseries</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">labels</span><span class="o">=</span><span class="n">generation_timeseries</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> 
+             <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">'#D55E00'</span><span class="p">,</span><span class="s1">'#949494'</span><span class="p">,</span><span class="s1">'#000000'</span><span class="p">,</span><span class="s1">'#CA9161'</span><span class="p">,</span><span class="s1">'#CC78BC'</span><span class="p">,</span><span class="s1">'#808000'</span><span class="p">,</span><span class="s1">'#0173B2'</span><span class="p">,</span><span class="s1">'#ECE133'</span><span class="p">,</span><span class="s1">'#029E73'</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="n">total_hours</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">48</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Hours'</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Total Generation (MWh)'</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'center left'</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f9995f2336cc1e653de19aa989a10b3a3d35ccf00254e063281220fe23670a78.png" src="../_images/f9995f2336cc1e653de19aa989a10b3a3d35ccf00254e063281220fe23670a78.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the generation mix in percentages</span>
+<span class="n">Total_generation_by_type</span> <span class="o">=</span> <span class="p">{</span><span class="n">gen_type</span><span class="p">:</span> <span class="n">generation_timeseries</span><span class="p">[</span><span class="n">gen_type</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">gen_type</span> <span class="ow">in</span> <span class="n">generation_timeseries</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+<span class="n">Total_generation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">Total_generation_by_type</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+<span class="k">for</span> <span class="n">gen_type</span> <span class="ow">in</span> <span class="n">generation_timeseries</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Share of </span><span class="si">{</span><span class="n">gen_type</span><span class="si">}</span><span class="s1"> in generation mix is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">Total_generation_by_type</span><span class="p">[</span><span class="n">gen_type</span><span class="p">]</span><span class="o">/</span><span class="n">Total_generation</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">%'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Share of Nuclear in generation mix is 8.73%
+Share of Coal in generation mix is 22.56%
+Share of Oil in generation mix is 0.0%
+Share of Gas in generation mix is 41.69%
+Share of Biomass in generation mix is 0.0%
+Share of Geothermal in generation mix is 4.25%
+Share of Hydro in generation mix is 15.94%
+Share of Solar in generation mix is 2.99%
+Share of Wind in generation mix is 3.84%
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../getting_started.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Getting started</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../user_guide/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">User guide</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Welcome to the <code class="docutils literal notranslate"><span class="pre">gridops</span></code> quickstarter!</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-simulation">An example simulation!</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/IMMM-SFA/gridops/edit/main/docs/source/notebooks/quickstarter.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2021-2026, Battelle Memorial Institute.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2026-10-29.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gridops.west.launch &#8212; gridops 1.1.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=765459b2" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/gridops/west/launch';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="2026-10-29"/>
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">gridops 1.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../notebooks/quickstarter.html">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../contributing.html">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../how_to_cite.html">
+    How to cite
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../release_notes.html">
+    Release notes
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../publications.html">
+    Publications
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../authors.html">
+    Authors
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../license.html">
+    License
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../acknowledgement.html">
+    Acknowledgement
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/IMMM-SFA/gridops" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/gridops/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../notebooks/quickstarter.html">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../contributing.html">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../how_to_cite.html">
+    How to cite
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../release_notes.html">
+    Release notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../publications.html">
+    Publications
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../authors.html">
+    Authors
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../license.html">
+    License
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../acknowledgement.html">
+    Acknowledgement
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/IMMM-SFA/gridops" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/gridops/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">gridops.west.launch</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for gridops.west.launch</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cloudpickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyomo.environ</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pyo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gridops</span><span class="w"> </span><span class="kn">import</span> <span class="n">configuration</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gridops.solvers</span><span class="w"> </span><span class="kn">import</span> <span class="n">GoSolver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gridops.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">clear_restart_files</span><span class="p">,</span>
+    <span class="n">write_restart_file</span><span class="p">,</span>
+    <span class="n">get_restart_file</span><span class="p">,</span>
+    <span class="n">write_solver_parameters</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gridops.west.linear</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_west_linear</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Numerical snap tolerance</span>
+<span class="c1"># Any value whose absolute magnitude is below SNAP_TOL is snapped to the</span>
+<span class="c1"># nearest physical boundary (0.0).  </span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="n">SNAP_TOL</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span>
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Must-run (nuclear) output labeling</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="c1"># Suffix appended to a bus name to label aggregated must-run output</span>
+<span class="c1"># in the results (e.g. ``bus_106001`` -&gt; ``bus_106001_NUCLEAR``).</span>
+<span class="n">MUST_RUN_NAME_SUFFIX</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"_NUCLEAR"</span>
+
+<span class="c1"># Value written to the ``Type`` column of the results for must-run rows.</span>
+<span class="n">MUST_RUN_TYPE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"Nuclear"</span>
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Fuel-type → Pyomo set name mapping</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<span class="c1"># Maps the ``typ`` field values from ``generator_parameters_file`` to the</span>
+<span class="c1"># canonical Pyomo set names used by the model.</span>
+<span class="n">FUEL_TYPE_MAP</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"Coal"</span><span class="p">:</span>          <span class="s2">"Coal"</span><span class="p">,</span>
+    <span class="s2">"coal"</span><span class="p">:</span>          <span class="s2">"Coal"</span><span class="p">,</span>
+    <span class="s2">"Oil"</span><span class="p">:</span>           <span class="s2">"Oil"</span><span class="p">,</span>
+    <span class="s2">"oil"</span><span class="p">:</span>           <span class="s2">"Oil"</span><span class="p">,</span>
+    <span class="s2">"Petroleum"</span><span class="p">:</span>     <span class="s2">"Oil"</span><span class="p">,</span>
+    <span class="s2">"petroleum"</span><span class="p">:</span>     <span class="s2">"Oil"</span><span class="p">,</span>
+    <span class="s2">"NatGas"</span><span class="p">:</span>        <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"Nat_Gas"</span><span class="p">:</span>       <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"Natgas"</span><span class="p">:</span>        <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"Nat_gas"</span><span class="p">:</span>       <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"natgas"</span><span class="p">:</span>        <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"nat_gas"</span><span class="p">:</span>       <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"NaturalGas"</span><span class="p">:</span>    <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"Natural_Gas"</span><span class="p">:</span>   <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"Naturalgas"</span><span class="p">:</span>    <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"Natural_gas"</span><span class="p">:</span>   <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"naturalgas"</span><span class="p">:</span>    <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"natural_gas"</span><span class="p">:</span>   <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"Gas"</span><span class="p">:</span>           <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"gas"</span><span class="p">:</span>           <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"NGCC"</span><span class="p">:</span>          <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"ngcc"</span><span class="p">:</span>          <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"NGCT"</span><span class="p">:</span>          <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"ngct"</span><span class="p">:</span>          <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"NGST"</span><span class="p">:</span>          <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"ngst"</span><span class="p">:</span>          <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"NGGT"</span><span class="p">:</span>          <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"nggt"</span><span class="p">:</span>          <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"NG"</span><span class="p">:</span>            <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"ng"</span><span class="p">:</span>            <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"GT"</span><span class="p">:</span>            <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"gt"</span><span class="p">:</span>            <span class="s2">"Gas"</span><span class="p">,</span>
+    <span class="s2">"Hydro"</span><span class="p">:</span>         <span class="s2">"Hydro"</span><span class="p">,</span>
+    <span class="s2">"hydro"</span><span class="p">:</span>         <span class="s2">"Hydro"</span><span class="p">,</span>
+    <span class="s2">"Hydropower"</span><span class="p">:</span>    <span class="s2">"Hydro"</span><span class="p">,</span>
+    <span class="s2">"hydropower"</span><span class="p">:</span>    <span class="s2">"Hydro"</span><span class="p">,</span>
+    <span class="s2">"Hydro_power"</span><span class="p">:</span>   <span class="s2">"Hydro"</span><span class="p">,</span>
+    <span class="s2">"hydro_power"</span><span class="p">:</span>   <span class="s2">"Hydro"</span><span class="p">,</span>
+    <span class="s2">"Solar"</span><span class="p">:</span>         <span class="s2">"Solar"</span><span class="p">,</span>
+    <span class="s2">"solar"</span><span class="p">:</span>         <span class="s2">"Solar"</span><span class="p">,</span>
+    <span class="s2">"Wind"</span><span class="p">:</span>          <span class="s2">"Wind"</span><span class="p">,</span>
+    <span class="s2">"wind"</span><span class="p">:</span>          <span class="s2">"Wind"</span><span class="p">,</span>
+    <span class="s2">"Bio"</span><span class="p">:</span>           <span class="s2">"Biomass"</span><span class="p">,</span>
+    <span class="s2">"bio"</span><span class="p">:</span>           <span class="s2">"Biomass"</span><span class="p">,</span>
+    <span class="s2">"Biomass"</span><span class="p">:</span>       <span class="s2">"Biomass"</span><span class="p">,</span>
+    <span class="s2">"biomass"</span><span class="p">:</span>       <span class="s2">"Biomass"</span><span class="p">,</span>
+    <span class="s2">"Geo"</span><span class="p">:</span>           <span class="s2">"Geothermal"</span><span class="p">,</span>
+    <span class="s2">"geo"</span><span class="p">:</span>           <span class="s2">"Geothermal"</span><span class="p">,</span>
+    <span class="s2">"Geothermal"</span><span class="p">:</span>    <span class="s2">"Geothermal"</span><span class="p">,</span>
+    <span class="s2">"geothermal"</span><span class="p">:</span>    <span class="s2">"Geothermal"</span><span class="p">,</span>
+    <span class="s2">"OffshoreWind"</span><span class="p">:</span>  <span class="s2">"OffshoreWind"</span><span class="p">,</span>
+    <span class="s2">"Offshorewind"</span><span class="p">:</span>  <span class="s2">"OffshoreWind"</span><span class="p">,</span>
+    <span class="s2">"Offshore_Wind"</span><span class="p">:</span> <span class="s2">"OffshoreWind"</span><span class="p">,</span>
+    <span class="s2">"Offshore_wind"</span><span class="p">:</span> <span class="s2">"OffshoreWind"</span><span class="p">,</span>
+    <span class="s2">"offshorewind"</span><span class="p">:</span>  <span class="s2">"OffshoreWind"</span><span class="p">,</span>
+    <span class="s2">"offshore_wind"</span><span class="p">:</span> <span class="s2">"OffshoreWind"</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># Data-loading helpers</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_snap</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">tol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">SNAP_TOL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return *value* unchanged unless ``|value| &lt; tol``, in which case return 0.0.</span>
+
+<span class="sd">    Used throughout the model-building and horizon-update code to prevent</span>
+<span class="sd">    excessively small (near-zero) values from appearing as constraint RHS</span>
+<span class="sd">    or parameter values, which can cause numerical instability.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    value:</span>
+<span class="sd">        The scalar float to evaluate.</span>
+<span class="sd">    tol:</span>
+<span class="sd">        Snap threshold (default :data:`SNAP_TOL` = 1e-6).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        ``0.0`` when ``|value| &lt; tol``; otherwise *value* unchanged.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="mf">0.0</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span> <span class="k">else</span> <span class="n">value</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_build_gen_sets</span><span class="p">(</span><span class="n">df_gen</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">"""Group generator names by their Pyomo fuel-type set.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df_gen:</span>
+<span class="sd">        DataFrame loaded from ``generator_parameters_file`` with at least</span>
+<span class="sd">        columns ``name`` and ``typ``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        ``{pyomo_set_name: [gen_name, …], …}`` covering all recognized types.</span>
+<span class="sd">        Empty lists are included so the model sees every set even when a</span>
+<span class="sd">        region has no generators of a given type.</span>
+<span class="sd">    """</span>
+    <span class="n">gen_sets</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">name</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">"Coal"</span><span class="p">,</span> <span class="s2">"Oil"</span><span class="p">,</span> <span class="s2">"Gas"</span><span class="p">,</span> <span class="s2">"Hydro"</span><span class="p">,</span> <span class="s2">"Solar"</span><span class="p">,</span> <span class="s2">"Wind"</span><span class="p">,</span>
+            <span class="s2">"Biomass"</span><span class="p">,</span> <span class="s2">"Geothermal"</span><span class="p">,</span> <span class="s2">"OffshoreWind"</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_gen</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">pyomo_type</span> <span class="o">=</span> <span class="n">FUEL_TYPE_MAP</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"typ"</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">pyomo_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">gen_sets</span><span class="p">[</span><span class="n">pyomo_type</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"name"</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown generator type </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'typ'</span><span class="p">]</span><span class="si">}</span><span class="s2"> for generator </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">gen_sets</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_build_sparse_maps</span><span class="p">(</span>
+    <span class="n">df_gen_matrix</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">df_line_to_bus</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">df_storage_matrix</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Convert incidence-matrix DataFrames to sparse dicts for Pyomo Params.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df_gen_matrix:</span>
+<span class="sd">        Bus-to-unit mapping matrix (rows = generator names, cols = bus names,</span>
+<span class="sd">        values = 0 / 1).</span>
+<span class="sd">    df_line_to_bus:</span>
+<span class="sd">        Line-to-bus incidence matrix (rows = line names, cols = bus names,</span>
+<span class="sd">        values = -1 / 0 / 1).</span>
+<span class="sd">    df_storage_matrix:</span>
+<span class="sd">        Storage-to-bus mapping matrix (rows = storage unit names, cols = bus names,</span>
+<span class="sd">        values = 0 / 1).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tuple of three sparse dicts:</span>
+<span class="sd">        (bus_to_unit_map, line_to_bus_map, bus_to_storage_map)</span>
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_to_sparse</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Return {(row_idx, col_name): value} for all non-zero entries."""</span>
+        <span class="n">stacked</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+        <span class="n">nonzero</span> <span class="o">=</span> <span class="n">stacked</span><span class="p">[</span><span class="n">stacked</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">idx</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">nonzero</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="n">bus_to_unit_map</span> <span class="o">=</span> <span class="n">_to_sparse</span><span class="p">(</span><span class="n">df_gen_matrix</span><span class="p">)</span>       <span class="c1"># (gen, bus) → 1</span>
+    <span class="n">line_to_bus_map</span> <span class="o">=</span> <span class="n">_to_sparse</span><span class="p">(</span><span class="n">df_line_to_bus</span><span class="p">)</span>      <span class="c1"># (line, bus) → ±1</span>
+    <span class="n">bus_to_storage_map</span> <span class="o">=</span> <span class="n">_to_sparse</span><span class="p">(</span><span class="n">df_storage_matrix</span><span class="p">)</span>  <span class="c1"># (storage, bus) → 1</span>
+
+    <span class="k">return</span> <span class="n">bus_to_unit_map</span><span class="p">,</span> <span class="n">line_to_bus_map</span><span class="p">,</span> <span class="n">bus_to_storage_map</span>
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># Main data loader</span>
+<span class="c1"># ===========================================================================</span>
+
+<div class="viewcode-block" id="load_simulation_data">
+<a class="viewcode-back" href="../../../api.html#gridops.west.launch.load_simulation_data">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_simulation_data</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">configuration</span><span class="o">.</span><span class="n">Config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Load all simulation inputs from CSV/NPY files into Python structures.</span>
+
+<span class="sd">    This function is called **once** per simulation run.  The returned ``sim``</span>
+<span class="sd">    dictionary is passed to :func:`~gridops.west.linear.build_west_linear` to</span>
+<span class="sd">    build the ConcreteModel and to :func:`_update_horizon_params` before each</span>
+<span class="sd">    horizon solve.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    config:</span>
+<span class="sd">        :class:`~gridops.configuration.Config` instance with all file paths.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        ``sim`` data dictionary for the optimization.</span>
+<span class="sd">    """</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Loading simulation data from input files."</span><span class="p">)</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Read all input CSVs</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+
+    <span class="c1"># Generator parameters </span>
+    <span class="n">df_gen</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">generator_parameters_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Generator–bus mapping matrix</span>
+    <span class="n">df_gen_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">generator_matrix_file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Transmission line–bus incidence</span>
+    <span class="n">df_line_to_bus</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">line_to_bus_file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Transmission line parameters</span>
+    <span class="n">df_line_params</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">line_parameters_file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Hydropower daily limits and totals</span>
+    <span class="n">df_hydro_max</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">daily_hydro_maximum_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">df_hydro_min</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">daily_hydro_minimum_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">df_hydro_total</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">daily_hydro_total_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Renewable hourly profiles</span>
+    <span class="n">df_solar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">nodal_solar_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">df_wind</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">nodal_wind_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">df_offshorewind</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">nodal_offshore_wind_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Hourly load</span>
+    <span class="n">df_load</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">nodal_load_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Must-run capacity (single row, columns = node names; constant)</span>
+    <span class="n">df_must_run</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">must_run_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Daily fuel prices</span>
+    <span class="n">df_fuel_prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">fuel_prices_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Storage parameters</span>
+    <span class="n">df_storage_params</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">storage_params_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Storage–bus mapping matrix</span>
+    <span class="n">df_storage_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">bus_to_storage_matrix_file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Thermal generator list</span>
+    <span class="n">df_thermal</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">thermal_generators_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Hourly lost-capacity per outage group</span>
+    <span class="n">df_losses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">lost_capacity_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># Ensure Time index is integer for clean .loc[] access</span>
+    <span class="n">df_losses</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df_losses</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># Generator outage categories (.npy dict: group_name → [gen_names])</span>
+    <span class="n">loss_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">generator_outage_file</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"All input files loaded."</span><span class="p">)</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Build generator sets</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">gen_sets</span> <span class="o">=</span> <span class="n">_build_gen_sets</span><span class="p">(</span><span class="n">df_gen</span><span class="p">)</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Build network entity lists</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Buses: column names from the load file</span>
+    <span class="n">buses</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_load</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+    <span class="c1"># Lines: row index from the line-to-bus incidence file</span>
+    <span class="n">lines</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_line_to_bus</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="c1"># Storage units: 'name' column of storage-params file</span>
+    <span class="n">storage_units</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_storage_params</span><span class="p">[</span><span class="s2">"name"</span><span class="p">])</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Build sparse mapping dicts</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">bus_to_unit_map</span><span class="p">,</span> <span class="n">line_to_bus_map</span><span class="p">,</span> <span class="n">bus_to_storage_map</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">_build_sparse_maps</span><span class="p">(</span>
+            <span class="n">df_gen_matrix</span><span class="p">,</span>
+            <span class="n">df_line_to_bus</span><span class="p">,</span>
+            <span class="n">df_storage_matrix</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Generator parameter dict</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">gen_params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_gen</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">gen_params</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"typ"</span><span class="p">:</span>       <span class="n">row</span><span class="p">[</span><span class="s2">"typ"</span><span class="p">],</span>
+            <span class="s2">"bus"</span><span class="p">:</span>       <span class="n">row</span><span class="p">[</span><span class="s2">"node"</span><span class="p">],</span>
+            <span class="s2">"maxcap"</span><span class="p">:</span>    <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"maxcap"</span><span class="p">])),</span>
+            <span class="s2">"mincap"</span><span class="p">:</span>    <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"mincap"</span><span class="p">])),</span>
+            <span class="s2">"heat_rate"</span><span class="p">:</span> <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"heat_rate"</span><span class="p">])),</span>
+            <span class="s2">"var_om"</span><span class="p">:</span>    <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"var_om"</span><span class="p">])),</span>
+            <span class="s2">"no_load"</span><span class="p">:</span>   <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"no_load"</span><span class="p">])),</span>
+            <span class="s2">"st_cost"</span><span class="p">:</span>   <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"st_cost"</span><span class="p">])),</span>
+            <span class="s2">"ramp"</span><span class="p">:</span>      <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"ramp"</span><span class="p">])),</span>
+            <span class="s2">"minup"</span><span class="p">:</span>     <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"minup"</span><span class="p">])),</span>
+            <span class="s2">"mindn"</span><span class="p">:</span>     <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"mindn"</span><span class="p">])),</span>
+        <span class="p">}</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Line parameter dict</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">line_params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">line_name</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_line_params</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">line_params</span><span class="p">[</span><span class="n">line_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"reactance"</span><span class="p">:</span> <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"reactance"</span><span class="p">])),</span>
+            <span class="s2">"flow_lim"</span><span class="p">:</span>  <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"limit"</span><span class="p">])),</span>
+        <span class="p">}</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Storage parameter dict</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">storage_params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_storage_params</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">storage_params</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"s_typ"</span><span class="p">:</span>          <span class="n">row</span><span class="p">[</span><span class="s2">"s_typ"</span><span class="p">],</span>
+            <span class="s2">"s_bus"</span><span class="p">:</span>          <span class="n">row</span><span class="p">[</span><span class="s2">"s_node"</span><span class="p">],</span>
+            <span class="s2">"charge_rate"</span><span class="p">:</span>    <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"charge_rate"</span><span class="p">])),</span>
+            <span class="s2">"discharge_rate"</span><span class="p">:</span> <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"discharge_rate"</span><span class="p">])),</span>
+            <span class="s2">"duration"</span><span class="p">:</span>       <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"duration"</span><span class="p">])),</span>
+            <span class="s2">"max_SoC"</span><span class="p">:</span>        <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"max_SoC"</span><span class="p">])),</span>
+            <span class="s2">"min_SoC"</span><span class="p">:</span>        <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"min_SoC"</span><span class="p">])),</span>
+            <span class="s2">"charge_eff"</span><span class="p">:</span>     <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"charge_eff"</span><span class="p">])),</span>
+            <span class="s2">"discharge_eff"</span><span class="p">:</span>  <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"discharge_eff"</span><span class="p">])),</span>
+        <span class="p">}</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Generator → node column lookup dicts for time-series slicing</span>
+    <span class="c1"># Each renewable/hydro generator name encodes its node: 'bus_XXXXX_TYPE'</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_bus_from_gen</span><span class="p">(</span><span class="n">gen_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Extract bus name from a generator name of the form bus_XXX_TYPE."""</span>
+        <span class="c1"># bus is stored in gen_params</span>
+        <span class="k">return</span> <span class="n">gen_params</span><span class="p">[</span><span class="n">gen_name</span><span class="p">][</span><span class="s2">"bus"</span><span class="p">]</span>
+
+    <span class="n">hydro_bus_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">_bus_from_gen</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gen_sets</span><span class="p">[</span><span class="s2">"Hydro"</span><span class="p">]}</span>
+    <span class="n">solar_bus_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">_bus_from_gen</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gen_sets</span><span class="p">[</span><span class="s2">"Solar"</span><span class="p">]}</span>
+    <span class="n">wind_bus_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">_bus_from_gen</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gen_sets</span><span class="p">[</span><span class="s2">"Wind"</span><span class="p">]}</span>
+    <span class="n">offshorewind_bus_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">_bus_from_gen</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gen_sets</span><span class="p">[</span><span class="s2">"OffshoreWind"</span><span class="p">]}</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Must-run (nuclear/other must-run units): constant per node</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">sim_must_run</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">df_must_run</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">bus_col</span> <span class="ow">in</span> <span class="n">df_must_run</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">sim_must_run</span><span class="p">[</span><span class="n">bus_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">df_must_run</span><span class="p">[</span><span class="n">bus_col</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Nuclear generator list (for must-run capacity loss adjustment)</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">nucs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+        <span class="n">df_thermal</span><span class="p">[</span><span class="n">df_thermal</span><span class="p">[</span><span class="s2">"Fuel"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"NUC (Nuclear)"</span><span class="p">][</span><span class="s2">"Name"</span><span class="p">]</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Assemble and return the sim dict</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">sim</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1"># Sets</span>
+        <span class="s2">"gen_sets"</span><span class="p">:</span>             <span class="n">gen_sets</span><span class="p">,</span>
+        <span class="s2">"outage_group_sets"</span><span class="p">:</span>    <span class="n">loss_dict</span><span class="p">,</span> <span class="c1"># {group: [gen_names]} </span>
+        <span class="s2">"buses"</span><span class="p">:</span>                <span class="n">buses</span><span class="p">,</span>
+        <span class="s2">"lines"</span><span class="p">:</span>                <span class="n">lines</span><span class="p">,</span>
+        <span class="s2">"storage_units"</span><span class="p">:</span>        <span class="n">storage_units</span><span class="p">,</span>
+        <span class="c1"># Static params</span>
+        <span class="s2">"gen_params"</span><span class="p">:</span>           <span class="n">gen_params</span><span class="p">,</span>
+        <span class="s2">"line_params"</span><span class="p">:</span>          <span class="n">line_params</span><span class="p">,</span>
+        <span class="s2">"storage_params"</span><span class="p">:</span>       <span class="n">storage_params</span><span class="p">,</span>
+        <span class="c1"># Sparse mapping dicts</span>
+        <span class="s2">"bus_to_unit_map"</span><span class="p">:</span>      <span class="n">bus_to_unit_map</span><span class="p">,</span>
+        <span class="s2">"line_to_bus_map"</span><span class="p">:</span>      <span class="n">line_to_bus_map</span><span class="p">,</span>
+        <span class="s2">"bus_to_storage_map"</span><span class="p">:</span>   <span class="n">bus_to_storage_map</span><span class="p">,</span>
+        <span class="c1"># Time-series DataFrames (0-indexed rows)</span>
+        <span class="s2">"df_demand"</span><span class="p">:</span>            <span class="n">df_load</span><span class="p">,</span>
+        <span class="s2">"df_hydro_max"</span><span class="p">:</span>         <span class="n">df_hydro_max</span><span class="p">,</span>
+        <span class="s2">"df_hydro_min"</span><span class="p">:</span>         <span class="n">df_hydro_min</span><span class="p">,</span>
+        <span class="s2">"df_hydro_total"</span><span class="p">:</span>       <span class="n">df_hydro_total</span><span class="p">,</span>
+        <span class="s2">"df_solar"</span><span class="p">:</span>             <span class="n">df_solar</span><span class="p">,</span>
+        <span class="s2">"df_wind"</span><span class="p">:</span>              <span class="n">df_wind</span><span class="p">,</span>
+        <span class="s2">"df_offshorewind"</span><span class="p">:</span>      <span class="n">df_offshorewind</span><span class="p">,</span>
+        <span class="s2">"df_fuel_prices"</span><span class="p">:</span>       <span class="n">df_fuel_prices</span><span class="p">,</span>
+        <span class="s2">"df_losses"</span><span class="p">:</span>            <span class="n">df_losses</span><span class="p">,</span> <span class="c1"># Time column is the int index</span>
+        <span class="c1"># Generator → bus lookup for renewable/hydro time series</span>
+        <span class="s2">"hydro_bus_map"</span><span class="p">:</span>        <span class="n">hydro_bus_map</span><span class="p">,</span>
+        <span class="s2">"solar_bus_map"</span><span class="p">:</span>        <span class="n">solar_bus_map</span><span class="p">,</span>
+        <span class="s2">"wind_bus_map"</span><span class="p">:</span>         <span class="n">wind_bus_map</span><span class="p">,</span>
+        <span class="s2">"offshorewind_bus_map"</span><span class="p">:</span> <span class="n">offshorewind_bus_map</span><span class="p">,</span>
+        <span class="c1"># Must-run and nuclear</span>
+        <span class="s2">"sim_must_run"</span><span class="p">:</span>         <span class="n">sim_must_run</span><span class="p">,</span>
+        <span class="s2">"nucs"</span><span class="p">:</span>                 <span class="n">nucs</span><span class="p">,</span>
+        <span class="s2">"loss_dict"</span><span class="p">:</span>            <span class="n">loss_dict</span><span class="p">,</span>
+        <span class="c1"># Initial states (populated/updated per horizon in the launch loop)</span>
+        <span class="s2">"initial_gen"</span><span class="p">:</span>          <span class="p">{},</span> <span class="c1"># {gen: mwh_val} – filled before first horizon</span>
+        <span class="s2">"initial_soc"</span><span class="p">:</span>          <span class="p">{},</span> <span class="c1"># {storage: soc_val} – filled before first horizon</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">sim</span></div>
+
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># Horizon-parameter updater</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_update_horizon_params</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">sim_data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+    <span class="n">horizon_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">horizon_hours</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Slices simulation arrays for horizon *horizon_idx* and assign values</span>
+<span class="sd">    to all mutable Pyomo parameters in *model*.</span>
+
+<span class="sd">    Also, applies historical capacity-loss adjustments to ``HorizonGenLimit``</span>
+<span class="sd">    and nuclear outage adjustments to ``HorizonMustrunLimit``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model:</span>
+<span class="sd">        The active ConcreteModel whose mutable Params are updated in-place.</span>
+<span class="sd">    sim_data:</span>
+<span class="sd">        Dict returned by :func:`load_simulation_data`.</span>
+<span class="sd">    horizon_idx:</span>
+<span class="sd">        Zero-based horizon counter (0 = first horizon, 1 = second horizon, …).</span>
+<span class="sd">    horizon_hours:</span>
+<span class="sd">        Number of hours in the horizon (by default 24).</span>
+<span class="sd">    """</span>
+    <span class="c1"># Absolute hour indices for this horizon window (0-indexed for DataFrames)</span>
+    <span class="n">h_start_0idx</span> <span class="o">=</span> <span class="n">horizon_idx</span> <span class="o">*</span> <span class="n">horizon_hours</span>
+    <span class="c1"># 1-indexed hours used to access the losses DataFrame (Time index starts at 1)</span>
+    <span class="n">h_start_1idx</span> <span class="o">=</span> <span class="n">h_start_0idx</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1"># 0-indexed day of the first hour in this horizon (for daily-resolution data)</span>
+    <span class="n">day_0idx</span> <span class="o">=</span> <span class="n">h_start_0idx</span> <span class="o">//</span> <span class="mi">24</span>
+
+    <span class="c1"># Number of full calendar days covered by this horizon (for hydro totals)</span>
+    <span class="n">n_horizon_days</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">horizon_hours</span> <span class="o">//</span> <span class="mi">24</span><span class="p">)</span>
+
+    <span class="c1"># Pre-slice the large time-series DataFrames for this horizon window.</span>
+    <span class="n">h_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">h_start_0idx</span><span class="p">,</span> <span class="n">h_start_0idx</span> <span class="o">+</span> <span class="n">horizon_hours</span><span class="p">)</span>
+    <span class="n">demand_slice</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"df_demand"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">h_slice</span><span class="p">]</span>
+    <span class="n">solar_slice</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"df_solar"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">h_slice</span><span class="p">]</span>
+    <span class="n">wind_slice</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"df_wind"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">h_slice</span><span class="p">]</span>
+    <span class="n">offshorewind_slice</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"df_offshorewind"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">h_slice</span><span class="p">]</span>
+    <span class="n">df_losses</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"df_losses"</span><span class="p">]</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Demand (hourly resolution, per bus)</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">demand_slice</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">buses</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">HorizonDemand</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Fuel prices (daily resolution → per thermal generator)</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">fp_row</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"df_fuel_prices"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">day_0idx</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Thermal</span><span class="p">:</span>
+        <span class="n">_fp</span> <span class="o">=</span> <span class="n">fp_row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">_fp</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Fuel price for generator </span><span class="si">{</span><span class="n">g</span><span class="si">}</span><span class="s2"> not found in fuel_prices_file."</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_fp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">_fp</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">FuelPrice</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="n">_fp</span><span class="p">)</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Hydro limits</span>
+    <span class="c1"># For each hydro generator the relevant time-series column is the bus</span>
+    <span class="c1"># that the generator is located at (hydro_bus_map).</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">hydro_bus_map</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"hydro_bus_map"</span><span class="p">]</span>
+    <span class="n">df_hydro_max</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"df_hydro_max"</span><span class="p">]</span>
+    <span class="n">df_hydro_min</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"df_hydro_min"</span><span class="p">]</span>
+    <span class="n">df_hydro_total</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"df_hydro_total"</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Hydro</span><span class="p">:</span>
+        <span class="n">bus</span> <span class="o">=</span> <span class="n">hydro_bus_map</span><span class="p">[</span><span class="n">g</span><span class="p">]</span>
+        <span class="n">_hmax</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">df_hydro_max</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">day_0idx</span><span class="p">][</span><span class="n">bus</span><span class="p">])</span>
+        <span class="n">_hmin</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">df_hydro_min</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">day_0idx</span><span class="p">][</span><span class="n">bus</span><span class="p">])</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">HorizonHydro_MAX</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="n">_hmax</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">HorizonHydro_MIN</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="n">_hmin</span><span class="p">)</span>
+        <span class="c1"># Sum daily energy budgets over all days in this horizon</span>
+        <span class="n">_htotal</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="nb">float</span><span class="p">(</span><span class="n">df_hydro_total</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">day_0idx</span> <span class="o">+</span> <span class="n">d</span><span class="p">][</span><span class="n">bus</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_horizon_days</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">HorizonHydro_TOTAL</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="n">_htotal</span><span class="p">)</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Solar</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">solar_bus_map</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"solar_bus_map"</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Solar</span><span class="p">:</span>
+        <span class="n">bus</span> <span class="o">=</span> <span class="n">solar_bus_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bus</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">HorizonSolar</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">solar_slice</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">bus</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Wind</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">wind_bus_map</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"wind_bus_map"</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Wind</span><span class="p">:</span>
+        <span class="n">bus</span> <span class="o">=</span> <span class="n">wind_bus_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bus</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">HorizonWind</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">wind_slice</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">bus</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Offshore wind</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">offshorewind_bus_map</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"offshorewind_bus_map"</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">OffshoreWind</span><span class="p">:</span>
+        <span class="n">bus</span> <span class="o">=</span> <span class="n">offshorewind_bus_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bus</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">HorizonOffshoreWind</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">offshorewind_slice</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">bus</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># HorizonGenLimit: base = maxcap; losses subtracted afterwards</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">gp</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"gen_params"</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Outage</span><span class="p">:</span>
+        <span class="n">base_cap</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="n">gp</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s2">"maxcap"</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">HorizonGenLimit</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">base_cap</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Must-run limit (constant per bus, then nuclear loss subtracted afterwards)</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">sim_must_run</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"sim_must_run"</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">buses</span><span class="p">:</span>
+        <span class="n">base_mr</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="n">sim_must_run</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">HorizonMustrunLimit</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">base_mr</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Capacity-loss adjustments for each outage group</span>
+    <span class="c1"># loss_dict maps: group_name → list of generator names in that group</span>
+    <span class="c1"># The entire group's loss for a given hour is spread equally across</span>
+    <span class="c1"># all generators in the group.</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">loss_dict</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"loss_dict"</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">gen_list</span> <span class="ow">in</span> <span class="n">loss_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">n_in_group</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">gen_list</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n_in_group</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="c1"># Retrieve the Pyomo set for this outage group</span>
+        <span class="n">group_set</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">group_set</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">group_set</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+                <span class="n">abs_h</span> <span class="o">=</span> <span class="n">h_start_1idx</span> <span class="o">+</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># 1-indexed absolute hour</span>
+                <span class="n">loss</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">df_losses</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">abs_h</span><span class="p">,</span> <span class="n">group_name</span><span class="p">])</span> <span class="o">/</span> <span class="n">n_in_group</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">HorizonGenLimit</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">])</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">HorizonGenLimit</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">current</span> <span class="o">-</span> <span class="n">loss</span><span class="p">))</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Nuclear capacity-loss adjustment applied to all nodes' must-run limit.</span>
+    <span class="c1"># Only Nuclear_ovr_1000 column is used (matching original model behaviour).</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">nucs</span> <span class="o">=</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"nucs"</span><span class="p">]</span>
+    <span class="n">n_nucs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nucs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n_nucs</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">buses</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+                <span class="n">abs_h</span> <span class="o">=</span> <span class="n">h_start_1idx</span> <span class="o">+</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># 1-indexed absolute hour</span>
+                <span class="n">nuc_loss</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">df_losses</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">abs_h</span><span class="p">,</span> <span class="s2">"Nuclear_ovr_1000"</span><span class="p">])</span> <span class="o">/</span> <span class="n">n_nucs</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">HorizonMustrunLimit</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">])</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">HorizonMustrunLimit</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">current</span> <span class="o">-</span> <span class="n">nuc_loss</span><span class="p">))</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Ramp-down relaxation for forced capacity reductions</span>
+    <span class="c1"># Only Coal/Gas generators (model.Outage) have outage adjustments; all</span>
+    <span class="c1"># other Thermal generators have OutageAllowance = 0.</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Outage</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">prev_cap</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">InitialMwh</span><span class="p">[</span><span class="n">g</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">prev_cap</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">HorizonGenLimit</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+            <span class="n">curr_cap</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">HorizonGenLimit</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">])</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">OutageAllowance</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">prev_cap</span> <span class="o">-</span> <span class="n">curr_cap</span><span class="p">))</span>
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># Main launch function</span>
+<span class="c1"># ===========================================================================</span>
+
+<div class="viewcode-block" id="west_linear">
+<a class="viewcode-back" href="../../../api.html#gridops.west.launch.west_linear">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">west_linear</span><span class="p">(</span>
+    <span class="n">config_file</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="n">solver_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"appsi_highs"</span><span class="p">,</span>
+    <span class="n">solver_params</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">warmstart</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">n_days</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">365</span><span class="p">,</span>
+    <span class="n">horizon_hours</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="n">restart_day</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">save_restart_file</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">break_run</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">restart_write_frequency</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">fresh_start</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">clear_restart</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Run the U.S. Western Interconnection economic dispatch model.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    config_file:</span>
+<span class="sd">        Path to the YAML model configuration file.</span>
+<span class="sd">    solver_name:</span>
+<span class="sd">        Solver interface to be used. Default ``"appsi_highs"``.</span>
+<span class="sd">    solver_params:</span>
+<span class="sd">        Dict of solver options (option_name → value). ``None`` = solver</span>
+<span class="sd">        built-in defaults.</span>
+<span class="sd">    n_days:</span>
+<span class="sd">        Total number of simulation days to process. The function stops after</span>
+<span class="sd">        ``n_days * 24 / horizon_hours`` horizons. Default 365.</span>
+<span class="sd">    horizon_hours:</span>
+<span class="sd">        Length of each optimization horizon in hours. Default 24.</span>
+<span class="sd">    restart_day:</span>
+<span class="sd">        Specific day whose restart file should be used as the starting point.</span>
+<span class="sd">        ``None`` = use the latest available restart file (or start fresh if</span>
+<span class="sd">        none exist).</span>
+<span class="sd">    save_restart_file:</span>
+<span class="sd">        If ``True``, write a restart file periodically (controlled by</span>
+<span class="sd">        *restart_write_frequency*). Default ``True``.</span>
+<span class="sd">    break_run:</span>
+<span class="sd">        If ``True``, run exactly one horizon and return. Used internally by</span>
+<span class="sd">        the solver-retry mechanism. Default ``False``.</span>
+<span class="sd">    restart_write_frequency:</span>
+<span class="sd">        Write a restart file every this many solved horizons. Default 30.</span>
+<span class="sd">    fresh_start:</span>
+<span class="sd">        If ``True``, delete all existing restart files before starting the</span>
+<span class="sd">        simulation so it always begins from scratch. Default ``False``.</span>
+<span class="sd">    clear_restart:</span>
+<span class="sd">        If ``True``, delete all restart files after all *n_days* have been</span>
+<span class="sd">        solved successfully. Files are kept if the simulation fails before</span>
+<span class="sd">        completion. Default ``True``.</span>
+<span class="sd">    **kwargs:</span>
+<span class="sd">        Extra keyword arguments forwarded to</span>
+<span class="sd">        :func:`~gridops.configuration.generate_config`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int</span>
+<span class="sd">        The 1-based index of the last successfully solved **day** (for</span>
+<span class="sd">        compatibility with the ``Model`` class retry logic).</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    RuntimeError</span>
+<span class="sd">        If the solver fails to find an optimal solution for any horizon.</span>
+<span class="sd">    AssertionError</span>
+<span class="sd">        If *n_days* is less than the implied start day from the restart file.</span>
+<span class="sd">    """</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Preparing the U.S. Western Interconnection economic dispatch simulation."</span><span class="p">)</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Configuration</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">configuration</span><span class="o">.</span><span class="n">generate_config</span><span class="p">(</span><span class="n">config_file</span><span class="o">=</span><span class="n">config_file</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Ensure the restart directory exists</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">restart_file_directory</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Fresh start: wipe any previous restart files</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="k">if</span> <span class="n">fresh_start</span><span class="p">:</span>
+        <span class="n">clear_restart_files</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">restart_file_directory</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"fresh_start=True - All prior restart files deleted."</span><span class="p">)</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Solver</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">opt</span> <span class="o">=</span> <span class="n">GoSolver</span><span class="p">(</span>
+        <span class="n">solver_name</span><span class="o">=</span><span class="n">solver_name</span><span class="p">,</span>
+        <span class="n">solver_params</span><span class="o">=</span><span class="n">solver_params</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">go_solver</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Total number of horizons to solve</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">n_total_hours</span> <span class="o">=</span> <span class="n">n_days</span> <span class="o">*</span> <span class="mi">24</span>
+    <span class="n">n_horizons</span> <span class="o">=</span> <span class="n">n_total_hours</span> <span class="o">//</span> <span class="n">horizon_hours</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Restart or fresh start</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">restart_file</span> <span class="o">=</span> <span class="n">get_restart_file</span><span class="p">(</span>
+        <span class="nb">dir</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">restart_file_directory</span><span class="p">,</span>
+        <span class="n">day</span><span class="o">=</span><span class="n">restart_day</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Accumulator lists for the optimization results</span>
+    <span class="n">mwh</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">flow</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">slack</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">vlt_angle</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">duals</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">charge</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">discharge</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">soc</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># Per-horizon solver parameters</span>
+    <span class="n">solver_parameters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">if</span> <span class="n">restart_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># -------------------------------------------------------------------</span>
+        <span class="c1"># Fresh start: load data and build the ConcreteModel</span>
+        <span class="c1"># -------------------------------------------------------------------</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"No restart file found - Starting from the first horizon."</span><span class="p">)</span>
+        <span class="n">start_horizon</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">sim_data</span> <span class="o">=</span> <span class="n">load_simulation_data</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="c1"># Initialise boundary conditions for hour 0</span>
+        <span class="c1"># Generation: 0 MW for all Dispatchable generators</span>
+        <span class="c1"># SoC: min_SoC for all Storage units (first-horizon initial state)</span>
+        <span class="c1"># These are stored in sim_data so they persist across horizons.</span>
+        <span class="n">sim_data</span><span class="p">[</span><span class="s2">"initial_gen"</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>    <span class="c1"># all zeros → will be set by model fix</span>
+        <span class="n">sim_data</span><span class="p">[</span><span class="s2">"initial_soc"</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">s</span><span class="p">:</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"storage_params"</span><span class="p">][</span><span class="n">s</span><span class="p">][</span><span class="s2">"min_SoC"</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"storage_units"</span><span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">build_west_linear</span><span class="p">(</span><span class="n">sim_data</span><span class="p">,</span> <span class="n">horizon_hours</span><span class="o">=</span><span class="n">horizon_hours</span><span class="p">)</span>
+        <span class="n">restart_data</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># No prior restart to carry forward</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># -------------------------------------------------------------------</span>
+        <span class="c1"># Warm restart: Restore model and result accumulators from pickle</span>
+        <span class="c1"># -------------------------------------------------------------------</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Loading restart file: </span><span class="si">{</span><span class="n">restart_file</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">restart_file</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+            <span class="n">restart_data</span> <span class="o">=</span> <span class="n">cloudpickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">restart_data</span><span class="p">[</span><span class="s2">"model"</span><span class="p">]</span>
+        <span class="n">mwh</span> <span class="o">=</span> <span class="n">restart_data</span><span class="p">[</span><span class="s2">"mwh"</span><span class="p">]</span>
+        <span class="n">flow</span> <span class="o">=</span> <span class="n">restart_data</span><span class="p">[</span><span class="s2">"flow"</span><span class="p">]</span>
+        <span class="n">slack</span> <span class="o">=</span> <span class="n">restart_data</span><span class="p">[</span><span class="s2">"slack"</span><span class="p">]</span>
+        <span class="n">vlt_angle</span> <span class="o">=</span> <span class="n">restart_data</span><span class="p">[</span><span class="s2">"vlt_angle"</span><span class="p">]</span>
+        <span class="n">duals</span> <span class="o">=</span> <span class="n">restart_data</span><span class="p">[</span><span class="s2">"duals"</span><span class="p">]</span>
+        <span class="n">charge</span> <span class="o">=</span> <span class="n">restart_data</span><span class="p">[</span><span class="s2">"charge"</span><span class="p">]</span>
+        <span class="n">discharge</span> <span class="o">=</span> <span class="n">restart_data</span><span class="p">[</span><span class="s2">"discharge"</span><span class="p">]</span>
+        <span class="n">soc</span> <span class="o">=</span> <span class="n">restart_data</span><span class="p">[</span><span class="s2">"soc"</span><span class="p">]</span>
+        <span class="n">sim_data</span> <span class="o">=</span> <span class="n">restart_data</span><span class="p">[</span><span class="s2">"sim_data"</span><span class="p">]</span>
+        <span class="n">solver_parameters</span> <span class="o">=</span> <span class="n">restart_data</span><span class="p">[</span><span class="s2">"solver_parameters"</span><span class="p">]</span>
+
+        <span class="c1"># The restart records the last completed day; start one horizon after it.</span>
+        <span class="n">last_day</span> <span class="o">=</span> <span class="n">restart_data</span><span class="p">[</span><span class="s2">"day"</span><span class="p">]</span>
+        <span class="n">start_horizon</span> <span class="o">=</span> <span class="p">(</span><span class="n">last_day</span> <span class="o">*</span> <span class="mi">24</span><span class="p">)</span> <span class="o">//</span> <span class="n">horizon_hours</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Resuming from horizon </span><span class="si">{</span><span class="n">start_horizon</span><span class="si">}</span><span class="s2"> (after day </span><span class="si">{</span><span class="n">last_day</span><span class="si">}</span><span class="s2">)."</span><span class="p">)</span>
+
+    <span class="c1"># Validate that we still have horizons left to solve.</span>
+    <span class="n">start_day</span> <span class="o">=</span> <span class="p">(</span><span class="n">start_horizon</span> <span class="o">*</span> <span class="n">horizon_hours</span><span class="p">)</span> <span class="o">//</span> <span class="mi">24</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">n_days</span> <span class="o">&lt;</span> <span class="n">start_day</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"n_days (</span><span class="si">{</span><span class="n">n_days</span><span class="si">}</span><span class="s2">) must be ≥ the start day (</span><span class="si">{</span><span class="n">start_day</span><span class="si">}</span><span class="s2">). "</span>
+            <span class="s2">"n_days represents the last calendar day to process."</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Pre-build a generator-type lookup to avoid repeated set membership tests.</span>
+    <span class="n">gen_type_lookup</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">fuel_type</span><span class="p">,</span> <span class="n">gen_list</span> <span class="ow">in</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"gen_sets"</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gen_list</span><span class="p">:</span>
+            <span class="n">gen_type_lookup</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="n">fuel_type</span>
+
+    <span class="c1"># Buses with must-run (nuclear) capacity.</span>
+    <span class="n">must_run_buses</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">b</span> <span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">cap</span> <span class="ow">in</span> <span class="n">sim_data</span><span class="p">[</span><span class="s2">"sim_must_run"</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">cap</span> <span class="o">&gt;</span> <span class="mf">0.0</span>
+    <span class="p">]</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Horizon loop</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">last_solved_horizon</span> <span class="o">=</span> <span class="n">start_horizon</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># track last successfully completed horizon</span>
+
+    <span class="k">for</span> <span class="n">horizon_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_horizon</span><span class="p">,</span> <span class="n">n_horizons</span><span class="p">):</span>
+        <span class="c1"># Map horizon index back to a 1-based day number for logging/restart</span>
+        <span class="n">current_day</span> <span class="o">=</span> <span class="p">(</span><span class="n">horizon_idx</span> <span class="o">*</span> <span class="n">horizon_hours</span><span class="p">)</span> <span class="o">//</span> <span class="mi">24</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"Horizon </span><span class="si">{</span><span class="n">horizon_idx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">n_horizons</span><span class="si">}</span><span class="s2">  (day </span><span class="si">{</span><span class="n">current_day</span><span class="si">}</span><span class="s2">, hours </span><span class="si">{</span><span class="n">horizon_idx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">horizon_hours</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="p">(</span><span class="n">horizon_idx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">horizon_hours</span><span class="si">}</span><span class="s2">)"</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Record solver parameters for this horizon</span>
+        <span class="n">solver_parameters</span><span class="p">[</span><span class="n">horizon_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">solver_params</span>
+
+        <span class="c1"># ---------------------------------------------------------------</span>
+        <span class="c1"># Clear HiGHS solver state before horizon 2+ when warm start is</span>
+        <span class="c1"># disabled.  This avoids expensive internal basis reconciliation</span>
+        <span class="c1"># after parameter changes and forces a fresh presolve+solve.</span>
+        <span class="c1"># ---------------------------------------------------------------</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">horizon_idx</span> <span class="o">&gt;</span> <span class="n">start_horizon</span>
+            <span class="ow">and</span> <span class="n">solver_name</span> <span class="o">==</span> <span class="s2">"appsi_highs"</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="n">warmstart</span>
+        <span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">opt</span><span class="o">.</span><span class="n">_solver_model</span><span class="o">.</span><span class="n">clearSolver</span><span class="p">()</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">"Horizon </span><span class="si">{</span><span class="n">horizon_idx</span><span class="si">}</span><span class="s2">: Cleared HiGHS solver state (warmstart=False)."</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">"Horizon </span><span class="si">{</span><span class="n">horizon_idx</span><span class="si">}</span><span class="s2">: clearSolver failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span>
+                <span class="p">)</span>
+
+        <span class="c1"># ---------------------------------------------------------------</span>
+        <span class="c1"># Update mutable Pyomo parameters for this horizon window</span>
+        <span class="c1"># ---------------------------------------------------------------</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Horizon </span><span class="si">{</span><span class="n">horizon_idx</span><span class="si">}</span><span class="s2">: Updating parameters."</span><span class="p">)</span>
+        <span class="n">_update_horizon_params</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">sim_data</span><span class="p">,</span> <span class="n">horizon_idx</span><span class="p">,</span> <span class="n">horizon_hours</span><span class="p">)</span>
+
+        <span class="c1"># ---------------------------------------------------------------</span>
+        <span class="c1"># Ramp constraint at t=1: skip for the very first horizon (no prior</span>
+        <span class="c1"># dispatch history); enforce from horizon 1 onward using the</span>
+        <span class="c1"># InitialMwh carry-forward values.</span>
+        <span class="c1"># ---------------------------------------------------------------</span>
+        <span class="k">if</span> <span class="n">horizon_idx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Thermal</span><span class="p">:</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">RampCon1</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">deactivate</span><span class="p">()</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">RampCon2</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">deactivate</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">horizon_idx</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Thermal</span><span class="p">:</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">RampCon1</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">RampCon2</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
+
+        <span class="c1"># ---------------------------------------------------------------</span>
+        <span class="c1"># Solve</span>
+        <span class="c1"># ---------------------------------------------------------------</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Horizon </span><span class="si">{</span><span class="n">horizon_idx</span><span class="si">}</span><span class="s2">: Starting optimization."</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span>
+                <span class="n">model</span><span class="p">,</span>
+                <span class="n">tee</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">symbolic_solver_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">solve_err</span><span class="p">:</span>
+            <span class="c1"># APPSI raises an error when load_solutions=True and the</span>
+            <span class="c1"># solver cannot find a feasible solution. Save a restart for the</span>
+            <span class="c1"># previous horizon before re-raising so retry can pick up.</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Horizon </span><span class="si">{</span><span class="n">horizon_idx</span><span class="si">}</span><span class="s2">: Solver raised an error - </span><span class="si">{</span><span class="n">solve_err</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">save_restart_file</span> <span class="ow">and</span> <span class="n">restart_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">write_restart_file</span><span class="p">(</span>
+                    <span class="nb">dir</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">restart_file_directory</span><span class="p">,</span>
+                    <span class="n">day</span><span class="o">=</span><span class="n">current_day</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="n">restart_data</span><span class="o">=</span><span class="n">restart_data</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Optimization failed at horizon </span><span class="si">{</span><span class="n">horizon_idx</span><span class="si">}</span><span class="s2"> "</span>
+                <span class="sa">f</span><span class="s2">"(day </span><span class="si">{</span><span class="n">current_day</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">solve_err</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">solve_err</span>
+
+        <span class="c1"># Check optimality</span>
+        <span class="n">term_cond</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">termination_condition</span>
+        <span class="n">status</span>    <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">status</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">term_cond</span> <span class="o">!=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">TerminationCondition</span><span class="o">.</span><span class="n">optimal</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
+            <span class="n">status</span> <span class="o">!=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">SolverStatus</span><span class="o">.</span><span class="n">ok</span>
+        <span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Horizon </span><span class="si">{</span><span class="n">horizon_idx</span><span class="si">}</span><span class="s2"> failed - Termination: </span><span class="si">{</span><span class="n">term_cond</span><span class="si">}</span><span class="s2">, status: </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">."</span>
+            <span class="p">)</span>
+            <span class="c1"># Write restart for the *previous* horizon before raising</span>
+            <span class="k">if</span> <span class="n">save_restart_file</span> <span class="ow">and</span> <span class="n">restart_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">write_restart_file</span><span class="p">(</span>
+                    <span class="nb">dir</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">restart_file_directory</span><span class="p">,</span>
+                    <span class="n">day</span><span class="o">=</span><span class="n">current_day</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="n">restart_data</span><span class="o">=</span><span class="n">restart_data</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Optimization failed at horizon </span><span class="si">{</span><span class="n">horizon_idx</span><span class="si">}</span><span class="s2"> "</span>
+                <span class="sa">f</span><span class="s2">"(day </span><span class="si">{</span><span class="n">current_day</span><span class="si">}</span><span class="s2">) with termination '</span><span class="si">{</span><span class="n">term_cond</span><span class="si">}</span><span class="s2">'."</span>
+            <span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Horizon </span><span class="si">{</span><span class="n">horizon_idx</span><span class="si">}</span><span class="s2">: Optimization complete."</span><span class="p">)</span>
+
+        <span class="n">instance</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="c1"># ---------------------------------------------------------------</span>
+        <span class="c1"># Extract results (with integrated negative-generation check)</span>
+        <span class="c1"># ---------------------------------------------------------------</span>
+        <span class="n">abs_hour_offset</span> <span class="o">=</span> <span class="n">horizon_idx</span> <span class="o">*</span> <span class="n">horizon_hours</span>
+
+        <span class="c1"># Must-run (nuclear) output: not a decision variable, so record the</span>
+        <span class="c1"># outage-adjusted HorizonMustrunLimit that enters the bus balance.</span>
+        <span class="c1"># Only buses with positive base must-run capacity are reported.</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">must_run_buses</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">b</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">buses</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+                <span class="n">abs_h</span> <span class="o">=</span> <span class="n">abs_hour_offset</span> <span class="o">+</span> <span class="n">t</span>
+                <span class="n">mwh</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">b</span><span class="si">}{</span><span class="n">MUST_RUN_NAME_SUFFIX</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+                        <span class="n">MUST_RUN_TYPE</span><span class="p">,</span>
+                        <span class="n">abs_h</span><span class="p">,</span>
+                        <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">HorizonMustrunLimit</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">]),</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+        <span class="c1"># Generator dispatch (mwh) — includes negative-generation sanity check</span>
+        <span class="n">has_negative_gen</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">Generators</span><span class="p">:</span>
+            <span class="n">fuel_type</span> <span class="o">=</span> <span class="n">gen_type_lookup</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s2">"Unknown"</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+                <span class="n">abs_h</span> <span class="o">=</span> <span class="n">abs_hour_offset</span> <span class="o">+</span> <span class="n">t</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">])</span>
+                <span class="n">mwh</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">g</span><span class="p">,</span> <span class="n">fuel_type</span><span class="p">,</span> <span class="n">abs_h</span><span class="p">,</span> <span class="n">val</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">1e-3</span><span class="p">:</span>
+                    <span class="n">has_negative_gen</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">"Negative generation: mwh[</span><span class="si">{</span><span class="n">g</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">] = </span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> at horizon </span><span class="si">{</span><span class="n">horizon_idx</span><span class="si">}</span><span class="s2">."</span>
+                    <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">has_negative_gen</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">save_restart_file</span> <span class="ow">and</span> <span class="n">restart_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">write_restart_file</span><span class="p">(</span>
+                    <span class="nb">dir</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">restart_file_directory</span><span class="p">,</span>
+                    <span class="n">day</span><span class="o">=</span><span class="n">current_day</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="n">restart_data</span><span class="o">=</span><span class="n">restart_data</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Negative generation detected at horizon </span><span class="si">{</span><span class="n">horizon_idx</span><span class="si">}</span><span class="s2"> "</span>
+                <span class="sa">f</span><span class="s2">"(day </span><span class="si">{</span><span class="n">current_day</span><span class="si">}</span><span class="s2">)."</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Node-level results: duals (LMPs), voltage angles, and slack</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">buses</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+                <span class="n">abs_h</span> <span class="o">=</span> <span class="n">abs_hour_offset</span> <span class="o">+</span> <span class="n">t</span>
+                <span class="n">duals</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">b</span><span class="p">,</span> <span class="n">abs_h</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">instance</span><span class="o">.</span><span class="n">Bus_Constraint</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">]]))</span>
+                <span class="n">vlt_angle</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">b</span><span class="p">,</span> <span class="n">abs_h</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">Theta</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">])))</span>
+                <span class="n">slack</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">b</span><span class="p">,</span> <span class="n">abs_h</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">S</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">])))</span>
+
+        <span class="c1"># Transmission line flows</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">lines</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+                <span class="n">abs_h</span> <span class="o">=</span> <span class="n">abs_hour_offset</span> <span class="o">+</span> <span class="n">t</span>
+                <span class="n">flow</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">l</span><span class="p">,</span> <span class="n">abs_h</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">Flow</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">t</span><span class="p">])))</span>
+
+        <span class="c1"># Storage: SoC, charge, and discharge in a single loop</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">Storage</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">time_periods</span><span class="p">:</span>
+                <span class="n">abs_h</span> <span class="o">=</span> <span class="n">abs_hour_offset</span> <span class="o">+</span> <span class="n">t</span>
+                <span class="n">soc</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">abs_h</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">SoC</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">])))</span>
+                <span class="n">charge</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">abs_h</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">Charge</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">])))</span>
+                <span class="n">discharge</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">abs_h</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">Discharge</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">])))</span>
+
+        <span class="c1"># ---------------------------------------------------------------</span>
+        <span class="c1"># Pass state variables to the next horizon (mutable param update)</span>
+        <span class="c1"># ---------------------------------------------------------------</span>
+
+        <span class="c1"># Thermal generation at the last hour becomes the initial</span>
+        <span class="c1"># generation (InitialMwh) for the following horizon's ramp constraints.</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">Thermal</span><span class="p">:</span>
+            <span class="n">raw_val</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">horizon_hours</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="n">raw_val</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">raw_val</span><span class="p">)</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">InitialMwh</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+
+        <span class="c1"># Storage SoC at the last hour becomes InitialSoC for the next horizon.</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">Storage</span><span class="p">:</span>
+            <span class="n">raw_val</span> <span class="o">=</span> <span class="n">_snap</span><span class="p">(</span><span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">SoC</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">horizon_hours</span><span class="p">]))</span>
+            <span class="n">min_s</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">min_SoC</span><span class="p">[</span><span class="n">s</span><span class="p">])</span>
+            <span class="n">max_s</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">max_SoC</span><span class="p">[</span><span class="n">s</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">raw_val</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">raw_val</span> <span class="o">&lt;</span> <span class="n">min_s</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">min_s</span>
+            <span class="k">elif</span> <span class="n">raw_val</span> <span class="o">&gt;</span> <span class="n">max_s</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">max_s</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">raw_val</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">InitialSoC</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+
+        <span class="n">last_solved_horizon</span> <span class="o">=</span> <span class="n">horizon_idx</span>
+
+        <span class="c1"># ---------------------------------------------------------------</span>
+        <span class="c1"># Periodic restart file</span>
+        <span class="c1"># ---------------------------------------------------------------</span>
+        <span class="k">if</span> <span class="n">save_restart_file</span><span class="p">:</span>
+            <span class="n">restart_data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">"model"</span><span class="p">:</span>             <span class="n">model</span><span class="p">,</span>
+                <span class="s2">"mwh"</span><span class="p">:</span>               <span class="n">mwh</span><span class="p">,</span>
+                <span class="s2">"flow"</span><span class="p">:</span>              <span class="n">flow</span><span class="p">,</span>
+                <span class="s2">"slack"</span><span class="p">:</span>             <span class="n">slack</span><span class="p">,</span>
+                <span class="s2">"vlt_angle"</span><span class="p">:</span>         <span class="n">vlt_angle</span><span class="p">,</span>
+                <span class="s2">"duals"</span><span class="p">:</span>             <span class="n">duals</span><span class="p">,</span>
+                <span class="s2">"charge"</span><span class="p">:</span>            <span class="n">charge</span><span class="p">,</span>
+                <span class="s2">"discharge"</span><span class="p">:</span>         <span class="n">discharge</span><span class="p">,</span>
+                <span class="s2">"soc"</span><span class="p">:</span>               <span class="n">soc</span><span class="p">,</span>
+                <span class="s2">"sim_data"</span><span class="p">:</span>          <span class="n">sim_data</span><span class="p">,</span>
+                <span class="s2">"solver_parameters"</span><span class="p">:</span> <span class="n">solver_parameters</span><span class="p">,</span>
+                <span class="s2">"day"</span><span class="p">:</span>               <span class="n">current_day</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">horizon_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">restart_write_frequency</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">write_restart_file</span><span class="p">(</span>
+                    <span class="nb">dir</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">restart_file_directory</span><span class="p">,</span>
+                    <span class="n">day</span><span class="o">=</span><span class="n">current_day</span><span class="p">,</span>
+                    <span class="n">restart_data</span><span class="o">=</span><span class="n">restart_data</span><span class="p">,</span>
+                <span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Horizon </span><span class="si">{</span><span class="n">horizon_idx</span><span class="si">}</span><span class="s2"> (day </span><span class="si">{</span><span class="n">current_day</span><span class="si">}</span><span class="s2">) completed."</span><span class="p">)</span>
+
+        <span class="c1"># Break after one horizon if requested (used by retry mode)</span>
+        <span class="k">if</span> <span class="n">break_run</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Save outputs as Parquet files</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Writing output files."</span><span class="p">)</span>
+
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">vlt_angle</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">"Node"</span><span class="p">,</span> <span class="s2">"Time"</span><span class="p">,</span> <span class="s2">"Value"</span><span class="p">))</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">vlt_angle_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mwh</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">"Generator"</span><span class="p">,</span> <span class="s2">"Type"</span><span class="p">,</span> <span class="s2">"Time"</span><span class="p">,</span> <span class="s2">"Value"</span><span class="p">))</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">mwh_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">slack</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">"Node"</span><span class="p">,</span> <span class="s2">"Time"</span><span class="p">,</span> <span class="s2">"Value"</span><span class="p">))</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">slack_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">"Line"</span><span class="p">,</span> <span class="s2">"Time"</span><span class="p">,</span> <span class="s2">"Value"</span><span class="p">))</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">flow_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">duals</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">"Node"</span><span class="p">,</span> <span class="s2">"Time"</span><span class="p">,</span> <span class="s2">"Value"</span><span class="p">))</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">duals_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">soc</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">"Storage"</span><span class="p">,</span> <span class="s2">"Time"</span><span class="p">,</span> <span class="s2">"Value"</span><span class="p">))</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">storage_soc_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">discharge</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">"Storage"</span><span class="p">,</span> <span class="s2">"Time"</span><span class="p">,</span> <span class="s2">"Value"</span><span class="p">))</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">storage_discharge_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">charge</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">"Storage"</span><span class="p">,</span> <span class="s2">"Time"</span><span class="p">,</span> <span class="s2">"Value"</span><span class="p">))</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">storage_charge_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Write per-horizon solver parameters as JSON for auditing</span>
+    <span class="n">write_solver_parameters</span><span class="p">(</span>
+        <span class="n">solver_parameter_dictionary</span><span class="o">=</span><span class="n">solver_parameters</span><span class="p">,</span>
+        <span class="n">solver_parameter_file</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">restart_file_directory</span><span class="p">,</span> <span class="s2">"solver_parameters.json"</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"All outputs written."</span><span class="p">)</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Clean up restart files after successful completion of all days</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="k">if</span> <span class="n">clear_restart</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">break_run</span><span class="p">:</span>
+        <span class="n">clear_restart_files</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">restart_file_directory</span><span class="p">)</span>
+
+    <span class="c1"># Return the last solved day (1-based) for compatibility with Model.run()</span>
+    <span class="n">last_day</span> <span class="o">=</span> <span class="p">(</span><span class="n">last_solved_horizon</span> <span class="o">*</span> <span class="n">horizon_hours</span><span class="p">)</span> <span class="o">//</span> <span class="mi">24</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">last_day</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2021-2026, Battelle Memorial Institute.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2026-10-29.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

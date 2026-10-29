@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gridops.west.linear &#8212; gridops 1.1.0</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=765459b2" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/gridops/west/linear';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="2026-10-29"/>
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">gridops 1.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../notebooks/quickstarter.html">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../contributing.html">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../how_to_cite.html">
+    How to cite
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../release_notes.html">
+    Release notes
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../publications.html">
+    Publications
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../authors.html">
+    Authors
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../license.html">
+    License
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../acknowledgement.html">
+    Acknowledgement
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/IMMM-SFA/gridops" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/gridops/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../notebooks/quickstarter.html">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../contributing.html">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../how_to_cite.html">
+    How to cite
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../release_notes.html">
+    Release notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../publications.html">
+    Publications
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../authors.html">
+    Authors
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../license.html">
+    License
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../acknowledgement.html">
+    Acknowledgement
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/IMMM-SFA/gridops" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/gridops/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">gridops.west.linear</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for gridops.west.linear</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyomo.environ</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pyo</span>
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># Defining constants</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="c1"># Penalty for unserved energy/load shedding ($/MWh).</span>
+<span class="n">SLACK_PENALTY</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2000.0</span>
+
+<span class="c1"># Negligible marginal cost for hydro, wind, solar, and offshore-wind dispatch ($/MWh).</span>
+<span class="n">RENEWABLE_GEN_COST</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># Penalty on absolute flow proxy (DummyFlow) to discourage slack routing across the transmission network ($/MWh).</span>
+<span class="n">DUMMY_FLOW_PENALTY</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># Negligible cost for storage charge/discharge ($/MWh) to prevent simultaneous charge-discharge at optimality.</span>
+<span class="n">STORAGE_COST</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.001</span>
+
+<span class="c1"># Reference bus whose voltage angle is fixed to zero in the DC-OPF.</span>
+<span class="n">REFERENCE_BUS</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"bus_100011"</span>
+
+<span class="c1"># Per-unit to MW conversion factor for DC power-flow equations (reactance is in p.u. on a 100 MVA base).</span>
+<span class="n">PU_BASE_MVA</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">100.0</span>
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># Objective rule</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_sys_cost_rule</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Returns the total system operating cost expression.</span>
+
+<span class="sd">    Cost components:</span>
+<span class="sd">    1. **Thermal generation** = (heat-rate × fuel-price + variable O&amp;M) × output.</span>
+<span class="sd">    2. **Slack/unserved demand** = penalised at :data:`SLACK_PENALTY` $/MWh to</span>
+<span class="sd">       force the solver to prefer physical generation over load shedding.</span>
+<span class="sd">    3. **Hydro, wind, solar, offshore-wind** = small :data:`RENEWABLE_GEN_COST`</span>
+<span class="sd">       $/MWh cost to break ties and produce a unique dispatch.</span>
+<span class="sd">    4. **Dummy flow** = :data:`DUMMY_FLOW_PENALTY` $/MWh on the absolute-value</span>
+<span class="sd">       proxy variable to discourage routing slack generation.</span>
+<span class="sd">    5. **Storage charge/discharge** = :data:`STORAGE_COST` $/MWh to prevent </span>
+<span class="sd">    simultaneous charge-discharge.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model:</span>
+<span class="sd">        The active ConcreteModel instance.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyomo.Expression</span>
+<span class="sd">        System cost expression to be minimised.</span>
+<span class="sd">    """</span>
+    <span class="c1"># Thermal generation cost (fuel + variable O&amp;M)</span>
+    <span class="n">gen_cost</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">heat_rate</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">FuelPrice</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">var_om</span><span class="p">[</span><span class="n">g</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Thermal</span>
+    <span class="p">)</span>
+    <span class="c1"># Unserved energy penalty</span>
+    <span class="n">slack_cost</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">S</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">SLACK_PENALTY</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">buses</span>
+    <span class="p">)</span>
+    <span class="c1"># Small costs for renewable/hydro dispatch</span>
+    <span class="n">hydro_cost</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">RENEWABLE_GEN_COST</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Hydro</span>
+    <span class="p">)</span>
+    <span class="n">wind_cost</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">RENEWABLE_GEN_COST</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Wind</span>
+    <span class="p">)</span>
+    <span class="n">offshore_wind_cost</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">RENEWABLE_GEN_COST</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">OffshoreWind</span>
+    <span class="p">)</span>
+    <span class="n">solar_cost</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">RENEWABLE_GEN_COST</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Solar</span>
+    <span class="p">)</span>
+    <span class="c1"># Absolute-flow proxy penalty (discourages slack routing)</span>
+    <span class="n">dummy_flow_cost</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">DummyFlow</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">DUMMY_FLOW_PENALTY</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">lines</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span>
+    <span class="p">)</span>
+    <span class="c1"># Small costs for storage cycle </span>
+    <span class="n">charge_cost</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Charge</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">STORAGE_COST</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Storage</span>
+    <span class="p">)</span>
+    <span class="n">discharge_cost</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Discharge</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">STORAGE_COST</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Storage</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">gen_cost</span> <span class="o">+</span> <span class="n">slack_cost</span> <span class="o">+</span> <span class="n">hydro_cost</span> <span class="o">+</span> <span class="n">wind_cost</span> <span class="o">+</span> <span class="n">solar_cost</span>
+        <span class="o">+</span> <span class="n">offshore_wind_cost</span> <span class="o">+</span> <span class="n">dummy_flow_cost</span>
+        <span class="o">+</span> <span class="n">charge_cost</span> <span class="o">+</span> <span class="n">discharge_cost</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># Constraint rules</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="c1"># Ramp constraints</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_ramp_up_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">g</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Ramp-up constraint: generation increase from t-1 to t &lt;= ramp rate.</span>
+
+<span class="sd">    Applied to thermal generators for all hours t = 1 ... horizon_hours.</span>
+<span class="sd">    At t=1, the previous dispatch is taken from the mutable parameter</span>
+<span class="sd">    InitialMwh[g] (updated between horizons by the launch loop).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    g:     Thermal generator index.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="n">prev_mwh</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">InitialMwh</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev_mwh</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">ramp</span><span class="p">[</span><span class="n">g</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_ramp_down_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">g</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Ramp-down constraint: generation decrease from t-1 to t &lt;= ramp rate.</span>
+
+<span class="sd">    At t=1, the previous dispatch is taken from the mutable parameter</span>
+<span class="sd">    InitialMwh[g] (updated between horizons by the launch loop).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    g:     Thermal generator index.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="n">prev_mwh</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">InitialMwh</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">prev_mwh</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">ramp</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">OutageAllowance</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+
+
+<span class="c1"># Capacity constraints</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_max_cap_outage_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">g</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Capacity ceiling for dispatchable generators subject to outages.</span>
+
+<span class="sd">    Uses the mutable ``HorizonGenLimit`` which accounts for the base capacity</span>
+<span class="sd">    reduced by any historical/scheduled capacity losses.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    g:     Generator in the Outage set.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">HorizonGenLimit</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_max_cap_dispatchable_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">g</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Capacity ceiling for other dispatchable generators.</span>
+
+<span class="sd">    Uses the static ``maxcap`` parameter (no outage adjustment for these types).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    g:     Generator in the Dispatchable set but *not* in the Outage set.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">maxcap</span><span class="p">[</span><span class="n">g</span><span class="p">]</span>
+
+
+<span class="c1"># Hydro dispatch constraints</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_hydro_total_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">g</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Hydro energy budget: total horizon generation &lt;= energy budget.</span>
+
+<span class="sd">    One constraint per hydro unit (not per hour) since the summation</span>
+<span class="sd">    over all hours is identical regardless of hour index.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    g:     Hydro generator.</span>
+<span class="sd">    """</span>
+    <span class="n">total_gen</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total_gen</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">HorizonHydro_TOTAL</span><span class="p">[</span><span class="n">g</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_hydro_max_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">g</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Hourly generation ceiling for hydro generators.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    g:     Hydro generator.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">HorizonHydro_MAX</span><span class="p">[</span><span class="n">g</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_hydro_min_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">g</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Hourly generation floor for hydro generators (minimum must-flow requirement).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    g:     Hydro generator.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">HorizonHydro_MIN</span><span class="p">[</span><span class="n">g</span><span class="p">]</span>
+
+
+<span class="c1"># Renewable availability constraints</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_solar_cap_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">g</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Solar capacity ceiling (hourly resource profile).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    g:     Solar generator.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">HorizonSolar</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_wind_cap_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">g</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Wind capacity ceiling (hourly resource profile).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    g:     Wind generator.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">HorizonWind</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_offshore_wind_cap_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">g</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Offshore-wind capacity ceiling (hourly resource profile).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    g:     Offshore-wind generator.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">HorizonOffshoreWind</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+
+
+<span class="c1"># Bus energy balance constraint</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_bus_balance_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">b</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Bus energy balance constraint (Kirchhoff's current law).</span>
+
+<span class="sd">    At each bus ``b`` and hour ``t``::</span>
+
+<span class="sd">        generation + slack + must_run - power_flow</span>
+<span class="sd">        = load + storage_net_charge</span>
+
+<span class="sd">    where power_flow = pyo.quicksum(Flow[l,t] * LineToBusMap[l,b]) over all lines.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    b:     Bus index.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="c1"># Net power exported from this bus over its connected lines</span>
+    <span class="c1"># (+1 at the line's from bus, -1 at the line's to bus; positive flow = from bus -&gt; to bus)</span>
+    <span class="c1"># Uses pre-computed sparse lookup: only lines connected to this bus.</span>
+    <span class="n">power_flow</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Flow</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">coeff</span>
+        <span class="k">for</span> <span class="n">l</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_lines_at_bus</span><span class="p">[</span><span class="n">b</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="c1"># Generator contribution at this bus (sparse: only generators at this bus)</span>
+    <span class="n">gen_at_bus</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">mwh</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_gens_at_bus</span><span class="p">[</span><span class="n">b</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="c1"># Slack contribution at this bus (unserved load)</span>
+    <span class="n">slack_at_bus</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">S</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+    <span class="c1"># Must-run contribution at this bus (e.g., nuclear)</span>
+    <span class="n">mustrun_at_bus</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">HorizonMustrunLimit</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+    <span class="c1"># Demand at this bus</span>
+    <span class="n">demand_at_bus</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">HorizonDemand</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+    <span class="c1"># Storage net flow: charge draws from the bus, discharge feeds the bus</span>
+    <span class="n">storage_charge_at_bus</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Charge</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_storage_at_bus</span><span class="p">[</span><span class="n">b</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">storage_discharge_at_bus</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Discharge</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_storage_at_bus</span><span class="p">[</span><span class="n">b</span><span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">gen_at_bus</span>
+        <span class="o">+</span> <span class="n">slack_at_bus</span>
+        <span class="o">+</span> <span class="n">mustrun_at_bus</span>
+        <span class="o">-</span> <span class="n">power_flow</span>
+        <span class="o">==</span> <span class="n">demand_at_bus</span>
+        <span class="o">+</span> <span class="n">storage_charge_at_bus</span>
+        <span class="o">-</span> <span class="n">storage_discharge_at_bus</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># DC power-flow and line capacity constraints</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_dc_flow_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">l</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""DC power-flow equation: Flow[l,t] * Reactance[l] = PU_BASE_MVA * DeltaTheta.</span>
+
+<span class="sd">    The factor :data:`PU_BASE_MVA` normalises the per-unit reactance (which is</span>
+<span class="sd">    expressed in p.u. on a 100 MVA base) so that flows are in MW.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    l:     Transmission line index.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="n">delta_theta</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Theta</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">coeff</span>
+        <span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_buses_on_line</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">Flow</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">Reactance</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">==</span> <span class="n">PU_BASE_MVA</span> <span class="o">*</span> <span class="n">delta_theta</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_reference_bus_angle_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Set the reference bus angle to zero.</span>
+
+<span class="sd">    The reference bus is :data:`REFERENCE_BUS`</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">Theta</span><span class="p">[</span><span class="n">REFERENCE_BUS</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>
+
+
+<span class="c1"># Absolute-value proxy (dummy flow) constraints</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_dummy_flow_pos_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">l</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""DummyFlow &gt;= Flow (positive side of absolute value linearization).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    l:     Transmission line index.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">DummyFlow</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">Flow</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_dummy_flow_neg_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">l</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""DummyFlow &gt;= -Flow (negative side of absolute value linearization).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    l:     Transmission line index.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">DummyFlow</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">Flow</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+
+
+<span class="c1"># Storage constraints</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_max_charge_soc_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">s</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Charge cannot exceed the remaining headroom in the state of charge.</span>
+
+<span class="sd">    At t=1, SoC[s,0] is replaced by the mutable parameter InitialSoC[s].</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    s:     Storage unit index.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="n">prev_soc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">InitialSoC</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">model</span><span class="o">.</span><span class="n">SoC</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Charge</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+        <span class="o">&lt;=</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">max_SoC</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev_soc</span><span class="p">)</span> <span class="o">/</span> <span class="n">model</span><span class="o">.</span><span class="n">charge_eff</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_max_discharge_soc_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">s</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Discharge cannot exceed available energy above the minimum SoC.</span>
+
+<span class="sd">    At t=1, SoC[s,0] is replaced by the mutable parameter InitialSoC[s].</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    s:     Storage unit index.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="n">prev_soc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">InitialSoC</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">model</span><span class="o">.</span><span class="n">SoC</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Discharge</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+        <span class="o">&lt;=</span> <span class="p">(</span><span class="n">prev_soc</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">min_SoC</span><span class="p">[</span><span class="n">s</span><span class="p">])</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">discharge_eff</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_soc_balance_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">s</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""SoC energy balance across each time step.</span>
+
+<span class="sd">    At t=1, SoC[s,0] is replaced by the mutable parameter InitialSoC[s].</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    s:     Storage unit index.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="n">prev_soc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">InitialSoC</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">model</span><span class="o">.</span><span class="n">SoC</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">SoC</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+        <span class="o">==</span> <span class="n">prev_soc</span>
+        <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">Charge</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">charge_eff</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+        <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">Discharge</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">/</span> <span class="n">model</span><span class="o">.</span><span class="n">discharge_eff</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_sim_charge_discharge_rule</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span>
+    <span class="n">s</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Expression</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Prevent (or minimize) simultaneous charging and discharging.</span>
+
+<span class="sd">    Discharge is bounded so that the combined charge and discharge do not both</span>
+<span class="sd">    occur at their rated maxima simultaneously.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model: Active ConcreteModel.</span>
+<span class="sd">    s:     Storage unit index.</span>
+<span class="sd">    t:     Hour index.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">Discharge</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">discharge_rate</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">discharge_rate</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">/</span> <span class="n">model</span><span class="o">.</span><span class="n">charge_rate</span><span class="p">[</span><span class="n">s</span><span class="p">])</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">Charge</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># ===========================================================================</span>
+<span class="c1"># ConcreteModel builder</span>
+<span class="c1"># ===========================================================================</span>
+
+<div class="viewcode-block" id="build_west_linear">
+<a class="viewcode-back" href="../../../api.html#gridops.west.linear.build_west_linear">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_west_linear</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+    <span class="n">horizon_hours</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Build and return a Pyomo :class:`~pyomo.environ.ConcreteModel` for the</span>
+<span class="sd">    U.S. Western Interconnection linear economic dispatch problem.</span>
+
+<span class="sd">    The model is built once from the *data* dictionary returned by</span>
+<span class="sd">    :func:`~gridops.west.launch.load_simulation_data`.  Between solving</span>
+<span class="sd">    horizons the mutable ``Horizon...`` parameters are updated in-place by</span>
+<span class="sd">    :func:`~gridops.west.launch._update_horizon_params` — no rebuild is</span>
+<span class="sd">    needed.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data:</span>
+<span class="sd">        Data dictionary returned by :func:`~gridops.west.launch.load_simulation_data`.</span>
+<span class="sd">    horizon_hours:</span>
+<span class="sd">        Number of hours in each optimization horizon (default 24 hours).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pyomo.ConcreteModel</span>
+<span class="sd">        Fully instantiated model with all sets, parameters, variables,</span>
+<span class="sd">        constraints, and objective defined. Mutable Horizon parameters are</span>
+<span class="sd">        initialized to 0 and must be updated before the first solve.</span>
+<span class="sd">    """</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"West_Economic_Dispatch"</span><span class="p">)</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># TIME SETS</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+
+    <span class="c1"># time_periods: 1 ... horizon_hours</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">RangeSet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">horizon_hours</span><span class="p">)</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># GENERATOR SETS (by fuel type)</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+
+    <span class="n">gen_sets</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"gen_sets"</span><span class="p">]</span>
+
+    <span class="c1"># Primary fuel-type sets</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Coal</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">gen_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Coal"</span><span class="p">,</span> <span class="p">[]))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Oil</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">gen_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Oil"</span><span class="p">,</span> <span class="p">[]))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Gas</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">gen_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Gas"</span><span class="p">,</span> <span class="p">[]))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Hydro</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">gen_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Hydro"</span><span class="p">,</span> <span class="p">[]))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Solar</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">gen_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Solar"</span><span class="p">,</span> <span class="p">[]))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Wind</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">gen_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Wind"</span><span class="p">,</span> <span class="p">[]))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Biomass</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">gen_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Biomass"</span><span class="p">,</span> <span class="p">[]))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Geothermal</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">gen_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"Geothermal"</span><span class="p">,</span> <span class="p">[]))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">OffshoreWind</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">gen_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"OffshoreWind"</span><span class="p">,</span> <span class="p">[]))</span>
+
+    <span class="c1"># Derived generator sets</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Thermal</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Coal</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">Oil</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">Gas</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">Biomass</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">Geothermal</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Generators</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Thermal</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">Hydro</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">Solar</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">Wind</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">OffshoreWind</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Dispatchable</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Hydro</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">Oil</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">Gas</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">Coal</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">Biomass</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">Geothermal</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Outage</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Coal</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">Gas</span> <span class="c1"># Generators subject to capacity-outage adjustments</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">DispatchableNoOutage</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Dispatchable</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">Outage</span> <span class="c1"># Generators not subject to capacity-outage adjustments</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># OUTAGE-GROUP SETS (capacity-range buckets used for generation capacity </span>
+    <span class="c1"># loss distribution)</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="k">for</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">gen_list</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"outage_group_sets"</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">gen_list</span><span class="p">))</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># STORAGE SET</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Storage</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">"storage_units"</span><span class="p">])</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># NETWORK SETS</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">buses</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">"buses"</span><span class="p">])</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">lines</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">"lines"</span><span class="p">])</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># STATIC GENERATOR PARAMETERS</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="n">gp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"gen_params"</span><span class="p">]</span> <span class="c1"># {gen_name: {field: value}}</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">typ</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Generators</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">gp</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s2">"typ"</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gp</span><span class="p">},</span> <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">bus</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Generators</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">gp</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s2">"bus"</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gp</span><span class="p">},</span> <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">maxcap</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Generators</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">gp</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s2">"maxcap"</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">mincap</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Generators</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">gp</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s2">"mincap"</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">heat_rate</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Generators</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">gp</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s2">"heat_rate"</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">var_om</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Generators</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">gp</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s2">"var_om"</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">no_load</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Generators</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">gp</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s2">"no_load"</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">st_cost</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Generators</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">gp</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s2">"st_cost"</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">ramp</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Generators</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">gp</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s2">"ramp"</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">minup</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Generators</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">gp</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s2">"minup"</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">mindn</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Generators</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="n">gp</span><span class="p">[</span><span class="n">g</span><span class="p">][</span><span class="s2">"mindn"</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gp</span><span class="p">})</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># STATIC TRANSMISSION LINE PARAMETERS</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="n">lp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"line_params"</span><span class="p">]</span> <span class="c1"># {line_name: {reactance, flow_lim}}</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">Reactance</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">lines</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">l</span><span class="p">:</span> <span class="n">lp</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="s2">"reactance"</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lp</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">FlowLim</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">lines</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">l</span><span class="p">:</span> <span class="n">lp</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="s2">"flow_lim"</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lp</span><span class="p">},</span>
+    <span class="p">)</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># MAPPING PARAMETERS (sparse; default = 0 for unlisted index pairs)</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+
+    <span class="c1"># LineToBusMap[line, bus]: DC incidence matrix (−1, 0, +1)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">LineToBusMap</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">lines</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">buses</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">"line_to_bus_map"</span><span class="p">],</span>
+        <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># BusToUnitMap[gen, bus]: 1 if generator gen is located at bus</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">BusToUnitMap</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Generators</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">buses</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">"bus_to_unit_map"</span><span class="p">],</span>
+        <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># BusToStorageMap[storage, bus]: 1 if storage unit is at that bus</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">BusToStorageMap</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">buses</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">"bus_to_storage_map"</span><span class="p">],</span>
+        <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># STATIC STORAGE PARAMETERS</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="n">sp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"storage_params"</span><span class="p">]</span>  <span class="c1"># {storage_name: {field: value}}</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">s_typ</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="n">sp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"s_typ"</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sp</span><span class="p">},</span> <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">s_bus</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="n">sp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"s_bus"</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sp</span><span class="p">},</span> <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">charge_rate</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="n">sp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"charge_rate"</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">discharge_rate</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="n">sp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"discharge_rate"</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="n">sp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"duration"</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">max_SoC</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="n">sp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"max_SoC"</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">min_SoC</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="n">sp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"min_SoC"</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">charge_eff</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="n">sp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"charge_eff"</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sp</span><span class="p">})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">discharge_eff</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="n">sp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"discharge_eff"</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sp</span><span class="p">})</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># MUTABLE HORIZON PARAMETERS</span>
+    <span class="c1"># Initialised to 0; updated each horizon by _update_horizon_params().</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+
+    <span class="c1"># Hourly load per bus for the current horizon</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">HorizonDemand</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">buses</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># Hourly available solar generation per solar generator for the current horizon</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">HorizonSolar</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Solar</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># Hourly available wind generation per wind generator for the current horizon</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">HorizonWind</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Wind</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># Hourly available offshore-wind generation per offshore-wind generator for the current horizon</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">HorizonOffshoreWind</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">OffshoreWind</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># Hourly capacity limits for outage-eligible generators (after loss adjustment)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">HorizonGenLimit</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Outage</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># Hourly must-run (e.g., nuclear) capacity per bus</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">HorizonMustrunLimit</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">buses</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># Daily scalar hydro limits (same value applied to all hours in the horizon)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">HorizonHydro_MAX</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Hydro</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">HorizonHydro_MIN</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Hydro</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># Total hydro energy budget for the horizon</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">HorizonHydro_TOTAL</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Hydro</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># Daily fuel price per thermal generator ($/MMBtu)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">FuelPrice</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Thermal</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">Reals</span><span class="p">,</span>
+        <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># PRE-COMPUTED SPARSE LOOKUPS</span>
+    <span class="c1"># These Python-level dicts accelerate constraint / objective building by</span>
+    <span class="c1"># avoiding iteration over the full Cartesian product of indices. Each</span>
+    <span class="c1"># lookup maps an entity to the *non-zero* entries of the corresponding</span>
+    <span class="c1"># sparse incidence matrix.</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+
+    <span class="c1"># {bus: [(line, coeff), ...]} – lines connected to each bus</span>
+    <span class="n">_lines_at_bus</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">b</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"buses"</span><span class="p">]}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"line_to_bus_map"</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">_lines_at_bus</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">l</span><span class="p">,</span> <span class="n">coeff</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">_lines_at_bus</span> <span class="o">=</span> <span class="n">_lines_at_bus</span>
+
+    <span class="c1"># {bus: [gen, ...]} – generators located at each bus</span>
+    <span class="n">_gens_at_bus</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">b</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"buses"</span><span class="p">]}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"bus_to_unit_map"</span><span class="p">]:</span>
+        <span class="n">_gens_at_bus</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">_gens_at_bus</span> <span class="o">=</span> <span class="n">_gens_at_bus</span>
+
+    <span class="c1"># {bus: [storage, ...]} – storage units located at each bus</span>
+    <span class="n">_storage_at_bus</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">b</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"buses"</span><span class="p">]}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"bus_to_storage_map"</span><span class="p">]:</span>
+        <span class="n">_storage_at_bus</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">_storage_at_bus</span> <span class="o">=</span> <span class="n">_storage_at_bus</span>
+
+    <span class="c1"># {line: [(bus, coeff), ...]} – buses at each end of a line (typically 2)</span>
+    <span class="n">_buses_on_line</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">l</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"lines"</span><span class="p">]}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"line_to_bus_map"</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">_buses_on_line</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">b</span><span class="p">,</span> <span class="n">coeff</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">_buses_on_line</span> <span class="o">=</span> <span class="n">_buses_on_line</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># DECISION VARIABLES</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+
+    <span class="c1"># Generation output (MW) for optimization hours 1...H.</span>
+    <span class="c1"># Initial state for hour 1 ramp constraints is provided by the mutable</span>
+    <span class="c1"># parameter InitialMwh (updated between horizons by the launch loop).</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">mwh</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Generators</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Unserved energy/slack (MW) – only for optimization hours 1...H</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">S</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">buses</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># DC line flow (MW) – can be bi-directional; bounds = +-flow_lim per line.</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_flow_bounds</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="n">_lim</span> <span class="o">=</span> <span class="n">lp</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="s2">"flow_lim"</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">_lim</span><span class="p">,</span> <span class="n">_lim</span><span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">Flow</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">lines</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">Reals</span><span class="p">,</span>
+        <span class="n">bounds</span><span class="o">=</span><span class="n">_flow_bounds</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Bus voltage angle (rad) – bounded +-pi</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Theta</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">buses</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">Reals</span><span class="p">,</span>
+        <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">3.1415</span><span class="p">,</span> <span class="mf">3.1415</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Absolute-value proxy for flow (MW)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">DummyFlow</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">lines</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Storage state of charge (MWh) for optimization hours 1...H.</span>
+    <span class="c1"># Initial SoC for hour 1 storage constraints is provided by the mutable</span>
+    <span class="c1"># parameter InitialSoC (updated between horizons by the launch loop).</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_soc_bounds</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">sp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"min_SoC"</span><span class="p">],</span> <span class="n">sp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"max_SoC"</span><span class="p">])</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">SoC</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">bounds</span><span class="o">=</span><span class="n">_soc_bounds</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Storage charging power (MW) – upper bound = charge_rate per storage unit.</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_charge_bounds</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"charge_rate"</span><span class="p">])</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">Charge</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">bounds</span><span class="o">=</span><span class="n">_charge_bounds</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Storage discharging power (MW) – upper bound = discharge_rate per storage unit.</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_discharge_bounds</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s2">"discharge_rate"</span><span class="p">])</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">Discharge</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">bounds</span><span class="o">=</span><span class="n">_discharge_bounds</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># INITIAL STATE – mutable parameters for hour 1 boundary conditions.</span>
+    <span class="c1"># InitialMwh and InitialSoC are updated between horizons by the launch</span>
+    <span class="c1"># loop so that storage / ramp constraints at i=1 use the correct values.</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+
+    <span class="n">initial_gen</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"initial_gen"</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">InitialMwh</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Thermal</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="p">{</span><span class="n">j</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">initial_gen</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Thermal</span><span class="p">},</span>
+        <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">initial_soc</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"initial_soc"</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">InitialSoC</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="p">{</span>
+            <span class="n">j</span><span class="p">:</span> <span class="n">initial_soc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">min_SoC</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">Storage</span>
+        <span class="p">},</span>
+        <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Per-hour outage-forced capacity-reduction allowance added to the ramp-down</span>
+    <span class="c1"># constraint RHS. OutageAllowance[g,t] relaxes the ramp-down limit by</span>
+    <span class="c1"># exactly the magnitude of the forced capacity reduction. Non-Outage </span>
+    <span class="c1"># thermal generators have no outage adjustments so their values remain 0.</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">OutageAllowance</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Thermal</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span>
+        <span class="n">initialize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">within</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">,</span>
+        <span class="n">mutable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># DUAL VARIABLE SUFFIX (for extracting LMPs from nodal balance duals)</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">dual</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Suffix</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">Suffix</span><span class="o">.</span><span class="n">IMPORT</span><span class="p">)</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># OBJECTIVE</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">SystemCost</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="n">_sys_cost_rule</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">minimize</span><span class="p">)</span>
+
+    <span class="c1"># -----------------------------------------------------------------------</span>
+    <span class="c1"># CONSTRAINTS</span>
+    <span class="c1"># -----------------------------------------------------------------------</span>
+
+    <span class="c1"># Ramp-rate limits (thermal generators only, all time periods)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">RampCon1</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Thermal</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_ramp_up_rule</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">RampCon2</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Thermal</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_ramp_down_rule</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Generator capacity limits</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">MaxCap</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Outage</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_max_cap_outage_rule</span>
+    <span class="p">)</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">MaxCap2</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">DispatchableNoOutage</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_max_cap_dispatchable_rule</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Hydro constraints</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">HydroTOTAL</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Hydro</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_hydro_total_rule</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">HydroMAX</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Hydro</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_hydro_max_rule</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">HydroMIN</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Hydro</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_hydro_min_rule</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Available renewable capacity limits</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">SolarConstraint</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Solar</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_solar_cap_rule</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">WindConstraint</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Wind</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_wind_cap_rule</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">OffshoreWindConstraint</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">OffshoreWind</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_offshore_wind_cap_rule</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Bus energy balance</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Bus_Constraint</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">buses</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_bus_balance_rule</span>
+    <span class="p">)</span>
+
+    <span class="c1"># DC power-flow equations</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">DC_Flow_Constraint</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">lines</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_dc_flow_rule</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Reference bus voltage angle = 0</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">ThetaB_Constraint</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_reference_bus_angle_rule</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Absolute value proxy constraints for dummy flow penalty</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">DummyFlow1_Constraint</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">lines</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_dummy_flow_pos_rule</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">DummyFlow2_Constraint</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">lines</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_dummy_flow_neg_rule</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Storage operational constraints</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">MaxCharge_Constraint</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_max_charge_soc_rule</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">MaxDischarge_Constraint</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_max_discharge_soc_rule</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">SoCBalance_Constraint</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_soc_balance_rule</span>
+    <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">SimChargeDischarge_Constraint</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Storage</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_sim_charge_discharge_rule</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2021-2026, Battelle Memorial Institute.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2026-10-29.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,104 +1,120 @@
-:notoc:
+:html_theme.sidebar_secondary.remove:
 
-go documentation
-==================
+gridops
+=======
 
-**Date**: |today| **Version**: |version|
+.. rst-class:: go-tagline
 
-**Useful links**:
-`Source Repository <https://github.com/immm-sfa/>`_ |
-`Issues & Ideas <https://github.com/immm-sfa/go/issues>`_ |
-`Interactive Quickstarter <quickstarter.rst>`_
+An open-source, customizable production cost model (PCM) for the U.S. interconnections.
 
-**go** is an open-source grid operations model.
+.. rst-class:: go-meta
 
-**go** was created to:
+Version |release| · `Source <https://github.com/IMMM-SFA/gridops>`_ · `Issues and ideas <https://github.com/IMMM-SFA/gridops/issues>`_ · `Reference paper <https://doi.org/10.1088/2753-3751/ad1751>`_
 
- 1) Prepare topologies for grid networks
+.. code-block:: bash
 
- 2) Model grid operations under projections of alternate futures
+   pip install gridops
 
-.. panels::
-    :card: + intro-card text-center
-    :column: col-lg-6 col-md-6 col-sm-6 col-xs-12 d-flex
+**gridops** is a nodal grid operations model for three major U.S. interconnections
+(Western, Eastern, and ERCOT). It uses a linear DC Optimal Power Flow (DC-OPF)
+approximation to optimize hourly unit commitment and economic dispatch over a
+rolling horizon that you configure. Pyomo builds the model, which can be solved
+with the open-source (e.g., HiGHS) or commercial (e.g., Gurobi) solvers.
 
+gridops was created to:
 
-    ---
-    :img-top: _static/index_getting_started.svg
+1. Address weather and water dynamics and associated vulnerabilities in U.S. bulk
+   power systems.
+2. Link with a wide range of hydrometeorological datasets and energy system/machine
+   learning models to explore future uncertainty in grid operations.
+3. Analyze current and future grid stress and reliability trends under a wide range of
+   weather conditions, generation mixes, and demand growth scenarios.
+4. Create simple and user-tailored representations of the U.S. interconnections that
+   balance model accuracy and run time for the research question at hand.
 
-    Getting Started
-    ^^^^^^^^^^^^^^^
+.. figure:: _static/gridops_network_map.png
+   :alt: Reduced network topology used by gridops
+   :width: 100%
+   :class: go-figure
 
-    New to **go**?  Get familiar with what **go** is all about.
+   Reduced network topology represented in gridops. Three interconnections run separately.
 
-    +++
+.. grid:: 1 1 2 2
+   :gutter: 3
 
-    .. link-button:: getting_started
-            :type: ref
-            :text: What go is all about
-            :classes: btn-block btn-secondary stretched-link
+   .. grid-item-card:: :fas:`rocket` Getting started
+      :link: getting_started
+      :link-type: doc
 
-    ---
-    :img-top: _static/index_user_guide.svg
+      What gridops does, which regions and problem types are available, and how to
+      install the package and a solver.
 
-    User Guide
-    ^^^^^^^^^^
+   .. grid-item-card:: :fas:`play` Quickstart
+      :link: notebooks/quickstarter
+      :link-type: doc
 
-    The user guide provides in-depth information on the
-    key concepts of **go**.
+      Run the bundled two-day Western Interconnection example notebook, then plot
+      hourly locational marginal prices, unserved energy, and the generation mix.
 
-    +++
+   .. grid-item-card:: :fas:`book` User guide
+      :link: user_guide/index
+      :link-type: doc
 
-    .. link-button:: user_guide
-            :type: ref
-            :text: To the user guide
-            :classes: btn-block btn-secondary stretched-link
+      Configuration file reference, input data requirements, output data, the full
+      mathematical formulation, rolling-horizon simulation, restarts, and solvers.
 
-    ---
-    :img-top: _static/index_api.svg
+   .. grid-item-card:: :fas:`code` API reference
+      :link: api
+      :link-type: doc
 
-    API Reference
-    ^^^^^^^^^^^^^
+      Detailed descriptions of every public class and function, the restart utilities, 
+      and the grid operations model builder.
 
-    The reference guide contains a detailed description of
-    the **go** API. The reference describes how the methods
-    work and which parameters can be used.
+How it works
+------------
 
-    +++
+.. grid:: 1 1 3 3
+   :gutter: 3
 
-    .. link-button:: go
-            :type: ref
-            :text: To the reference guide
-            :classes: btn-block btn-secondary stretched-link
+   .. grid-item-card:: 1. Configure
 
-    ---
-    :img-top: _static/index_contribute.svg
+      Point a YAML configuration file at the network, generator parameters, storage, 
+      load, solar, wind, hydro, fuel price and generator outage inputs, and at the 
+      model output destinations.
 
-    Contributing to go
-    ^^^^^^^^^^^^^^^^^^^^
+   .. grid-item-card:: 2. Optimize
 
-    Saw a typo in the documentation? Want to improve
-    existing functionalities? The contributing guidelines will guide
-    you through the process of improving **go**.
+      gridops builds one Pyomo DC-OPF model and solves it horizon by horizon. Before
+      each solve it updates the time-varying parameters and carries generator output
+      and storage state of charge forward.
 
-    +++
+   .. grid-item-card:: 3. Analyze
 
-    .. link-button:: contributing
-            :type: ref
-            :text: To the development guide
-            :classes: btn-block btn-secondary stretched-link
+      Hourly generator dispatch, transmission line flows, voltage angles, unserved energy,
+      locational marginal prices and storage operations are written to Parquet files.
 
+The objective minimizes total system operating cost. The model enforces
+nodal power balance, DC power flow, transmission line limits, generator ramp rates, 
+hydro energy budgets, renewable availability, generator capacity losses, and storage dynamics. 
+See :doc:`user_guide/formulation` for more detailed description and the full set of equations.
 
 .. toctree::
-   :maxdepth: 2
    :hidden:
+   :caption: User documentation
 
    getting_started
-   user_guide
-   modules
+   Quickstart <notebooks/quickstarter>
+   user_guide/index
+   api
    contributing
-   publications
    how_to_cite
+
+.. toctree::
+   :hidden:
+   :caption: Project
+
+   release_notes
+   publications
    authors
    license
-   footer
+   acknowledgement

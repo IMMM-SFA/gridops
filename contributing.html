@@ -1,329 +1,822 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Contributing to go &mdash; go 0.1.0 documentation</title>
-  
 
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
-  <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
-  <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/go.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/getting_started.css" type="text/css" />
 
-  
-  
+<html lang="en" data-content_root="./" >
 
-  
-  
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <title>Contributing &#8212; gridops 1.1.0</title>
   
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
 
+    </style>
+  </noscript>
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
 
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=765459b2" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contributing';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Publications" href="publications.html" />
-    <link rel="prev" title="tests package" href="tests.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
+    <link rel="next" title="How to cite" href="how_to_cite.html" />
+    <link rel="prev" title="API reference" href="api.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.1.0" />
+    <meta name="docbuild:last-update" content="2026-10-29"/>
+  
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
 
-          
-            <a href="index.html" class="icon icon-home"> go
-          
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
 
-          
-          </a>
-
-          
-            
-            
-              <div class="version">
-                0.1.0
-              </div>
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
-          
-        </div>
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
 
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">gridops 1.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="notebooks/quickstarter.html">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#" aria-current="page">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="how_to_cite.html">
+    How to cite
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="release_notes.html">
+    Release notes
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="publications.html">
+    Publications
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="authors.html">
+    Authors
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="license.html">
+    License
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="acknowledgement.html">
+    Acknowledgement
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
           
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/IMMM-SFA/gridops" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/gridops/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="notebooks/quickstarter.html">
+    Quickstart
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="user_guide/index.html">
+    User guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api.html">
+    API reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#" aria-current="page">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="how_to_cite.html">
+    How to cite
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="release_notes.html">
+    Release notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="publications.html">
+    Publications
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="authors.html">
+    Authors
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="license.html">
+    License
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="acknowledgement.html">
+    Acknowledgement
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/IMMM-SFA/gridops" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/gridops/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Contributing</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading">#</a></h1>
+<p>You’re welcome to contribute, whether you’ve found a typo in the documentation,
+found a bug, or want to add functionality that makes gridops more useful. Thank you for your valuable contributions!</p>
+<section id="opening-issues">
+<h2>Opening issues<a class="headerlink" href="#opening-issues" title="Link to this heading">#</a></h2>
+<p>If you find a bug or have an idea for a new feature, please
+<a class="reference external" href="https://github.com/IMMM-SFA/gridops/issues">open an issue</a>. For substantial changes,
+discuss the approach in an issue before writing code.</p>
+</section>
+<section id="contribution-workflow">
+<h2>Contribution workflow<a class="headerlink" href="#contribution-workflow" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><a class="reference external" href="https://github.com/IMMM-SFA/gridops/fork">Fork the gridops repository</a> and clone
+it locally:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/&lt;your-user-name&gt;/gridops
+<span class="nb">cd</span><span class="w"> </span>gridops
+</pre></div>
+</div>
+<p>Install the package in editable (development) mode with the test extras. Your
+code changes then take effect without reinstalling:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[test]"</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a branch for your changes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>bug/some-bug
+<span class="c1"># or</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/some-feature
+</pre></div>
+</div>
+</li>
+<li><p>Make your changes and make sure all tests pass:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests<span class="w"> </span>--cov<span class="o">=</span>gridops<span class="w"> </span>--cov-report<span class="o">=</span>term-missing
+</pre></div>
+</div>
+<p>The integration test runs the bundled Western Interconnection example with HiGHS.</p>
+</li>
+<li><p>Documentation lives in <code class="docutils literal notranslate"><span class="pre">docs/source</span></code> as reStructuredText and Markdown files. To
+preview your changes, install the documentation extras and build the site:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[docs]"</span>
+sphinx-build<span class="w"> </span>-W<span class="w"> </span>--keep-going<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>docs/source<span class="w"> </span>docs/build/html
+</pre></div>
+</div>
+<p>Open <code class="docutils literal notranslate"><span class="pre">docs/build/html/index.html</span></code> in your browser. When your changes are merged
+into the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch, a GitHub Actions workflow rebuilds the documentation and
+publishes it to GitHub Pages.</p>
+</li>
+<li><p>Commit and push your changes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>&lt;my-file-name&gt;
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"&lt;my short message&gt;"</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>&lt;my-branch-name&gt;
+</pre></div>
+</div>
+</li>
+<li><p>Open a pull request that describes:</p>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Why you’re making the change.</p></li>
+<li><p><strong>Summary</strong>: Your environment (OS, Python version, solver), the logic, any
+caveats, and what changed.</p></li>
+<li><p><strong>Validation</strong>: How you tested the change.</p></li>
+</ul>
+<p>Continuous integration runs the test suite on every supported Python version.</p>
+</li>
+<li><p>If approved, a gridops maintainer merges your pull request. gridops follows
+<a class="reference external" href="https://semver.org/">semantic versioning</a>, and notable changes are recorded in
+the <a class="reference internal" href="release_notes.html"><span class="doc">Release notes</span></a>.</p></li>
+</ol>
+</section>
+<section id="coding-conventions">
+<h2>Coding conventions<a class="headerlink" href="#coding-conventions" title="Link to this heading">#</a></h2>
+<p>Please follow the conventions already used in the gridops code base so that new code
+reads like the existing code.</p>
+<section id="python-style">
+<h3>Python style<a class="headerlink" href="#python-style" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>gridops supports Python 3.10 to 3.14. Use Python language features accordingly.</p></li>
+<li><p>Start every module with <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">__future__</span> <span class="pre">import</span> <span class="pre">annotations</span></code> and add type hints
+to every function signature (for example <code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">Any]</span></code>, <code class="docutils literal notranslate"><span class="pre">Optional[int]</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Union[str,</span> <span class="pre">None]</span></code>).</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">snake_case</span></code> for functions and variables, <code class="docutils literal notranslate"><span class="pre">PascalCase</span></code> for classes and
+<code class="docutils literal notranslate"><span class="pre">UPPER_CASE</span></code> for module-level constants. Put a one-line comment above each
+constant that states what it means and its unit, for example
+<code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Penalty</span> <span class="pre">for</span> <span class="pre">unserved</span> <span class="pre">energy/load</span> <span class="pre">shedding</span> <span class="pre">($/MWh).</span></code></p></li>
+<li><p>Prefix private helpers with an underscore (such as <code class="docutils literal notranslate"><span class="pre">_update_horizon_params</span></code>). The
+<code class="docutils literal notranslate"><span class="pre">configuration</span></code> and <code class="docutils literal notranslate"><span class="pre">utilities</span></code> modules are re-exported with
+<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">.module</span> <span class="pre">import</span> <span class="pre">*</span></code> in <code class="docutils literal notranslate"><span class="pre">gridops/__init__.py</span></code>, so any name without a leading
+underscore becomes part of the public <code class="docutils literal notranslate"><span class="pre">gridops</span></code> namespace.</p></li>
+<li><p>Group related code under section separator comments: a short title between two
+<code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">-----</span></code> lines, as in <code class="docutils literal notranslate"><span class="pre">gridops/utilities.py</span></code>.</p></li>
+<li><p>Open text files with an explicit <code class="docutils literal notranslate"><span class="pre">encoding=&quot;utf-8&quot;</span></code>.</p></li>
+<li><p>State physical units in comments and docstrings (MW, MWh, $/MWh,
+$/MMBtu, p.u.).</p></li>
+</ul>
+</section>
+<section id="docstrings">
+<h3>Docstrings<a class="headerlink" href="#docstrings" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Functions and classes have NumPy-style docstrings with <code class="docutils literal notranslate"><span class="pre">Parameters</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Returns</span></code> and <code class="docutils literal notranslate"><span class="pre">Raises</span></code> sections. They are rendered in the <a class="reference internal" href="api.html"><span class="doc">API reference</span></a>.</p></li>
+<li><p>Refer to other objects with Sphinx roles, for example
+<code class="docutils literal notranslate"><span class="pre">:func:`~gridops.utilities.write_restart_file`</span></code>.</p></li>
+<li><p>If you add a public function or class, add it to <code class="docutils literal notranslate"><span class="pre">docs/source/api.rst</span></code>.</p></li>
+</ul>
+</section>
+<section id="logging-and-errors">
+<h3>Logging and errors<a class="headerlink" href="#logging-and-errors" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Don’t use <code class="docutils literal notranslate"><span class="pre">print</span></code>. Get a logger with <code class="docutils literal notranslate"><span class="pre">logging.getLogger(__name__)</span></code> so that
+messages go through the package-level <code class="docutils literal notranslate"><span class="pre">gridops</span></code> logger configured in
+<code class="docutils literal notranslate"><span class="pre">gridops/__init__.py</span></code>. Keep log messages short and consistent with the existing
+ones.</p></li>
+<li><p>Raise specific exceptions with a clear message, for example <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> for
+invalid input data and <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> for regions or problem types that
+are not available yet.</p></li>
+</ul>
+</section>
+<section id="optimization-models">
+<h3>Optimization models<a class="headerlink" href="#optimization-models" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Build the Pyomo model once. Store time-varying data in mutable parameters
+(<code class="docutils literal notranslate"><span class="pre">mutable=True</span></code>) and update them in place between horizons instead of
+rebuilding the model.</p></li>
+<li><p>Write each constraint and objective rule as a module-level function named
+<code class="docutils literal notranslate"><span class="pre">_&lt;name&gt;_rule</span></code> with a docstring that describes the equation.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">pyo.quicksum</span></code> and the precomputed sparse lookups (<code class="docutils literal notranslate"><span class="pre">_lines_at_bus</span></code>,
+<code class="docutils literal notranslate"><span class="pre">_gens_at_bus</span></code>, …) instead of looping over full incidence matrices.</p></li>
+<li><p>Keep penalty and cost constants at the top of the module and document any change
+to them, or to the equations, in <a class="reference internal" href="user_guide/formulation.html"><span class="doc">Mathematical formulation</span></a>.</p></li>
+</ul>
+</section>
+<section id="tests">
+<h3>Tests<a class="headerlink" href="#tests" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>New behavior comes with a test in <code class="docutils literal notranslate"><span class="pre">tests/test_&lt;module&gt;.py</span></code>. Tests are
+<code class="docutils literal notranslate"><span class="pre">unittest.TestCase</span></code> classes run with <code class="docutils literal notranslate"><span class="pre">pytest</span></code>. Give every test method a
+one-line docstring that states what it checks.</p></li>
+<li><p>Write temporary files to a <code class="docutils literal notranslate"><span class="pre">tempfile.mkdtemp()</span></code> directory and remove it in
+<code class="docutils literal notranslate"><span class="pre">tearDown</span></code>.</p></li>
+<li><p>Tests must not need a commercial solver license or network access. Use HiGHS for
+tests that solve a model.</p></li>
+</ul>
+</section>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The documentation build treats warnings as errors (<code class="docutils literal notranslate"><span class="pre">sphinx-build</span> <span class="pre">-W</span></code>), so check
+that it builds cleanly before opening a pull request.</p></li>
+<li><p>Notebooks in <code class="docutils literal notranslate"><span class="pre">notebooks/</span></code> are copied into the documentation and rendered from
+their stored outputs; they are not executed during the build. If you change a
+notebook, run it from top to bottom and save it with its outputs.</p></li>
+</ul>
+</section>
+<section id="versioning-and-changelog">
+<h3>Versioning and changelog<a class="headerlink" href="#versioning-and-changelog" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>gridops follows <a class="reference external" href="https://semver.org/">semantic versioning</a>. The version number
+is set in two places that must match: <code class="docutils literal notranslate"><span class="pre">version</span></code> in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> and
+<code class="docutils literal notranslate"><span class="pre">__version__</span></code> in <code class="docutils literal notranslate"><span class="pre">gridops/__init__.py</span></code>.</p></li>
+<li><p>Add an entry to <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> under the next release, using the
+<a class="reference external" href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</a> headings (<code class="docutils literal notranslate"><span class="pre">Added</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Changed</span></code>, <code class="docutils literal notranslate"><span class="pre">Removed</span></code>, …).</p></li>
+<li><p>Every push to <code class="docutils literal notranslate"><span class="pre">main</span></code> runs the publishing workflow. When the version number has
+changed, the package is published to PyPI and a GitHub release is created with the
+notes from <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="api.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">API reference</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="how_to_cite.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">How to cite</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
             
             
               
-            
-            
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">go</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to <strong>go</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#opening-issues">Opening issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#contribution-workflow">Contribution workflow</a></li>
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-issues">Opening issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution-workflow">Contribution workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-conventions">Coding conventions</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-style">Python style</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docstrings">Docstrings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-and-errors">Logging and errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-models">Optimization models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#versioning-and-changelog">Versioning and changelog</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how_to_cite.html">How to cite <strong>go</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="footer.html">Acknowledgement</a></li>
 </ul>
+  </nav></div>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
+  <div class="sidebar-secondary-item">
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/IMMM-SFA/gridops/edit/main/docs/source/contributing.rst">
+      <i class="fa-solid fa-pencil"></i>
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      
         
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">go</a>
+          Edit on GitHub
         
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Contributing to <strong>go</strong></li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/contributing.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
+      
+    </a>
+  </div>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+
+</div></div>
+              
             
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<div class="section" id="contributing-to-go">
-<h1>Contributing to <strong>go</strong><a class="headerlink" href="#contributing-to-go" title="Permalink to this headline">¶</a></h1>
-<p>Whether you find a typo in the documentation, find a bug, or want to develop functionality that you think will make <strong>go</strong> more robust, you are welcome to contribute!</p>
-<div class="section" id="opening-issues">
-<h2>Opening issues<a class="headerlink" href="#opening-issues" title="Permalink to this headline">¶</a></h2>
-<p>If you find a bug or would like to contribute a new feature, please <a class="reference external" href="https://github.com/IMMM-SFA/go/issues">open an issue</a> and select the template that fits your need.</p>
-</div>
-<div class="section" id="contribution-workflow">
-<h2>Contribution workflow<a class="headerlink" href="#contribution-workflow" title="Permalink to this headline">¶</a></h2>
-<p>The following is the recommended workflow for contributing to <strong>go</strong>:</p>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://github.com/IMMM-SFA/go/fork">Fork the go repository</a> and then clone it locally:</p></li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/&lt;your-user-name&gt;/go
-</pre></div>
-</div>
-<p>Cloning the repository will give you access to the test suite.  It is important to install the package in development mode before running tests.  This will give you the flexibility to make changes in the code without having to rebuild your package before running tests.  To do this run the following from your terminal in the <strong>go</strong> directory containing your <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> script:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py develop
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li><p>Create a branch for your changes</p></li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout -b bug/some-bug
-
-<span class="c1"># or</span>
-
-git checkout -b feature/some-feature
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic" start="3">
-<li><p>Add your recommended changes and ensure all tests pass, then commit your changes:</p>
-<blockquote>
-<div><p>Ensure your tests pass locally before pushing to your remote branch where GitHub actions will launch CI services to build the package, run the test suite, and evaluate code coverage.  To do this, ensure that <code class="docutils literal notranslate"><span class="pre">pytest</span></code> has been installed then navigate to the root of your cloned directory (e.g., &lt;my-path&gt;/go) and simply execute <code class="docutils literal notranslate"><span class="pre">pytest</span></code> in the terminal.</p>
-</div></blockquote>
-</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add &lt;my-file-name&gt;
-
-git commit -m <span class="s1">&#39;&lt;my short message&gt;&#39;</span>
-</pre></div>
-</div>
-<p>Changes to the documenation can be made in the <code class="docutils literal notranslate"><span class="pre">go/docs/source</span></code> directory containing the RST files.  To view your changes, ensure you have the development dependencies of <strong>go</strong> installed and run the following from the <code class="docutils literal notranslate"><span class="pre">go/docs/source</span></code> directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make html
-</pre></div>
-</div>
-<p>This will generate your new documentation in a directory named <code class="docutils literal notranslate"><span class="pre">go/docs/build/html</span></code>.  You can open the <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in your browser to view the documentation site locally.  If your changes are merged into the main branch of <strong>go</strong>, changes in your documentation will go live as well.</p>
-</div></blockquote>
-<ol class="arabic simple" start="4">
-<li><p>Push your changes to the remote</p></li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push origin &lt;my-branch-name&gt;
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="5">
-<li><p>Submit a pull request with the following information:</p></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Purpose</strong>:  The reason for your pull request in short</p></li>
-<li><p><strong>Summary</strong>:  A description of the environment you are using (OS, Python version, etc.), logic, any caveats, and a summary of changes that were made.</p></li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="6">
-<li><p>If approved, your pull request will be merged into the main branch by a  <strong>go</strong> admin and a release will be conducted subsequently.  <strong>go</strong> uses <a class="reference external" href="https://semver.org/">semantic naming</a> for versioned releases.  Each release receives a DOI via a linked Zenodo service automatically.</p></li>
-</ol>
-</div>
-</div>
-
-
-           </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="publications.html" class="btn btn-neutral float-right" title="Publications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="tests.html" class="btn btn-neutral float-left" title="tests package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
     </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, Battelle Memorial Institute.
-
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-        </div>
-      </div>
-
-    </section>
-
   </div>
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
 
-  
-  
+  <p class="copyright">
     
-   
+      © Copyright 2021-2026, Battelle Memorial Institute.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2026-10-29.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
 
-</body>
+  </footer>
+  </body>
 </html>
