@@ -321,7 +321,8 @@ def _bus_balance_rule(
     b:     Bus index.
     t:     Hour index.
     """
-    # Power flow to this bus via DC power flow
+    # Net power exported from this bus over its connected lines
+    # (+1 at the line's from bus, -1 at the line's to bus; positive flow = from bus -> to bus)
     # Uses pre-computed sparse lookup: only lines connected to this bus.
     power_flow = pyo.quicksum(
         model.Flow[l, t] * coeff

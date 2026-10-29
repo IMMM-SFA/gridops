@@ -10,7 +10,7 @@ from .model import Model
 from .solvers import GoSolver
 from .utilities import *
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 # ---------------------------------------------------------------------------
 # Package-level logger configuration
