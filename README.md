@@ -2,6 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/gridops.svg)](https://pypi.org/project/gridops/)
 [![tests](https://github.com/IMMM-SFA/gridops/actions/workflows/tests.yml/badge.svg)](https://github.com/IMMM-SFA/gridops/actions/workflows/tests.yml)
+[![docs](https://github.com/IMMM-SFA/gridops/actions/workflows/docs.yml/badge.svg)](https://immm-sfa.github.io/gridops)
 
 `gridops` is an open-source and customizable grid operations model for three major U.S. interconnections (Western, Eastern, and ERCOT). Production cost modeling in `gridops` utilizes linear DC Optimal Power Flow (DC-OPF) approximation to optimize hourly unit commitment (UC) and economic dispatch (ED) processes over a user-configurable rolling horizon.
 
